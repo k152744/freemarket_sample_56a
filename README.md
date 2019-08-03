@@ -107,6 +107,7 @@ Things you may want to cover:
 - belongs_to :big_category
 - belongs_to :middle_category
 - belongs_to :small_category
+- belongs_to :brand
 - belongs_to :status
 - belongs_to :delivary_fee
 - belongs_to :delivary_way
@@ -114,7 +115,7 @@ Things you may want to cover:
 - belongs_to :shipping_origin
 
 
-## Product_image
+## Product_image テーブル
 |Column|Type|Options|
 |------|----|-------|
 |product|reference|foreign_key: true|
@@ -123,7 +124,7 @@ belongs_to :product
 
 <!-- カテゴリー -->
 
-## Big_category
+## Big_category テーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|text|null: false|
@@ -131,7 +132,7 @@ belongs_to :product
 - has_many :middle_categories
 - has_many :products
 
-## Middle_category
+## Middle_category テーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|text|null: false|
@@ -141,7 +142,7 @@ belongs_to :product
 - has_many :small_categories
 - belongs_to :big_category
 
-## Small_category
+## Small_category テーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|text|null: false|
@@ -149,6 +150,13 @@ belongs_to :product
 ### Association
 - has_many :products
 - belongs_to :middle_category
+
+## Brand テーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+### Association
+- has_many :products
 
 ## Status テーブル
 |Column|Type|Options|
@@ -159,21 +167,21 @@ belongs_to :product
 
 <!-- 配送情報 -->
 
-## delivary_fee
+## Delivary_fee テーブル
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null: false|
 ### Association
 - has_many :products
 
-## delivary_way
+## Delivary_way テーブル
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null: false|
 ### Association
 - has_many :products
 
-## delivary_day
+## Delivary_day テーブル
 |Column|Type|Options|
 |------|----|-------|
 |day|string|null: false|
