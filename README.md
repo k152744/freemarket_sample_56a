@@ -211,7 +211,7 @@ belongs_to :product
 |Column|Type|Options|
 |------|----|-------|
 |user|reference|foreign_key: true|
-|status|string|null: false|
+|status|integer|null: false|
 ### Association
 - belongs_to :user
 
@@ -233,7 +233,7 @@ belongs_to :product
 |Column|Type|Options|
 |------|----|-------|
 |product|reference|foreign_key: true|
-|delivary_status|string|null: false|
+|delivary_status|integer|null: false|
 ### Association
 - belongs_to :product
 - has_many :traiding_comments
