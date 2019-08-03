@@ -46,6 +46,10 @@ Things you may want to cover:
 - has_many :products
 - has_many :favorites
 - has_many :comments
+- has_many :evaluations
+- has_many :points
+- has_many :traiding_comment
+- has_many :fav_products, through: :favorites, source: :products
 - has_one :user_information
 - has_one :user_card
 
@@ -74,11 +78,13 @@ Things you may want to cover:
 ### Association
 - belongs_to :user
 
+
 ## Product テーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false, index: true|
 |detail|string|null: false|
+|brand|reference|foreign_key: true|
 |price|integer|null: false|
 |user|reference|foreign_key: true|
 |big_category|reference|foreign_key: true|
@@ -93,15 +99,23 @@ Things you may want to cover:
 ### Association
 - has_many :favorites
 - has_many :comments
+- has_many :users, through: :favorites
 - has_many :product_images
+- has_one :trading_history
+- belongs_to :shipping_origin
 - belongs_to :user
 - belongs_to :big_category
 - belongs_to :middle_category
 - belongs_to :small_category
+- belongs_to :brand
 - belongs_to :status
+- belongs_to :delivary_fee
+- belongs_to :delivary_way
+- belongs_to :delivary_day
+- belongs_to :shipping_origin
 
 
-## Item_image
+## Product_image テーブル
 |Column|Type|Options|
 |------|----|-------|
 |product|reference|foreign_key: true|
@@ -110,16 +124,15 @@ belongs_to :product
 
 <!-- カテゴリー -->
 
-## Big_category
+## Big_category テーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|text|null: false|
-|product|reference|foreign_key: true|
 ### Association
 - has_many :middle_categories
 - has_many :products
 
-## Middle_category
+## Middle_category テーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|text|null: false|
@@ -129,7 +142,7 @@ belongs_to :product
 - has_many :small_categories
 - belongs_to :big_category
 
-## Small_category
+## Small_category テーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|text|null: false|
@@ -137,6 +150,13 @@ belongs_to :product
 ### Association
 - has_many :products
 - belongs_to :middle_category
+
+## Brand テーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+### Association
+- has_many :products
 
 ## Status テーブル
 |Column|Type|Options|
@@ -147,17 +167,24 @@ belongs_to :product
 
 <!-- 配送情報 -->
 
-## delivary_fee
+## Delivary_fee テーブル
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null: false|
 ### Association
 - has_many :products
 
-## delivary_way
+## Delivary_way テーブル
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null: false|
+### Association
+- has_many :products
+
+## Delivary_day テーブル
+|Column|Type|Options|
+|------|----|-------|
+|day|string|null: false|
 ### Association
 - has_many :products
 
@@ -179,3 +206,44 @@ belongs_to :product
 ### Association
 - belongs_to :user
 - belongs_to :product
+
+## Evaluation テーブル
+|Column|Type|Options|
+|------|----|-------|
+|user|reference|foreign_key: true|
+|status|integer|null: false|
+### Association
+- belongs_to :user
+
+## Point テーブル
+|Column|Type|Options|
+|------|----|-------|
+|user|reference|foreign_key: true|
+|value|integer|null: false|
+### Association
+- belongs_to :user
+
+## Infomation テーブル
+|Column|Type|Options|
+|------|----|-------|
+|text|text|null: false|
+### Association
+
+## Traiding_history テーブル
+|Column|Type|Options|
+|------|----|-------|
+|product|reference|foreign_key: true|
+|delivary_status|integer|null: false|
+### Association
+- belongs_to :product
+- has_many :traiding_comments
+
+## Traiding_comment テーブル
+|Column|Type|Options|
+|------|----|-------|
+|trading_history|reference|foreign_key: true|
+|user|reference|foreign_key: true|
+|text|text|null: false|
+### Association
+- belongs_to :traiding_history
+- belongs_to :user
