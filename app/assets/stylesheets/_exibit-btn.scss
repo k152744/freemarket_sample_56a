@@ -11,10 +11,15 @@
   background-color: #ea352d;
   border-radius: 75px;
   text-decoration: none;
-  transition: all 0.3s;
-  &:hover {
-    transform: translateY(-20px);
-  } 
+  animation: Keita 15s reverse infinite;
+  @keyframes Keita{
+    0% { transform: translateY(0px) scale(1); }
+    92% { transform: translateY(0px) scale(1); }
+    94% { transform: translateY(-15px) scale(1.1); }
+    96% { transform: translateY(0px) scale(1); }
+    98% { transform: translateY(-15px) scale(1.1); }
+    100% { transform: translateY(0px) scale(1); }
+    }
   & h2{
     position: relative;
     bottom: 5px;
