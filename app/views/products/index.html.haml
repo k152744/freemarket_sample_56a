@@ -1,1 +1,49 @@
-= render partial: 'header'
+
+= render partial: "/small_header"
+    
+%section.purchase-confirmation-contents
+  .purchase-confirmation-contents__subject
+    %p 購入内容の確認
+  .purchase-confirmation-contents__box.margin-zero
+    .purchase-detail
+      .purchase-detail__img
+        = image_tag "oyaji.png"
+      .purchase-detail__title
+        %p ★値下げ中！★ ナイキ エアマックス90 EZ
+      = form_with url: "#", method: :get,class:"purchase-detail__form", local: true do |f|
+        .purchase-detail__form__price
+          %p.bold-price  ¥ 3,500
+          %p  送料込み
+        %ul.purchase-detail__form__point
+          %li.purchase-detail__form__point__list 
+            .purchase-detail__form__point__list__button 
+              ポイントはありません
+        %ul.purchase-detail__form__price-table
+          %li.purchase-detail__form__price-table__row
+            .purchase-detail__form__price-table__cell
+              支払い金額
+            .purchase-detail__form__price-table__cell
+              ¥ 3,500
+        = f.submit '購入する', class: 'purchase-detail__form__submit'
+  .purchase-confirmation-contents__box
+    .purchase-delivary-info
+      %p.purchase-delivary-info__title 配送先
+      %p  〒999-0099
+      %p  奈良県 十津川村55-66
+      %p  小細 恭嵩
+      .purchase-delivary-info__change
+        = link_to "変更する >", "#", method: 'get' 
+  .purchase-confirmation-contents__box
+    .purchase-credit-info
+      %p.purchase-credit-info__title お支払い方法
+      %p  ************5555
+      %p  12 / 99
+      .purchase-credit-info__img
+        = image_tag "visa.svg"
+      .purchase-credit-info__change
+        = link_to "変更する >", "#", method: 'get' 
+
+= render partial: "/small_footer"
+
+            
+
