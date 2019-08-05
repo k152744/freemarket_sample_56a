@@ -64,6 +64,12 @@
     }
     width: calc(50% - 6px);
   }
+  &.margin-bottom-none{
+    margin-bottom: 0;
+  }
+  &.margin-bottom-short{
+    margin-bottom: 5px;
+  }
 }
 
 
@@ -78,6 +84,8 @@
   transition: all ease-out .3s;
   cursor: pointer;
   text-align: center;
+  
+  text-decoration: none;
 }
 .user-btn-facebook{
   background: #385185;
@@ -143,6 +151,14 @@
     margin: 0 auto;
     &__text{
       margin-bottom:30px;
+      & a{
+        color: #0099e8;
+        text-decoration: none;
+      }
+      &.margin-bottom-short{
+        margin-bottom:10px;
+        margin-top:10px;
+      }
       & p{
         text-align: left;
         font-size: 14px;
@@ -152,12 +168,26 @@
       &--center{
         margin-top: 30px;
         text-align: center;
-        & a{
-          color: #0099e8;
-          text-decoration: none;
-        }
         & p{
           text-align: center;
+        }
+      }
+      &--right{
+        text-align: right;
+        & p{
+          display: inline;
+          color: #0099e8;
+          &.question-mark{
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #0099e8;
+            color: #fff;
+            line-height: 14px;
+            font-size: 12px;
+            text-align: center;
+          }
         }
       }
       &--title{ 
@@ -186,6 +216,15 @@
       font-size: 12px;
       vertical-align: top;
     }
+    &__any{
+      background: #c4c4c4;
+      margin: 0 0 0 8px;
+      padding: 2px 4px;
+      border-radius: 2px;
+      color: #fff;
+      font-size: 12px;
+      vertical-align: top;
+    }
     & i{
       font-weight: 600;
       font-style: normal;
@@ -206,6 +245,17 @@
         cursor: pointer;
         width: 25%;
       }
+      &.select-long{
+        & select{
+          width: 100%;
+        }
+
+      }
+      &.select-harf{
+        & select{
+          width: 40%;
+        }
+      }
       & p{
         color: #888;
         font-size: 14px;
@@ -213,6 +263,31 @@
         font-weight: normal;
         text-align: left;
       }
+    }
+    &__card-images{
+      margin: 10px 0 30px;
+      & img{
+        width: 35px;
+        height: 30px;
+        margin-right: 5px;
+
+      }
+    }
+  }
+}
+.mercari-logo-header-user{
+  text-align: center;
+  &__img{
+    margin: 40px 0 0;
+    display: inline-block;
+    & a {
+      width: 185px;
+      height: 49px;
+      line-height: 49px;
+    }
+    & img{
+      width: 185px;
+      height: 49px;
     }
   }
 }
