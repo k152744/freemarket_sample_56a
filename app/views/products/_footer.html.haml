@@ -8,10 +8,11 @@
           = image_tag '/assets/mercari_icon.png' ,width: "68x68"
         %ul.clearfix
           %li
-            %a{ :href => "https://apps.apple.com/jp/app/%E3%83%A1%E3%83%AB%E3%82%AB%E3%83%AA-%E3%83%95%E3%83%AA%E3%83%9E%E3%82%A2%E3%83%97%E3%83%AA-%E3%82%B9%E3%83%9E%E3%83%9B%E6%B1%BA%E6%B8%88%E3%83%A1%E3%83%AB%E3%83%9A%E3%82%A4/id667861049?mt=8", :style => "display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2013-07-22&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"}
+            = link_to 'Go To Google', "https://apps.apple.com/jp/app/%E3%83%A1%E3%83%AB%E3%82%AB%E3%83%AA-%E3%83%95%E3%83%AA%E3%83%9E%E3%82%A2%E3%83%97%E3%83%AA-%E3%82%B9%E3%83%9E%E3%83%9B%E6%B1%BA%E6%B8%88%E3%83%A1%E3%83%AB%E3%83%9A%E3%82%A4/id667861049?mt=8", style:"display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2013-07-22&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"
           %li#footer-google
-            %a{ :href => 'https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1' ,:id => '', :target => "_blank" } 
+            = link_to 'https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1' do
               = image_tag '/assets/en_badge_web_generic.png' ,size: "150x60", alt: 'Google Play で手に入れよう'
+             
           
             
     %div#footer-img.clearfix
@@ -28,10 +29,10 @@
         %li 公式ブログ
         %li メルカリロゴ利用ガイドライン
         %li 
-          %a
+          = link_to "#" do
             = icon 'fab fa-twitter',class:"footer-icon" 
         %li
-          %a
+          = link_to "#" do
             = icon 'fab fa-facebook-square',class:"footer-icon" 
     %div.footer__text
       %h2 ヘルプ&ガイド

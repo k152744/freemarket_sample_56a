@@ -1,8 +1,6 @@
 = render partial: "header"
 
 %div.main-top
-
-
   %div.slider-box
     %ul.slider
       %li
@@ -10,22 +8,14 @@
       %li
         = image_tag '/assets/top-image1' ,size: "500x300" 
 
-
-
-
-
-
-
-
-    
   %section.main-top__category
     %h2  ピックアップカテゴリー
     %section.main-top__category--box.clearfix
       %h3 
-        %a(href="") レディース新着アイテム
+        = link_to "レディース新着アイテム","#"  
       %div.main-top__category--box__items.clearfix
         %section.main-top__category--box__items__item.clearfix
-          %a(href="")
+          = link_to "#" do
             %div
               = image_tag '/assets/top-image1' ,size: "215x215"
             %div
@@ -34,7 +24,7 @@
                 ¥3100
                 = icon 'fas fa-heart',class:"item-price-iine" 
         %section.main-top__category--box__items__item.clearfix
-          %a(href="")
+          = link_to "#" do
             %div
               = image_tag '/assets/top-image1' ,size: "215x215"
             %div
@@ -43,7 +33,7 @@
                 ¥3100
                 = icon 'fas fa-heart',class:"item-price-iine" 
         %section.main-top__category--box__items__item.clearfix
-          %a(href="")
+          = link_to "#" do
             %div
               = image_tag '/assets/top-image1' ,size: "215x215"
             %div
@@ -52,15 +42,15 @@
                 ¥3100 
                 = icon 'fas fa-heart',class:"item-price-iine" 
       %div.item-all
-        %a(href="") 全ての商品を見る
+        = link_to "全ての商品を見る","#" 
 
   
     %section.main-top__category--box.clearfix
       %h3 
-        %a(href="") メンズ新着アイテム
+        = link_to "メンズ新着アイテム","#"    
       %div.main-top__category--box__items.clearfix
         %section.main-top__category--box__items__item.clearfix
-          %a(href="")
+          = link_to "#" do
             %div
               = image_tag '/assets/top-image1' ,size: "215x215"
             %div
@@ -69,7 +59,7 @@
                 ¥3100
                 = icon 'fas fa-heart',class:"item-price-iine" 
         %section.main-top__category--box__items__item.clearfix
-          %a(href="")
+          = link_to "#" do
             %div
               = image_tag '/assets/top-image1' ,size: "215x215"
             %div
@@ -78,7 +68,7 @@
                 ¥3100
                 = icon 'fas fa-heart',class:"item-price-iine" 
         %section.main-top__category--box__items__item.clearfix
-          %a(href="")
+          = link_to "#" do
             %div
               = image_tag '/assets/top-image1' ,size: "215x215"
             %div
@@ -87,16 +77,16 @@
                 ¥3100
                 = icon 'fas fa-heart',class:"item-price-iine" 
       %div.item-all
-        %a(href="") 全ての商品を見る
+        = link_to "全ての商品を見る","#"
 
 
 
     %section.main-top__category--box.clearfix
       %h3 
-        %a(href="") ベビー・キッズ新着アイテム
+        = link_to "ベビー・キッズ新着アイテム","#" 
       %div.main-top__category--box__items.clearfix
         %section.main-top__category--box__items__item.clearfix
-          %a(href="")
+          = link_to "#" do
             %div
               = image_tag '/assets/top-image1' ,size: "215x215"
             %div
@@ -105,7 +95,7 @@
                 ¥3100
                 = icon 'fas fa-heart',class:"item-price-iine" 
         %section.main-top__category--box__items__item.clearfix
-          %a(href="")
+          = link_to "#" do
             %div
               = image_tag '/assets/top-image1' ,size: "215x215"
             %div
@@ -114,7 +104,7 @@
                 ¥3100
                 = icon 'fas fa-heart',class:"item-price-iine" 
         %section.main-top__category--box__items__item.clearfix
-          %a(href="")
+          = link_to "#" do
             %div
               = image_tag '/assets/top-image1' ,size: "215x215"
             %div
@@ -123,15 +113,15 @@
                 ¥3100
                 = icon 'fas fa-heart',class:"item-price-iine" 
       %div.item-all
-        %a(href="") 全ての商品を見る
+        = link_to "全ての商品を見る","#"
 
 
     %section.main-top__category--box.clearfix
       %h3 
-        %a(href="") コスメ・香水・美容新着アイテム
+        = link_to "コスメ・香水・美容新着アイテム","#" 
       %div.main-top__category--box__items.clearfix
         %section.main-top__category--box__items__item.clearfix
-          %a(href="")
+          = link_to "#" do
             %div
               = image_tag '/assets/top-image1' ,size: "215x215"
             %div
@@ -140,7 +130,7 @@
                 ¥3100
                 = icon 'fas fa-heart',class:"item-price-iine" 
         %section.main-top__category--box__items__item.clearfix
-          %a(href="")
+          = link_to "#" do
             %div
               = image_tag '/assets/top-image1' ,size: "215x215"
             %div
@@ -149,7 +139,7 @@
                 ¥3100
                 = icon 'fas fa-heart',class:"item-price-iine" 
         %section.main-top__category--box__items__item.clearfix
-          %a(href="")
+          = link_to "#" do
             %div
               = image_tag '/assets/top-image1' ,size: "215x215"
             %div
@@ -158,17 +148,17 @@
                 ¥3100
                 = icon 'fas fa-heart',class:"item-price-iine" 
       %div.item-all
-        %a(href="") 全ての商品を見る
+        = link_to "全ての商品を見る","#"
 
 
   %section.main-top__category
     %h2  ピックアップブランド
     %section.main-top__category--box.clearfix
       %h3 
-        %a(href="") シャネル新着アイテム
+        = link_to "シャネル新着アイテム","#"
       %div.main-top__category--box__items.clearfix
         %section.main-top__category--box__items__item.clearfix
-          %a(href="")
+          = link_to "#" do
             %div
               = image_tag '/assets/top-image1' ,size: "215x215"
             %div
@@ -177,7 +167,7 @@
                 ¥3100
                 = icon 'fas fa-heart',class:"item-price-iine" 
         %section.main-top__category--box__items__item.clearfix
-          %a(href="")
+          = link_to "#" do
             %div
               = image_tag '/assets/top-image1' ,size: "215x215"
             %div
@@ -186,7 +176,7 @@
                 ¥3100
                 = icon 'fas fa-heart',class:"item-price-iine" 
         %section.main-top__category--box__items__item.clearfix
-          %a(href="")
+          = link_to "#" do
             %div
               = image_tag '/assets/top-image1' ,size: "215x215"
             %div
@@ -195,16 +185,16 @@
                 ¥3100
                 = icon 'fas fa-heart',class:"item-price-iine" 
       %div.item-all
-        %a(href="") 全ての商品を見る  
+        = link_to "全ての商品を見る","#"  
 
 
 
     %section.main-top__category--box.clearfix
       %h3 
-        %a(href="") ルイヴィトン新着アイテム
+        = link_to "ルイヴィトン新着アイテム","#"
       %div.main-top__category--box__items.clearfix
         %section.main-top__category--box__items__item.clearfix
-          %a(href="")
+          = link_to "#" do
             %div
               = image_tag '/assets/top-image1' ,size: "215x215"
             %div
@@ -213,7 +203,7 @@
                 ¥3100
                 = icon 'fas fa-heart',class:"item-price-iine" 
         %section.main-top__category--box__items__item.clearfix
-          %a(href="")
+          = link_to "#" do
             %div
               = image_tag '/assets/top-image1' ,size: "215x215"
             %div
@@ -222,7 +212,7 @@
                 ¥3100
                 = icon 'fas fa-heart',class:"item-price-iine" 
         %section.main-top__category--box__items__item.clearfix
-          %a(href="")
+          = link_to "#" do
             %div
               = image_tag '/assets/top-image1' ,size: "215x215"
             %div
@@ -231,15 +221,15 @@
                 ¥3100
                 = icon 'fas fa-heart',class:"item-price-iine" 
       %div.item-all
-        %a(href="") 全ての商品を見る   
+        = link_to "全ての商品を見る","#"   
 
 
     %section.main-top__category--box.clearfix
       %h3 
-        %a(href="") シュプリーム新着アイテム
+        = link_to "シュプリーム新着アイテム","#"
       %div.main-top__category--box__items.clearfix
         %section.main-top__category--box__items__item.clearfix
-          %a(href="")
+          = link_to "#" do
             %div
               = image_tag '/assets/top-image1' ,size: "215x215"
             %div
@@ -248,7 +238,7 @@
                 ¥3100
                 = icon 'fas fa-heart',class:"item-price-iine" 
         %section.main-top__category--box__items__item.clearfix
-          %a(href="")
+          = link_to "#" do
             %div
               = image_tag '/assets/top-image1' ,size: "215x215"
             %div
@@ -257,7 +247,7 @@
                 ¥3100
                 = icon 'fas fa-heart',class:"item-price-iine" 
         %section.main-top__category--box__items__item.clearfix
-          %a(href="")
+          = link_to "#" do
             %div
               = image_tag '/assets/top-image1' ,size: "215x215"
             %div
@@ -266,17 +256,17 @@
                 ¥3100
                 = icon 'fas fa-heart',class:"item-price-iine" 
       %div.item-all
-        %a(href="") 全ての商品を見る   
+        = link_to "全ての商品を見る","#"   
 
 
 
 
     %section.main-top__category--box.clearfix
       %h3 
-        %a(href="") ナイキ新着アイテム
+        = link_to "ナイキ新着アイテム","#"
       %div.main-top__category--box__items.clearfix
         %section.main-top__category--box__items__item.clearfix
-          %a(href="")
+          = link_to "#" do
             %div
               = image_tag '/assets/top-image1' ,size: "215x215"
             %div
@@ -285,7 +275,7 @@
                 ¥3100
                 = icon 'fas fa-heart',class:"item-price-iine" 
         %section.main-top__category--box__items__item.clearfix
-          %a(href="")
+          = link_to "#" do
             %div
               = image_tag '/assets/top-image1' ,size: "215x215"
             %div
@@ -294,7 +284,7 @@
                 ¥3100
                 = icon 'fas fa-heart',class:"item-price-iine" 
         %section.main-top__category--box__items__item.clearfix
-          %a(href="")
+          = link_to "#" do
             %div
               = image_tag '/assets/top-image1' ,size: "215x215"
             %div
@@ -303,22 +293,6 @@
                 ¥3100
                 = icon 'fas fa-heart',class:"item-price-iine" 
       %div.item-all
-        %a(href="") 全ての商品を見る          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        = link_to "全ての商品を見る","#"          
 
 = render partial: "footer"
