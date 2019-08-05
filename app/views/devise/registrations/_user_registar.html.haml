@@ -1,0 +1,13 @@
+
+.user-sign-up__title
+  %p  新規会員登録
+.user-sign-up__content  
+  .user-sign-up__content__btns
+    = link_to "#", method: 'get' ,class:"user-btn user-btn-mail" do
+      = icon "far fa-envelope btn-icon",class:""
+      メールアドレスで登録する
+    %button.user-btn.user-btn-facebook  
+      = icon "fab fa-facebook-square btn-icon",class:""
+      Facebookでログイン
+    %button.user-btn.user-btn-google 
+      Googleでログイン
