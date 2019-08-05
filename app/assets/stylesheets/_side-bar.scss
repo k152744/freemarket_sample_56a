@@ -2,7 +2,7 @@
   width: 250px;
   &__box{
     padding: 20px 0;
-    & h2{
+    &__text{
       font-size: 18px;
       font-weight: 600;
       margin-left:5px;
@@ -23,7 +23,7 @@
     &:hover {
       background-color: #fafafa;
       &::after {
-        transform: translateX(10px);
+        transform: rotate(45deg) translateX(3px) translateY(-3px);
         border-color: #333;
       }
     }
@@ -31,7 +31,6 @@
       color: black;
       font-size:14px;
       margin-left:10px;
-      position: relative;
     }
     &::after {
       content: "";
@@ -43,7 +42,7 @@
       height: 8px;
       border-top: 3px solid #ccc;
       border-right: 3px solid #ccc;
-      transform: rotate(45deg);
+      transform: rotate(45deg) translateX(0px) translateY(0px);
       transition: .3s;
     }
   }
