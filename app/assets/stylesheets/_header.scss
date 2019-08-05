@@ -1,11 +1,11 @@
 .header{
   display:block;
-  
+  background: #fff;
   &__container{
     width:700px;
     margin:0 auto;
     padding:8px 0 0;
-
+    
     &__top{
       display: flex;
       justify-content: space-between;
