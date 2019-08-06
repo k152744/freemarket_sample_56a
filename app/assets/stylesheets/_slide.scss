@@ -1,0 +1,45 @@
+.slider{
+  
+  img{
+    margin:0 auto;
+  }
+
+  .slick-slide{
+    background-color: #F0F0F0;
+  }
+}
+
+.slick-dots {
+  position: absolute !important;
+  bottom: 30px !important;
+  li {
+    font-size: 20px !important;
+    button:before {
+      content: "●" !important;
+      font-size: 14px !important;
+      color: rgb(87, 86, 86) !important;
+    }
+  }
+}
+.fa-chevron-left{
+  position: absolute;
+  left: 50px;
+  z-index: 100;
+  top:50%;
+  font-size:35px;
+  color:white;
+  cursor: pointer;
+  text-shadow: 1px 1px 1px black;
+}
+.fa-chevron-right{
+  position: absolute;
+  right: 50px;
+  z-index: 100;
+  top:50%;
+  font-size:35px;
+  color:white;
+  cursor: pointer;
+  text-shadow: 1px 1px 1px black;
+
+}
+

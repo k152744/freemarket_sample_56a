@@ -1,0 +1,76 @@
+%aside.footer-bonner
+  %div.footer-bonner__content
+    %div.footer-bonner__content--inner.clearfix
+      %h2 スマホでかんたんフリマアプリ
+      %p 今すぐ無料ダウンロード!
+      %div.footer-bonner__content--inner__list.clearfix
+        %div#footer-icon-merucari
+          = image_tag '/assets/mercari_icon.png' ,width: "68x68"
+        %ul.clearfix
+          %li
+            = link_to 'Go To Google', "https://apps.apple.com/jp/app/%E3%83%A1%E3%83%AB%E3%82%AB%E3%83%AA-%E3%83%95%E3%83%AA%E3%83%9E%E3%82%A2%E3%83%97%E3%83%AA-%E3%82%B9%E3%83%9E%E3%83%9B%E6%B1%BA%E6%B8%88%E3%83%A1%E3%83%AB%E3%83%9A%E3%82%A4/id667861049?mt=8", style:"display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2013-07-22&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"
+          %li#footer-google
+            = link_to 'https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1' do
+              = image_tag '/assets/en_badge_web_generic.png' ,size: "150x60", alt: 'Google Play で手に入れよう'
+             
+          
+            
+    %div#footer-img.clearfix
+      = image_tag '/assets/footer-img.png' ,size: "300x260"
+
+%div.footer
+  %nav.clearfix
+    %div.footer__text
+      %h2 メルカリについて
+      %ul
+        %li 会社概要 (運営会社)
+        %li 採用情報
+        %li プレスリリース
+        %li 公式ブログ
+        %li メルカリロゴ利用ガイドライン
+        %li 
+          = link_to "#" do
+            = icon 'fab fa-twitter',class:"footer-icon" 
+        %li
+          = link_to "#" do
+            = icon 'fab fa-facebook-square',class:"footer-icon" 
+    %div.footer__text
+      %h2 ヘルプ&ガイド
+      %ul
+        %li メルカリガイド
+        %li らくらくメルカリ便
+        %li ゆうゆうメルカリ便
+        %li 大型メルカリ便
+        %li 車体取引ガイド
+        %li メルカリあんしん・あんぜん宣言!
+        %li 偽ブランド品撲滅への取り組み
+        %li メルカリボックス
+    %div.footer__text.full-width
+      %h2 プライバシーと利用規約
+      %div.footer__text
+        %ul
+          %li プライバシーポリシー
+          %li メルカリ規約
+          %li あんしんスマホサポート制度に関する利用特約
+          %li コンプライアンスポリシー
+      %div.footer__text
+        %ul
+          %li 個人データの安全管理に係る基本方針
+          %li 特定商取引に関する表記
+          %li 資金決済法に基づく表示
+          %li 法令遵守と犯罪防止のために
+    %div.footer__text
+      %h2 国
+      %ul.footer__text__country
+        %li 日本
+        %li United States
+  %div.footer__bottom
+    = image_tag '/assets/logo-white-1.svg' ,size: "125x35" 
+    %small.copyright
+      &copy;
+      %span#copyright_year
+        2019 Mercari
+
+      
+ 
+ 
