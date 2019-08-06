@@ -1,16 +1,16 @@
 .mypage--card
   .mypage--card__container
     %h2 支払い方法
-    .mypage--card--inner
-      .mypage--card--inner__contents
+    .mypage--card__inner
+      .mypage--card__inner__contents
         %h3 クレジットカード一覧
         %ul
-      .add--card
-        .add--card__content
-          %a{href: "#"}
+      .mypage--card__inner__top
+        .mypage--card__inner__top__content
+          = link_to do
             = icon 'far fa-credit-card' ,class:"fa-credit-card"
             クレジットカードを追加する
-      .add--card--bottom
-        %a{href: "#"}
+      .mypage--card__inner__bottom
+        = link_to do
           支払い方法について
           = icon 'fas fa-chevron-right' ,class:"fa-chevron-right"

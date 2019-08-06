@@ -12,7 +12,7 @@
       font-weight:bold;
     }
   }
-  .mypage--card--inner{
+  &__inner{
     padding: 64px;
     &__contents{
       max-width: 320px;
@@ -22,44 +22,46 @@
         font-weight:bold;
       }
     }
-  }
-  .add--card{
-    padding: 24px 0;
-    border-bottom: 1px solid #eee;
-    &__content{
-      max-width: 320px;
-      margin: 0 auto;
+    &__top{
+      padding: 24px 0;
+      border-bottom: 1px solid #eee;
+      &__content{
+        max-width: 320px;
+        margin: 0 auto;
+        a{
+          background: #ea352d;
+          border: 1px solid #ea352d;
+          color: #fff;
+          display: block;
+          width: 100%;
+          line-height: 48px;
+          font-size: 14px;
+          cursor: pointer;
+          text-align: center;
+          text-decoration: none;
+          margin-bottom: 8px !important;
+        }
+        i{
+          margin-right: 16px;
+        }
+      }
+    }
+    &__bottom{
       a{
-        background: #ea352d;
-        border: 1px solid #ea352d;
-        color: #fff;
         display: block;
-        width: 100%;
-        line-height: 48px;
-        font-size: 14px;
-        cursor: pointer;
-        text-align: center;
+        margin: 40px 0 0;
+        text-align: right;
+        color: #0099e8;
         text-decoration: none;
-        margin-bottom: 8px !important;
       }
       i{
-        margin-right: 16px;
+        margin: 0 0 0 8px;
       }
-    }
-  }
-  .add--card--bottom{
-    a{
-      display: block;
-      margin: 40px 0 0;
-      text-align: right;
-      color: #0099e8;
-      text-decoration: none;
-    }
-    i{
-      margin: 0 0 0 8px;
     }
   }
 }
+  
+
 
 
 
