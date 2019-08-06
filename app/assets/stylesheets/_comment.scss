@@ -38,6 +38,29 @@
       }
     }
   }
+  &__text{
+    background-color: orange;
+    width:100%;
+    height: 40px;
+    & h3{
+      line-height:1.2;
+    }
+  }
+  &__form{
+    width:100%;
+    margin: 10px 0 20px;
+    &__text{
+      width: 100%;
+      height: 100px;
+    }
+    &__submit{
+      width: 100%;
+      margin: 10px 0 30px;
+      background-color: gray;
+      color: white;
+      height: 50px;
+    }
+  }
 }
 .product-change{
   width: 700px;
