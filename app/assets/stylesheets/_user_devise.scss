@@ -1,0 +1,327 @@
+.user-login{
+  width: 456px;
+  max-width: 456px;
+  margin: 0 auto;
+  background: #fff;
+  &__no-user{
+    padding: 40px 64px;
+    text-align: center;
+    p{
+      font-size:14px; 
+    }
+    a{
+      display: block;
+      margin: 8px 0 0;
+      border: 1px solid #0099e8;
+      background: #0099e8;
+      color: #fff;
+      line-height: 40px;
+      text-decoration: none;
+    }
+  }
+  &__other{
+    padding: 32px 64px;
+    border-top: 1px solid #eee;
+  }
+  &__form{
+    padding: 24px 64px 32px;
+
+    &__submit{
+      margin: 24px 0 0;
+      background: #ea352d;
+      border: 1px solid #ea352d;
+      color: #fff;
+      display: block;
+    }
+    &__link{
+      color: #0099e8;
+      text-decoration: none;
+      display: block;
+      margin: 40px 0 0;
+
+    }
+    img{
+      width:300px;
+    }
+  }
+
+}
+
+.user-form-input{
+  width: 100%;
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 16px;
+  margin-bottom: 30px;
+  margin-top: 5px;
+  &.input-harf{
+    &:first-of-type{
+      margin-right: 8px;
+    }
+    width: calc(50% - 6px);
+  }
+  &.margin-bottom-none{
+    margin-bottom: 0;
+  }
+  &.margin-bottom-short{
+    margin-bottom: 5px;
+  }
+}
+
+
+
+
+.user-btn{
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  border: 1px solid transparent;
+  -webkit-transition: all ease-out .3s;
+  transition: all ease-out .3s;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+.user-btn-facebook{
+  background: #385185;
+  color: #fff;
+  position: relative;
+  .fab{
+    font-size: 26px;
+  }
+}
+.user-btn-google{
+  background: #385185;
+  color: #fff;
+  margin: 16px 0 0;
+  background: #fff url(google.png) no-repeat 3px top;
+  border: #979797 solid 1px;
+  color: #333;
+}
+.user-btn-mail{
+  color: #fff;
+  background-color: #ea352d;
+  border-radius: 4px;
+  position: relative;
+  margin-bottom: 16px;
+  .far{
+    font-size:20px;
+  }
+}
+.btn-icon{
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+}
+.user-sign-up{
+  width: 700px;
+  margin: 0 auto;
+  background: #fff;
+  p{
+    font-size: 22px;
+    padding: 32px;
+    line-height: 1.5;
+    text-align: center;
+    font-weight: bold;
+  }
+  &__content{
+    border-top: 1px solid #f5f5f5;
+    padding: 40px 40px 64px;
+    &__btns{
+      max-width: 343px;
+      margin: 0 auto;
+      button{
+        border-radius: 4px;
+      }
+      a{
+        display: block;
+        text-decoration: none;
+      }
+    }
+  }
+  &__form{
+    max-width: 343px;
+    margin: 0 auto;
+    &__text{
+      margin-bottom:30px;
+      a{
+        color: #0099e8;
+        text-decoration: none;
+      }
+      &.margin-bottom-short{
+        margin-bottom:10px;
+        margin-top:10px;
+      }
+      p{
+        text-align: left;
+        font-size: 14px;
+        padding: 0;
+        font-weight:  normal;
+      }
+      &--center{
+        margin-top: 30px;
+        text-align: center;
+        p{
+          text-align: center;
+        }
+      }
+      &--right{
+        text-align: right;
+        p{
+          display: inline;
+          color: #0099e8;
+          &.question-mark{
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #0099e8;
+            color: #fff;
+            line-height: 14px;
+            font-size: 12px;
+            text-align: center;
+          }
+        }
+      }
+      &--title{ 
+        p{
+          font-weight:  bold;
+          font-size: 16px;
+        }
+      }
+    }
+    img{
+      width:300px;
+    }
+    &__link{
+      color: #0099e8;
+      text-decoration: none;
+      display: block;
+      margin: 40px auto 0;
+      text-align: right;
+    }
+    &__required{
+      background: #ea352d;
+      margin: 0 0 0 8px;
+      padding: 2px 4px;
+      border-radius: 2px;
+      color: #fff;
+      font-size: 12px;
+      vertical-align: top;
+    }
+    &__any{
+      background: #c4c4c4;
+      margin: 0 0 0 8px;
+      padding: 2px 4px;
+      border-radius: 2px;
+      color: #fff;
+      font-size: 12px;
+      vertical-align: top;
+    }
+    i{
+      font-weight: 600;
+      font-style: normal;
+    }
+    &__select{
+      margin: 5px 0 30px;
+      select{
+        padding: 0 10px;
+        position: relative;
+        z-index: 2;
+        height: 48px;
+        padding: 0 16px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        background: 0;
+        font-size: 16px;
+        line-height: 1.5;
+        cursor: pointer;
+        width: 25%;
+      }
+      &.select-long{
+        select{
+          width: 100%;
+        }
+
+      }
+      &.select-harf{
+        select{
+          width: 40%;
+        }
+      }
+      p{
+        color: #888;
+        font-size: 14px;
+        padding:5px 0 0;
+        font-weight: normal;
+        text-align: left;
+      }
+    }
+    &__card-images{
+      margin: 10px 0 30px;
+      img{
+        width: 35px;
+        height: 30px;
+        margin-right: 5px;
+
+      }
+    }
+  }
+}
+.mercari-logo-header-user{
+  text-align: center;
+  &__img{
+    margin: 40px 0 0;
+    display: inline-block;
+    a {
+      width: 185px;
+      height: 49px;
+      line-height: 49px;
+    }
+    img{
+      width: 185px;
+      height: 49px;
+    }
+  }
+}
+.progress{
+  display:inline-block;
+  width: 550px;
+  height: 49px;
+  &__contents{
+    display: flex;
+    height: 20px;
+    &__current{
+      color: #ea352d;
+    }
+    p{
+      margin: 0 auto;
+      display: inline-block;
+    }
+  }
+  &__bar{
+    width:100%;
+    height: 100%;
+    progress{
+      width:88%;
+      height:5px;
+      &[value]{
+        -webkit-appearance: none;
+        appearance: none;
+        &::-webkit-progress-bar{
+          background-color: rgb(185, 185, 185);
+        }
+        &::-webkit-progress-value{
+          background-color: #ea352d;
+        }
+      }
+    }
+  }
+}
+
