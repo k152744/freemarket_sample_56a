@@ -1,4 +1,5 @@
 @import"reset";
+@import "mixin";
 @import "users";
 @import "products";
 @import "footer";
@@ -12,3 +13,5 @@
 @import "body";
 @import "logout";
 @import "user_devise";
+@import "mypages";
+@import "mypage_identification";
