@@ -1,7 +1,7 @@
 $(function() {
   $('.slider').slick({
-      prevArrow:'<i class="fas fa-chevron-left"></i>',
-      nextArrow:'<i class="fas fa-chevron-right"></i>',
+      prevArrow:'<i class="fas fa-chevron-left slide-arrow-left"></i>',
+      nextArrow:'<i class="fas fa-chevron-right slide-arrow-right"></i>',
       dots: true,
       autoplay: true,
       autoplaySpeed: 4000,
