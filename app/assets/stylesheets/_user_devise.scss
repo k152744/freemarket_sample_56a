@@ -6,10 +6,10 @@
   &__no-user{
     padding: 40px 64px;
     text-align: center;
-    & p{
+    p{
       font-size:14px; 
     }
-    & a{
+    a{
       display: block;
       margin: 8px 0 0;
       border: 1px solid #0099e8;
@@ -40,7 +40,7 @@
       margin: 40px 0 0;
 
     }
-    & img{
+    img{
       width:300px;
     }
   }
@@ -124,7 +124,7 @@
   width: 700px;
   margin: 0 auto;
   background: #fff;
-  & p{
+  p{
     font-size: 22px;
     padding: 32px;
     line-height: 1.5;
@@ -137,10 +137,10 @@
     &__btns{
       max-width: 343px;
       margin: 0 auto;
-      & button{
+      button{
         border-radius: 4px;
       }
-      & a{
+      a{
         display: block;
         text-decoration: none;
       }
@@ -151,7 +151,7 @@
     margin: 0 auto;
     &__text{
       margin-bottom:30px;
-      & a{
+      a{
         color: #0099e8;
         text-decoration: none;
       }
@@ -159,7 +159,7 @@
         margin-bottom:10px;
         margin-top:10px;
       }
-      & p{
+      p{
         text-align: left;
         font-size: 14px;
         padding: 0;
@@ -168,13 +168,13 @@
       &--center{
         margin-top: 30px;
         text-align: center;
-        & p{
+        p{
           text-align: center;
         }
       }
       &--right{
         text-align: right;
-        & p{
+        p{
           display: inline;
           color: #0099e8;
           &.question-mark{
@@ -191,7 +191,7 @@
         }
       }
       &--title{ 
-        & p{
+        p{
           font-weight:  bold;
           font-size: 16px;
         }
@@ -225,13 +225,13 @@
       font-size: 12px;
       vertical-align: top;
     }
-    & i{
+    i{
       font-weight: 600;
       font-style: normal;
     }
     &__select{
       margin: 5px 0 30px;
-      & select{
+      select{
         padding: 0 10px;
         position: relative;
         z-index: 2;
@@ -252,11 +252,11 @@
 
       }
       &.select-harf{
-        & select{
+        select{
           width: 40%;
         }
       }
-      & p{
+      p{
         color: #888;
         font-size: 14px;
         padding:5px 0 0;
@@ -266,7 +266,7 @@
     }
     &__card-images{
       margin: 10px 0 30px;
-      & img{
+      img{
         width: 35px;
         height: 30px;
         margin-right: 5px;
@@ -280,12 +280,12 @@
   &__img{
     margin: 40px 0 0;
     display: inline-block;
-    & a {
+    a {
       width: 185px;
       height: 49px;
       line-height: 49px;
     }
-    & img{
+    img{
       width: 185px;
       height: 49px;
     }
@@ -301,7 +301,7 @@
     &__current{
       color: #ea352d;
     }
-    & p{
+    p{
       margin: 0 auto;
       display: inline-block;
     }
@@ -309,7 +309,7 @@
   &__bar{
     width:100%;
     height: 100%;
-    & progress{
+    progress{
       width:88%;
       height:5px;
       &[value]{
