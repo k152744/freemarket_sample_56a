@@ -83,6 +83,13 @@
         .comments__comment__contents__past
           = icon "fas fa-clock", class: "comments__comment__contents__past--icon"
           %p ５日前
+  .comments__text
+    %h3 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉などはBanすることになるであります。
+  .comments__form
+    = form_with do |f|
+      = f.text_area :text, class: "comments__form__text"
+      = f.submit 'コメントする', class:"comments__form__submit"
+
 .product-change
   = link_to "#", class: "product-change__back" do
     %p オヤジのキャミソール
