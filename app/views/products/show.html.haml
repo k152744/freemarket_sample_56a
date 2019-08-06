@@ -1,0 +1,249 @@
+= render partial: "header"
+
+%div.item-detail.crearfix
+  %h1 本日PM12:00削除！COACH コーチ バッグ
+  %div.item-detail__content.crearfix
+    %div.item-detail__content--image
+      %div.item-detail__content--image__box
+        %div 
+          = image_tag '/assets/top-image1' ,size: "300x300"
+        %div
+          = image_tag '/assets/top-image1' ,size: "60x60"
+    
+    %table.item-detail__content--table
+      %tbody
+        %tr
+          %th  出品者
+          %td  
+            = link_to "出品者名","#" 
+            %div
+              = icon 'far fa-grin',class:"" 
+              %span 10
+              = icon 'far fa-meh',class:"" 
+              %span 10
+              = icon 'far fa-frown',class:"" 
+              %span 10
+
+              
+        %tr
+          %th  カテゴリー
+          %td  
+            %p  大カテゴリー
+            %p  >中カテゴリー
+            %p  >小カテゴリー
+        %tr
+          %th  ブランド
+          %td
+            = link_to "ブランド名","#" 
+        %tr
+          %th  商品の状態
+          %td  目立った傷や汚れなし
+            
+        %tr
+          %th  配送料の負担
+          %td  送料込み(出品者負担)
+        %tr
+          %th  配送の方法
+          %td  らくらくメルカリ便
+        %tr
+          %th  配送元地域
+          %td
+            = link_to "大阪","#" 
+        %tr  
+          %th  発送日の目安
+          %td  1~2日で発送
+  %div.item-detail__price
+    %span.item-detail__price--fee  ¥7,000
+    %span.item-detail__price--tax  (税込)
+    %span 送料込み
+  %section       
+    = link_to "購入画面に進む","#" ,class: "item-detail__buybtn"
+  %div.item-detail__description
+    %p.item-detail__description--inner  テスト
+  %div.item-detail__buttons
+    = link_to "#" ,class:'item-detail__buttons--heart' do
+      = icon 'far fa-heart',class:""
+      %span いいね!
+      %span 10
+    = link_to "#" ,class:"item-detail__buttons--flag" do
+      = icon 'far fa-flag',class:""
+      %span 不適切な商品を報告
+    = link_to "#" ,class:"item-detail__buttons--lock" do
+      = icon 'fas fa-lock',class:""
+      %span あんしん・あんぜんへの取り組み
+    
+    
+%div.main-top
+  %section.main-top__category
+    %section.main-top__category--box.clearfix#another-item 
+      = link_to "LoveFam♡お知らせ(有)さんのその他の出品","#" , class:"#another-item-color"
+      %div.main-top__category--box__items#another-cotegory
+        %section.main-top__category--box__items__item#another-cotegory__item
+          = link_to "#" do
+            %div
+              = image_tag '/assets/top-image1' ,size: "215x215"
+            %div
+              %h3.item-title LIP SERVICEペイントストレッチデニム ,
+              %div.item-price 
+                ¥3100
+                = icon 'fas fa-heart',class:"item-price-iine"
+        %section.main-top__category--box__items__item#another-cotegory__item
+          = link_to "#" do
+            %div
+              = image_tag '/assets/top-image1' ,size: "215x215"
+            %div
+              %h3.item-title LIP SERVICEペイントストレッチデニム ,
+              %div.item-price 
+                ¥3100
+                = icon 'fas fa-heart',class:"item-price-iine"
+        %section.main-top__category--box__items__item#another-cotegory__item
+          = link_to "#" do
+            %div
+              = image_tag '/assets/top-image1' ,size: "215x215"
+            %div
+              %h3.item-title LIP SERVICEペイントストレッチデニム ,
+              %div.item-price 
+                ¥3100
+                = icon 'fas fa-heart',class:"item-price-iine"
+        %section.main-top__category--box__items__item#another-cotegory__item
+          = link_to "#" do
+            %div
+              = image_tag '/assets/top-image1' ,size: "215x215"
+            %div
+              %h3.item-title LIP SERVICEペイントストレッチデニム ,
+              %div.item-price 
+                ¥3100
+                = icon 'fas fa-heart',class:"item-price-iine"
+        %section.main-top__category--box__items__item#another-cotegory__item
+          = link_to "#" do
+            %div
+              = image_tag '/assets/top-image1' ,size: "215x215"
+            %div
+              %h3.item-title LIP SERVICEペイントストレッチデニム ,
+              %div.item-price 
+                ¥3100
+                = icon 'fas fa-heart',class:"item-price-iine"
+        %section.main-top__category--box__items__item#another-cotegory__item
+          = link_to "#" do
+            %div
+              = image_tag '/assets/top-image1' ,size: "215x215"
+            %div
+              %h3.item-title LIP SERVICEペイントストレッチデニム ,
+              %div.item-price 
+                ¥3100
+                = icon 'fas fa-heart',class:"item-price-iine"
+    %section.main-top__category--box.clearfix#another-item 
+      = link_to "LoveFam♡お知らせ(有)さんのその他の出品","#" , class:"#another-item-color"
+      %div.main-top__category--box__items#another-cotegory
+        %section.main-top__category--box__items__item#another-cotegory__item
+          = link_to "#" do
+            %div
+              = image_tag '/assets/top-image1' ,size: "215x215"
+            %div
+              %h3.item-title LIP SERVICEペイントストレッチデニム ,
+              %div.item-price 
+                ¥3100
+                = icon 'fas fa-heart',class:"item-price-iine"
+        %section.main-top__category--box__items__item#another-cotegory__item
+          = link_to "#" do
+            %div
+              = image_tag '/assets/top-image1' ,size: "215x215"
+            %div
+              %h3.item-title LIP SERVICEペイントストレッチデニム ,
+              %div.item-price 
+                ¥3100
+                = icon 'fas fa-heart',class:"item-price-iine"
+        %section.main-top__category--box__items__item#another-cotegory__item
+          = link_to "#" do
+            %div
+              = image_tag '/assets/top-image1' ,size: "215x215"
+            %div
+              %h3.item-title LIP SERVICEペイントストレッチデニム ,
+              %div.item-price 
+                ¥3100
+                = icon 'fas fa-heart',class:"item-price-iine"
+        %section.main-top__category--box__items__item#another-cotegory__item
+          = link_to "#" do
+            %div
+              = image_tag '/assets/top-image1' ,size: "215x215"
+            %div
+              %h3.item-title LIP SERVICEペイントストレッチデニム ,
+              %div.item-price 
+                ¥3100
+                = icon 'fas fa-heart',class:"item-price-iine"
+        %section.main-top__category--box__items__item#another-cotegory__item
+          = link_to "#" do
+            %div
+              = image_tag '/assets/top-image1' ,size: "215x215"
+            %div
+              %h3.item-title LIP SERVICEペイントストレッチデニム ,
+              %div.item-price 
+                ¥3100
+                = icon 'fas fa-heart',class:"item-price-iine"
+        %section.main-top__category--box__items__item#another-cotegory__item
+          = link_to "#" do
+            %div
+              = image_tag '/assets/top-image1' ,size: "215x215"
+            %div
+              %h3.item-title LIP SERVICEペイントストレッチデニム ,
+              %div.item-price 
+                ¥3100
+                = icon 'fas fa-heart',class:"item-price-iine"
+    %section.main-top__category--box.clearfix#another-item 
+      = link_to "LoveFam♡お知らせ(有)さんのその他の出品","#" , class:"#another-item-color"
+      %div.main-top__category--box__items#another-cotegory
+        %section.main-top__category--box__items__item#another-cotegory__item
+          = link_to "#" do
+            %div
+              = image_tag '/assets/top-image1' ,size: "215x215"
+            %div
+              %h3.item-title LIP SERVICEペイントストレッチデニム ,
+              %div.item-price 
+                ¥3100
+                = icon 'fas fa-heart',class:"item-price-iine"
+        %section.main-top__category--box__items__item#another-cotegory__item
+          = link_to "#" do
+            %div
+              = image_tag '/assets/top-image1' ,size: "215x215"
+            %div
+              %h3.item-title LIP SERVICEペイントストレッチデニム ,
+              %div.item-price 
+                ¥3100
+                = icon 'fas fa-heart',class:"item-price-iine"
+        %section.main-top__category--box__items__item#another-cotegory__item
+          = link_to "#" do
+            %div
+              = image_tag '/assets/top-image1' ,size: "215x215"
+            %div
+              %h3.item-title LIP SERVICEペイントストレッチデニム ,
+              %div.item-price 
+                ¥3100
+                = icon 'fas fa-heart',class:"item-price-iine"
+        %section.main-top__category--box__items__item#another-cotegory__item
+          = link_to "#" do
+            %div
+              = image_tag '/assets/top-image1' ,size: "215x215"
+            %div
+              %h3.item-title LIP SERVICEペイントストレッチデニム ,
+              %div.item-price 
+                ¥3100
+                = icon 'fas fa-heart',class:"item-price-iine"
+        %section.main-top__category--box__items__item#another-cotegory__item
+          = link_to "#" do
+            %div
+              = image_tag '/assets/top-image1' ,size: "215x215"
+            %div
+              %h3.item-title LIP SERVICEペイントストレッチデニム ,
+              %div.item-price 
+                ¥3100
+                = icon 'fas fa-heart',class:"item-price-iine"
+        %section.main-top__category--box__items__item#another-cotegory__item
+          = link_to "#" do
+            %div
+              = image_tag '/assets/top-image1' ,size: "215x215"
+            %div
+              %h3.item-title LIP SERVICEペイントストレッチデニム ,
+              %div.item-price 
+                ¥3100
+                = icon 'fas fa-heart',class:"item-price-iine"                        
+    

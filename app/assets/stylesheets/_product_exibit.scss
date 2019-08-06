@@ -1,0 +1,205 @@
+.product_exibit{
+  width: 700px;
+  margin: 0 auto;
+  background: #fff;
+  &__contents{
+    border-top: 1px solid #eee;
+  }
+  &__title{
+    padding: 32px 16px;
+    font-size: 22px;
+    line-height: 1.5;
+    text-align: center;
+    font-weight: bold;
+  }
+  &__image-box{
+    padding: 40px;
+    &__image{
+      width: 100%;
+      padding: 40px;
+      position: relative;
+      min-height: 162px;
+      background: #f5f5f5;
+      border: 1px dashed #ccc;
+      text-align: center;
+      -webkit-transition: -webkit-box-shadow ease-out .3s;
+      transition: -webkit-box-shadow ease-out .3s;
+      transition: box-shadow ease-out .3s;
+      transition: box-shadow ease-out .3s, -webkit-box-shadow ease-out .3s;
+      cursor: pointer;
+      float: right;
+      margin-left: 2%;
+      margin-top:30px;
+      pre{
+        position: absolute;
+        top: 40%;
+        left: 16px;
+        right: 16px;
+        text-align: center;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+    }
+  }
+  &__content{
+    padding: 40px;
+    border-top: 1px solid #eee;
+    &__text{
+      margin-bottom: 50px;
+      p {
+        line-height: 20px;
+      }
+      a{
+        color: #0099e8;
+        text-decoration: none;
+      }
+    }
+  }
+  &__form{
+    &__right{
+      float: right;
+      width: 400px;
+      margin: 0;
+    }
+    &__select{
+      margin: 5px 0 30px;
+      select{
+        padding: 0 10px;
+        position: relative;
+        z-index: 2;
+        height: 48px;
+        padding: 0 16px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        background: 0;
+        font-size: 16px;
+        line-height: 1.5;
+        cursor: pointer;
+        width: 25%;
+      }
+      &.select-long{
+        select{
+          width: 100%;
+        }
+
+      }
+    }
+    &__back-btn{
+      width: 45%;
+      margin: 24px auto 0;
+      background: #aaa;
+      border: 1px solid #aaa;
+      color: #fff;
+      text-decoration: none;
+      display: block;
+      line-height: 48px;
+      font-size: 14px;
+      text-align: center;
+    }
+    &__required{
+      background: #ea352d;
+      margin: 0 0 0 8px;
+      padding: 2px 4px;
+      border-radius: 2px;
+      color: #fff;
+      font-size: 12px;
+      vertical-align: top;
+    }
+    &__top{
+      &__text{
+        display: inline-block;
+        padding-top:25px;
+        width: 180px;
+        & .text-right{
+          float: right;
+        }
+      }
+    }
+    &__middle{
+      padding: 24px 0;
+      border-top: 1px solid #ccc;
+      &__text{
+        &__left{
+          display:inline-block;
+          float: left;
+        }
+        &__right{
+          display:inline-block;
+          float: right; 
+        }   
+      }
+    }
+    &__bottom{
+      padding: 24px 0;
+      border-top: 1px solid #ccc;
+      &__text{
+        &__left{
+          display:inline-block;
+          float: left;
+          font-weight: bold;
+        }
+        &__right{
+          font-weight: bold;
+          display:inline-block;
+          float: right; 
+          font-size:34px;
+        }   
+      }
+    }
+  }
+  span{
+    &.question-mark{
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #0099e8;
+      color: #fff;
+      line-height: 14px;
+      font-size: 12px;
+      text-align: center;
+    }
+  }
+  i{
+    font-weight: 600;
+    font-style: normal;
+  }
+}
+.product-form-input-text{
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-height: 130px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 16px;
+  line-height: 1.5;
+  border-radius: 0;
+  margin: 8px 0 0;
+  text-align: left;
+  word-wrap: break-word;
+  word-break: break-all;
+
+}
+
+.product-form-input{
+  width: 100%;
+  margin: 8px 0 0;
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 16px;
+  margin-bottom:30px;
+}
+
+.input-right{
+  float: right;
+  display: inline;
+  width: 50%;
+  text-align: right;
+}
+
