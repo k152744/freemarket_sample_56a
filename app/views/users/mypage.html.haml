@@ -19,7 +19,7 @@
         %h2 やることリスト
       .mypage__announces
         = link_to "#", class: "mypage__announces__announce" do
-          %img(src="/assets/mercari_icon 2.png" alt="logo" class="mypage__announces__announce__image")/
+          = image_tag "/assets/mercari_icon 2.png", class: 'mypage__announces__announce__image'
           .mypage__announces__announce__text
             %h2　例：事務局から個別メッセージ
             .mypage__announces__announce__time
@@ -30,7 +30,7 @@
       .mypage__todos.mypage--display-none
         -# .mypage__todos__todo
         .mypage__content-none
-          %img(src="/assets/logo-gray.svg" alt="logo")/
+          = image_tag "/assets/logo-gray.svg", class: 'mypage__content-none__image'
           %h2 現在、やることリストはまだありません
     .mypage__purchased
       %h1 購入した商品
@@ -41,12 +41,12 @@
       .mypage__purchased__now
         .mypage__purchased__now__items
         .mypage__content-none
-          %img(src="/assets/logo-gray.svg" alt="logo")/
+          = image_tag "/assets/logo-gray.svg", class: 'mypage__content-none__image'
           %h2 取引中の商品はありまてん
       .mypage__purchased__past.mypage--display-none
         .mypage__purchased__now__items
         .mypage__content-none
-          %img(src="/assets/logo-gray.svg" alt="logo")/
+          = image_tag "/assets/logo-gray.svg", class: 'mypage__content-none__image'
           %h2 購入済み商品もありまてん
   = render "products/side_bar" 
 = render "products/show"
