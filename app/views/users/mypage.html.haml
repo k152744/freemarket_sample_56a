@@ -11,19 +11,43 @@
           %p 0
         .mypage__profile__info__items
           %p 出品数
-          %p 100000
+          %p 0
     .mypage__contents
-      .mypage__content__title-first
-        .mypage__announces
-          = link_to "#", class: "mypage__announces__announce" do
-            %img(src="/assets/mercari_icon 2.png" alt="logo" class="mypage__announces__announce__image")/
-            .mypage__announces__announce__text
-              %h2.mypage__announces__announce__message 例：事務局から個別メッセージ
-              %p.mypage__announces__announce__past-time
-      .mypage__content__title-second
-        .mypage__todos
-          .mypage__todos__todo
+      .mypage__contents__title
+        %h2 お知らせ
+      .mypage__contents__title.mypage__contents__title--close
+        %h2 やることリスト
+      .mypage__announces
+        = link_to "#", class: "mypage__announces__announce" do
+          %img(src="/assets/mercari_icon 2.png" alt="logo" class="mypage__announces__announce__image")/
+          .mypage__announces__announce__text
+            %h2　例：事務局から個別メッセージ
+            .mypage__announces__announce__time
+              = icon "fas fa-clock", class:""
+              %p ２時間前
+        = link_to "#",class: "mypage__announces__btn" do
+          %h2 一覧を見る
+      .mypage__todos.mypage--display-none
+        -# .mypage__todos__todo
+        .mypage__content-none
+          %img(src="/assets/logo-gray.svg" alt="logo")/
+          %h2 現在、やることリストはまだありません
     .mypage__purchased
+      %h1 購入した商品
+      .mypage__purchased__title
+        %h2　取引中
+      .mypage__purchased__title.mypage__purchased__title--close
+        %h2 過去の取引
+      .mypage__purchased__now
+        .mypage__purchased__now__items
+        .mypage__content-none
+          %img(src="/assets/logo-gray.svg" alt="logo")/
+          %h2 取引中の商品はありまてん
+      .mypage__purchased__past.mypage--display-none
+        .mypage__purchased__now__items
+        .mypage__content-none
+          %img(src="/assets/logo-gray.svg" alt="logo")/
+          %h2 購入済み商品もありまてん
   = render "products/side_bar" 
 = render "products/show"
 = render "products/exhibit_btn"
