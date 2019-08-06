@@ -29,16 +29,16 @@
       }
       &__items{
         display: flex;
-        width:700px;
+        flex-wrap: wrap;
+        width:900px;
         margin: 0 auto;
-        
+        justify-content: space-between;
         
         
         &__item{
           font-size:20px;
-          width:30%;
+          width:23%;
           margin-top:15px;
-          margin-right:30px;
           background-color: white;
         }
 
@@ -65,10 +65,10 @@
   }
 
   .item-all{
-    width:700px;
+    width:900px;
     margin:0 auto;
     text-align: right;
-    padding-right:10px;
+    padding-right:15px;
     padding-top:15px;
     a{
       font-size:14px;
