@@ -2,6 +2,10 @@
   height: 128px;
   text-align: center;
   line-height: 128px;
+  &__img a {
+    text-decoration: none;
+  }
+  
   &__img img {
     margin: 40px 0 0;
     width: 185px;

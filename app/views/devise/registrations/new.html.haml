@@ -1,21 +1,27 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+= render partial: "/small_header"
+.user-sign-up
+  = render partial: "user_registar"
+= render partial: "/small_footer"
+
+
+
+= render partial: "user_info"
+= render partial: "/small_footer"
+
+
+= render partial: "user_sms_send"
+= render partial: "/small_footer"
+
+
+= render partial: "user_sms_confirm"
+= render partial: "/small_footer"
+
+
+= render partial: "user_address_info"
+= render partial: "/small_footer"
+
+= render partial: "user_pay_info"
+= render partial: "/small_footer"
+
+= render partial: "user_registar_complete"
+= render partial: "/small_footer"
