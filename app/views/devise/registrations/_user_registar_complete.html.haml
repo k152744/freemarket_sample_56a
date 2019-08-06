@@ -1,13 +1,27 @@
 
-.user-sign-up__title
-  %p  会員登録完了
-.user-sign-up__content  
-  .user-sign-up__form
-    .user-sign-up__form__text
-      .user-sign-up__form__text--center
-        %p  ありがとうございます。
-        %p  会員登録が完了しました。
-    = link_to "メルカリを始める", "#",class:"user-login__form__submit user-btn"
+%header.mercari-logo-header
+  .mercari-logo-header__img
+    = link_to "#", method: 'get' do
+      = image_tag "mercari_logo_color.png"
+    .progress
+      .progress__contents
+        %p 会員情報
+        %p 電話番号認証
+        %p  お届け先住所入力
+        %p  支払い方法
+        %p.progress__contents__current  完了
+      .progress__bar
+        %progress{value:"100",max:"100"}
+.user-sign-up
+  .user-sign-up__title
+    %p  会員登録完了
+  .user-sign-up__content  
+    .user-sign-up__form
+      .user-sign-up__form__text
+        .user-sign-up__form__text--center
+          %p  ありがとうございます。
+          %p  会員登録が完了しました。
+      = link_to "メルカリを始める", "#",class:"user-login__form__submit user-btn"
 
 
 

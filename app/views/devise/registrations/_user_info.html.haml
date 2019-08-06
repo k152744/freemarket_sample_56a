@@ -1,66 +1,79 @@
+%header.mercari-logo-header
+  .mercari-logo-header__img
+    = link_to "#", method: 'get' do
+      = image_tag "mercari_logo_color.png"
+    .progress
+      .progress__contents
+        %p.progress__contents__current  会員情報
+        %p  電話番号認証
+        %p  お届け先住所入力
+        %p  支払い方法
+        %p  完了
+      .progress__bar
+        %progress{value:"5",max:"100"}
+.user-sign-up
+  .user-sign-up__title
+    %p  会員情報入力
+  .user-sign-up__content  
+    = form_with do |f|
+      .user-sign-up__form
+        .field
+          %i ニックネーム
+          %span.user-sign-up__form__required  必須
+          = f.email_field :email, autofocus: true,placeholder:"例)メルカリ太郎",class:"user-form-input"
+        .field
+          %i メールアドレス
+          %span.user-sign-up__form__required  必須
+          = f.email_field :email, autofocus: true,placeholder:"PC・携帯どちらでも可",class:"user-form-input"
+        .field
+          %i パスワード
+          %span.user-sign-up__form__required  必須
+          = f.password_field :password, autocomplete: "current-password",placeholder:"7文字以上",class:"user-form-input"
+        .field
+          %i パスワード (確認)
+          %span.user-sign-up__form__required  必須
+          = f.password_field :password, autocomplete: "current-password",placeholder:"7文字以上",class:"user-form-input"
 
-.user-sign-up__title
-  %p  会員情報入力
-.user-sign-up__content  
-  = form_with do |f|
-    .user-sign-up__form
-      .field
-        %i ニックネーム
-        %span.user-sign-up__form__required  必須
-        = f.email_field :email, autofocus: true,placeholder:"例)メルカリ太郎",class:"user-form-input"
-      .field
-        %i メールアドレス
-        %span.user-sign-up__form__required  必須
-        = f.email_field :email, autofocus: true,placeholder:"PC・携帯どちらでも可",class:"user-form-input"
-      .field
-        %i パスワード
-        %span.user-sign-up__form__required  必須
-        = f.password_field :password, autocomplete: "current-password",placeholder:"7文字以上",class:"user-form-input"
-      .field
-        %i パスワード (確認)
-        %span.user-sign-up__form__required  必須
-        = f.password_field :password, autocomplete: "current-password",placeholder:"7文字以上",class:"user-form-input"
+        .user-sign-up__form__text
+          .user-sign-up__form__text--title
+            %p  本人確認
+          %p  安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
 
-      .user-sign-up__form__text
-        .user-sign-up__form__text--title
-          %p  本人確認
-        %p  安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+        .field
+          %i お名前(全角)
+          %span.user-sign-up__form__required  必須
+          %br
+          = f.email_field :email, autofocus: true,placeholder:"例)山田",class:"user-form-input input-harf"
+          = f.email_field :email, autofocus: true,placeholder:"例)太郎",class:"user-form-input input-harf"
 
-      .field
-        %i お名前(全角)
-        %span.user-sign-up__form__required  必須
-        %br
-        = f.email_field :email, autofocus: true,placeholder:"例)山田",class:"user-form-input input-harf"
-        = f.email_field :email, autofocus: true,placeholder:"例)太郎",class:"user-form-input input-harf"
+        .field
+          %i お名前カナ(全角) 
+          %span.user-sign-up__form__required  必須
+          %br
+          = f.email_field :email, autofocus: true,placeholder:"例)ヤマダ",class:"user-form-input input-harf"
+          = f.email_field :email, autofocus: true,placeholder:"例)タロウ",class:"user-form-input input-harf"
+        .field
+          %i 生年月日
+          %span.user-sign-up__form__required  必須
+          %br
+          .user-sign-up__form__select
+            = f.select :year, [["2019", "2019"], ["2018", "2018"]],  prompt:"--"
+            %span  年
+            = f.select :year, [["12", "12"], ["11", "11"]],  prompt:"--"
+            %span  月
+            = f.select :year, [["1", "1"], ["2", "2"]],  prompt:"--"
+            %span  日
+            %p  ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+        = image_tag "recaptcha.png"
 
-      .field
-        %i お名前カナ(全角) 
-        %span.user-sign-up__form__required  必須
-        %br
-        = f.email_field :email, autofocus: true,placeholder:"例)ヤマダ",class:"user-form-input input-harf"
-        = f.email_field :email, autofocus: true,placeholder:"例)タロウ",class:"user-form-input input-harf"
-      .field
-        %i 生年月日
-        %span.user-sign-up__form__required  必須
-        %br
-        .user-sign-up__form__select
-          = f.select :year, [["2019", "2019"], ["2018", "2018"]],  prompt:"--"
-          %span  年
-          = f.select :year, [["12", "12"], ["11", "11"]],  prompt:"--"
-          %span  月
-          = f.select :year, [["1", "1"], ["2", "2"]],  prompt:"--"
-          %span  日
-          %p  ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
-      = image_tag "recaptcha.png"
-
-      .user-sign-up__form__text
-        .user-sign-up__form__text--center
-          %p
-            「次へ進む」のボタンを押すことにより、
-            %a{href: '#'} 利用規約
-            に同意したものとみなします
-      .actions
-        = f.submit "次へ進む",class:"user-login__form__submit user-btn"
-      = link_to "本人情報の登録について >", "#", class:"user-sign-up__form__link"
+        .user-sign-up__form__text
+          .user-sign-up__form__text--center
+            %p
+              「次へ進む」のボタンを押すことにより、
+              %a{href: '#'} 利用規約
+              に同意したものとみなします
+        .actions
+          = f.submit "次へ進む",class:"user-login__form__submit user-btn"
+        = link_to "本人情報の登録について >", "#", class:"user-sign-up__form__link"
 
 

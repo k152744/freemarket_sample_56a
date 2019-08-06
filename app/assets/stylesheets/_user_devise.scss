@@ -291,3 +291,38 @@
     }
   }
 }
+.progress{
+  display:inline-block;
+  width: 550px;
+  height: 49px;
+  &__contents{
+    display: flex;
+    height: 20px;
+    &__current{
+      color: #ea352d;
+    }
+    & p{
+      margin: 0 auto;
+      display: inline-block;
+    }
+  }
+  &__bar{
+    width:100%;
+    height: 100%;
+    & progress{
+      width:88%;
+      height:5px;
+      &[value]{
+        -webkit-appearance: none;
+        appearance: none;
+        &::-webkit-progress-bar{
+          background-color: rgb(185, 185, 185);
+        }
+        &::-webkit-progress-value{
+          background-color: #ea352d;
+        }
+      }
+    }
+  }
+}
+
