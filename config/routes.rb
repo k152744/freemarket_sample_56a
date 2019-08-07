@@ -7,7 +7,11 @@ Rails.application.routes.draw do
       get :buy
     end
   end
-  resources :users
+  resources :users  do
+    member do
+      get :logout
+    end
+  end
 
   
 end

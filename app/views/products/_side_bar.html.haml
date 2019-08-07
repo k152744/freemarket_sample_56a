@@ -36,7 +36,7 @@
       %h3 ポイント
   .side-bar__box.side-bar__box--margin-top
     %h2.side-bar__box__text 設定
-    = link_to "#", class:"side-bar__content" do
+    = link_to edit_user_path(current_user), class:"side-bar__content" do
       %h3 プロフィール
     = link_to "#", class:"side-bar__content" do
       %h3 発送元・お届け先住所変更
@@ -48,5 +48,5 @@
       %h3 本人情報
     = link_to "#", class:"side-bar__content" do
       %h3 電話番号の確認
-    = link_to "#", class:"side-bar__content" do
+    = link_to logout_user_path(current_user), class:"side-bar__content" do
       %h3 ログアウト
