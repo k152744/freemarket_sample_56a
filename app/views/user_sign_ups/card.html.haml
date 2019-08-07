@@ -1,6 +1,6 @@
 %header.mercari-logo-header
   .mercari-logo-header__img
-    = link_to "#", method: 'get' do
+    = link_to root_path, method: 'get' do
       = image_tag "mercari_logo_color.png"
     .progress
       .progress__contents
@@ -15,7 +15,7 @@
   .user-sign-up__title
     %p  支払い方法
   .user-sign-up__content  
-    = form_with do |f|
+    = form_with url: post_controll_user_sign_ups_path ,local: true  do |f|
       .user-sign-up__form
         .field
           %i カード番号
@@ -51,5 +51,5 @@
             %p  カード裏面の番号とは？
         .actions
           = f.submit "次へ進む",class:"user-login__form__submit user-btn"
-
+= render partial: "/small_footer"
 

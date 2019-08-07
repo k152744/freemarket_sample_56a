@@ -1,7 +1,7 @@
 
 %header.mercari-logo-header
   .mercari-logo-header__img
-    = link_to "#", method: 'get' do
+    = link_to root_path, method: 'get' do
       = image_tag "mercari_logo_color.png"
     .progress
       .progress__contents
@@ -21,7 +21,7 @@
         .user-sign-up__form__text--center
           %p  ありがとうございます。
           %p  会員登録が完了しました。
-      = link_to "メルカリを始める", "#",class:"user-login__form__submit user-btn"
-
+      = link_to "メルカリを始める", root_path,class:"user-login__form__submit user-btn"
+= render partial: "/small_footer"
 
 

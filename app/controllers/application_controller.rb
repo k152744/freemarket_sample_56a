@@ -14,7 +14,11 @@ class ApplicationController < ActionController::Base
       username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
     end
   end
+  # ログイン後のリダイレクト先
+  def after_sign_in_path_for(resource_or_scope)
+    tell_user_sign_ups_path
 
+  end
   protected
 
   def configure_permitted_parameters

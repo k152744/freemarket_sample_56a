@@ -17,4 +17,13 @@ Rails.application.routes.draw do
       get :card
     end
   end
+  resource :user_sign_ups do
+    collection do
+      get :tell
+      get :auth_tell
+      get :shipping
+      get :card   
+      post :post_controll  
+    end
+  end
 end
