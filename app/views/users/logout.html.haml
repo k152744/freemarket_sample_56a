@@ -3,9 +3,7 @@
   .mypages__main
     .logout-contents
       .logout-contents__container
-        %form
-          .logout-content
-            %input{type:"submit",value:"ログアウト"}
+        = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'
   = render "products/side_bar" 
 = render "products/footer"
 = render "products/exhibit_btn"

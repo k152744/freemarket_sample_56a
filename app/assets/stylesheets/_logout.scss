@@ -3,18 +3,16 @@
   width:700px;
   &__container{
     background: #fff;
-    form{
-      padding: 64px;
-    }
-    .logout-content{
+    margin: 0 auto;
+    padding: 64px;
+    text-align: center;
+    a{
+      text-decoration: none;
       max-width: 320px;
-      margin: 0 auto;
-    }
-    input{
       background: #ea352d;
       border: 1px solid #ea352d;
       color: #fff;
-      display: block;
+      display: inline-block;
       width: 100%;
       line-height: 48px;
       font-size: 14px;
