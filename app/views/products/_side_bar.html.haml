@@ -40,11 +40,11 @@
       %h3 プロフィール
     = link_to "#", class:"side-bar__content" do
       %h3 発送元・お届け先住所変更
-    = link_to "#", class:"side-bar__content" do
+    = link_to card_user_information_path(current_user), class:"side-bar__content" do
       %h3 支払方法
     = link_to "#", class:"side-bar__content" do
       %h3 メール/パスワード
-    = link_to "#", class:"side-bar__content" do
+    = link_to edit_user_information_path(current_user), class:"side-bar__content" do
       %h3 本人情報
     = link_to "#", class:"side-bar__content" do
       %h3 電話番号の確認
