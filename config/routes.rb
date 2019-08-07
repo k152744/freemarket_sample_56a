@@ -12,6 +12,9 @@ Rails.application.routes.draw do
       get :logout
     end
   end
-
-  
+  resources :user_informations  do
+    member do
+      get :card
+    end
+  end
 end

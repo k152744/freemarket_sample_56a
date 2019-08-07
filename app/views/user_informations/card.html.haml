@@ -1,0 +1,22 @@
+= render "products/header"
+.mypages
+  .mypages__main
+    .mypage--card
+      .mypage--card__container
+        %h2 支払い方法
+        .mypage--card__inner
+          .mypage--card__inner__contents
+            %h3 クレジットカード一覧
+            %ul
+          .mypage--card__inner__top
+            .mypage--card__inner__top__content
+              = link_to do
+                = icon 'far fa-credit-card' ,class:"fa-credit-card"
+                クレジットカードを追加する
+          .mypage--card__inner__bottom
+            = link_to do
+              支払い方法について
+              = icon 'fas fa-chevron-right' ,class:"fa-chevron-right"
+  = render "products/side_bar" 
+= render "products/footer"
+= render "products/exhibit_btn"
