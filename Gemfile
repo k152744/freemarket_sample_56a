@@ -70,6 +70,7 @@ group :development, :test do
   gem 'capistrano3-unicorn'
   gem 'pry-rails'
   gem 'pry-byebug'
+  gem 'rspec-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
