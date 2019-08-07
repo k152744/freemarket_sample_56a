@@ -65,7 +65,8 @@
         %li 日本
         %li United States
   %div.footer__bottom
-    = image_tag 'logo-white-1.svg' ,size: "125x35" 
+    = link_to root_path do
+      = image_tag 'logo-white-1.svg' ,size: "125x35" 
     %small.copyright
       &copy;
       %span#copyright_year

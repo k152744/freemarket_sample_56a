@@ -1,6 +1,6 @@
 %header.mercari-logo-header
   .mercari-logo-header__img
-    = link_to "#", method: 'get' do
+    = link_to root_path, method: 'get' do
       = image_tag "mercari_logo_color.png"
     .progress
       .progress__contents
@@ -15,7 +15,7 @@
   .user-sign-up__title
     %p  電話番号認証
   .user-sign-up__content  
-    = form_with do |f|
+    = form_with  url: post_controll_user_sign_ups_path ,local: true do |f|
       .user-sign-up__form
         .field
           %i 認証番号を入力
@@ -50,3 +50,5 @@
           ※SMSが届かない場合は
           = link_to "SMS受信設定", "#"
           を確認して、もう一度電話番号を入力してください。
+
+= render partial: "/small_footer"
