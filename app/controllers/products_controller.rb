@@ -12,8 +12,28 @@ class ProductsController < ApplicationController
   
 
   def new
+    @big_category = BigCategory.all
+    @middle_category = MiddleCategory.all
+    @small_category = SmallCategory.all
+    @brand = Brand.all
+    @delivary_day = DelivaryDay.all
+    @delivary_fee = DelivaryFee.all
+    @delivary_way = DelivaryWay.all
+    @shipping_origin = ShippingOrigin.all
+    @status = Status.all
+
+    @product = Product.new
+  end
+  def create
+    product = Product.new(product_params)
+    product.save
   end
 
   def buy
+  end
+
+  private
+  def product_params
+    params.require(:product).permit(:name,:detail,:big_category_id,:middle_category_id,:small_category_id,:brand_id,:delivary_day_id,:delivary_fee_id,:delivary_way_id,:shipping_origin_id,:status_id,:price).merge(listing_status:"出品中",user_id:current_user.id)
   end
 end
