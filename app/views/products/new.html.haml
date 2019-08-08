@@ -5,7 +5,7 @@
   .product_exibit__title
     %p  商品の情報を入力
   .product_exibit__contents
-    = form_with do |f|
+    = form_with model:@product ,local: true  do |f|
       .product_exibit__image-box.clearfix
         .product_exibit__form
           .field
@@ -22,11 +22,11 @@
           .field
             %i 商品名
             %span.product_exibit__form__required  必須
-            = f.email_field :email, autofocus: true,placeholder:"商品名(必須40文字まで)",class:"product-form-input"
+            = f.text_field :name, autofocus: true,placeholder:"商品名(必須40文字まで)",class:"product-form-input"
           .field
             %i 商品の説明
             %span.product_exibit__form__required  必須
-            = f.text_area :email, autofocus: true,placeholder:"商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。",class:"product-form-input-text"
+            = f.text_area :detail, autofocus: true,placeholder:"商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。",class:"product-form-input-text"
       .product_exibit__content.clearfix
         .product_exibit__form
           %span 商品の詳細
@@ -36,13 +36,22 @@
               %span.product_exibit__form__required  必須
               %br
               .product_exibit__form__select.select-long
-                = f.select :category, [["レディース", "レディース"], ["メンズ", "メンズ"]],  prompt:"---"
+                = f.select :big_category_id, @big_category.map{|t| [t.name, t.id]},  prompt:"---"
+                = f.select :middle_category_id, @middle_category.map{|t| [t.name, t.id]},  prompt:"---"
+                = f.select :small_category_id, @small_category.map{|t| [t.name, t.id]},  prompt:"---"
+
+            .field
+              %i ブランド
+              %span.product_exibit__form__required  必須
+              %br
+              .product_exibit__form__select.select-long
+                = f.select :brand_id, @brand.map{|t| [t.name, t.id]},  prompt:"---"
             .field
               %i 商品の状態
               %span.product_exibit__form__required  必須
               %br
               .product_exibit__form__select.select-long
-                = f.select :status, [["汚い", "汚い"], ["綺麗", "綺麗"]],  prompt:"---"
+                = f.select :status_id, @status.map{|t| [t.name, t.id]},  prompt:"---"
 
       .product_exibit__content.clearfix
         .product_exibit__form
@@ -54,19 +63,25 @@
               %span.product_exibit__form__required  必須
               %br
               .product_exibit__form__select.select-long
-                = f.select :year, [["送料込み", "送料込み"]],  prompt:"---"
+                = f.select :delivary_fee_id, @delivary_fee.map{|t| [t.name, t.id]},  prompt:"---"
+            .field
+              %i 配送の方法
+              %span.product_exibit__form__required  必須
+              %br
+              .product_exibit__form__select.select-long
+                = f.select :delivary_way_id, @delivary_way.map{|t| [t.name, t.id]},  prompt:"---"
             .field
               %i 発送元の地域
               %span.product_exibit__form__required  必須
               %br
               .product_exibit__form__select.select-long
-                = f.select :year, [["北海道", "北海道"], ["沖縄", "沖縄"]],  prompt:"---"
+                = f.select :shipping_origin_id, @shipping_origin.map{|t| [t.name, t.id]},  prompt:"---"
             .field
               %i 発送までの日数
               %span.product_exibit__form__required  必須
               %br
               .product_exibit__form__select.select-long
-                = f.select :year, [["1~2日で発送", "1~2日で発送"]],  prompt:"---"
+                = f.select :delivary_day_id, @delivary_day.map{|t| [t.name, t.id]},  prompt:"---"
 
       .product_exibit__content.clearfix
         .product_exibit__form
@@ -78,7 +93,7 @@
                 %i 価格
                 %span.product_exibit__form__required  必須
                 %span.text-right  ¥              
-              = f.email_field :email, autofocus: true,placeholder:"例)300",class:"product-form-input input-right"
+              = f.text_field :price, autofocus: true,placeholder:"例)300",class:"product-form-input input-right"
             .field.product_exibit__form__middle.clearfix
               .field.product_exibit__form__middle__text__left
                 %p 販売手数料 (10%)
