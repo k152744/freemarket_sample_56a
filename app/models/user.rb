@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # has_one :user_information
+  validates :nickname, presence: true
 end
