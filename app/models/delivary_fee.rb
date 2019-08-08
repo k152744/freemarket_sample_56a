@@ -1,0 +1,2 @@
+class DelivaryFee < ApplicationRecord
+end
