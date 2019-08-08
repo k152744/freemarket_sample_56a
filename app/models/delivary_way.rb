@@ -1,0 +1,2 @@
+class DelivaryWay < ApplicationRecord
+end

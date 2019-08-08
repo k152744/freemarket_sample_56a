@@ -1,0 +1,2 @@
+class DelivaryDay < ApplicationRecord
+end
