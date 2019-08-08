@@ -84,4 +84,6 @@ gem 'erb2haml'
 # gem 'font-awesome-rails'
 gem 'devise'
 gem 'font-awesome-sass','~> 5.4.1'
-
+gem 'shrine'
+gem 'image_processing'
+gem 'mini_magick'
