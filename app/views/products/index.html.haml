@@ -62,6 +62,59 @@
                   = icon 'fas fa-heart',class:"item-price-iine"
       %div.item-all
         = link_to "全ての商品を見る","#"
-       
+  %section.main-top__category
+    %h2  ピックアップブランド
+    %section.main-top__category--box.clearfix
+      %h3 
+        = link_to "#{@product_brand1[0].brand.name}新着アイテム","#"  
+      %div.main-top__category--box__items.clearfix
+        - @product_brand1.each do |product|
+          %section.main-top__category--box__items__item.clearfix
+            = link_to product_path(product) do
+              %div
+                = image_tag "#{product.images[0].image[:medium].url}" ,size: "207x219"
+              %div
+                %h3.item-title 
+                  = product.name 
+                %div.item-price 
+                  = product.price
+                  = icon 'fas fa-heart',class:"item-price-iine"
+      %div.item-all
+        = link_to "全ての商品を見る","#"
+    %section.main-top__category--box.clearfix
+      %h3 
+        = link_to "#{@product_brand2[0].brand.name}新着アイテム","#"  
+      %div.main-top__category--box__items.clearfix
+        - @product_brand2.each do |product|
+          %section.main-top__category--box__items__item.clearfix
+            = link_to product_path(product) do
+              %div
+                = image_tag "#{product.images[0].image[:medium].url}" ,size: "207x219"
+              %div
+                %h3.item-title 
+                  = product.name 
+                %div.item-price 
+                  = product.price
+                  = icon 'fas fa-heart',class:"item-price-iine"
+      %div.item-all
+        = link_to "全ての商品を見る","#"
+    %section.main-top__category--box.clearfix
+      %h3 
+        = link_to "#{@product_brand3[0].brand.name}新着アイテム","#"  
+      %div.main-top__category--box__items.clearfix
+        - @product_brand3.each do |product|
+          %section.main-top__category--box__items__item.clearfix
+            = link_to product_path(product) do
+              %div
+                = image_tag "#{product.images[0].image[:medium].url}" ,size: "207x219"
+              %div
+                %h3.item-title 
+                  = product.name 
+                %div.item-price 
+                  = product.price
+                  = icon 'fas fa-heart',class:"item-price-iine"
+      %div.item-all
+        = link_to "全ての商品を見る","#"
+      
 = render partial: "footer"
 = render "exhibit_btn"

@@ -5,6 +5,10 @@ class ProductsController < ApplicationController
     @product2 = Product.where(big_category_id:2).limit(4).includes(:images)
     @product3 = Product.where(big_category_id:3).limit(4).includes(:images)
     @product4 = Product.where(big_category_id:4).limit(4).includes(:images)
+  
+    @product_brand1 = Product.where(brand_id:1).limit(4).includes(:images)
+    @product_brand2 = Product.where(brand_id:2).limit(4).includes(:images)
+    @product_brand3 = Product.where(brand_id:3).limit(4).includes(:images)
   end
 
   def show
