@@ -10,111 +10,45 @@
 
   %section.main-top__category
     %h2  ピックアップカテゴリー
-    %section.main-top__category--box.clearfix
-      %h3 
-        = link_to "#{@product_top[0].big_category.name}新着アイテム","#"  
-      %div.main-top__category--box__items.clearfix
-        - @product_top.each do |product|
-          %section.main-top__category--box__items__item.clearfix
-            = link_to product_path(product) do
-              %div
-                = image_tag "#{product.images[0].image[:medium].url}" ,size: "207x219"
-              %div
-                %h3.item-title 
-                  = product.name 
-                %div.item-price 
-                  = product.price
-                  = icon 'fas fa-heart',class:"item-price-iine"   
+    - @pickup_categories.each do |category|
+      %section.main-top__category--box.clearfix
+        %h3 
+          = link_to "#{category.name}新着アイテム","#"  
+        %div.main-top__category--box__items.clearfix
+          - category.products.order("id desc").limit(4).each do |product|
+            %section.main-top__category--box__items__item.clearfix
+              = link_to product_path(product) do
+                %div
+                  = image_tag "#{product.images[0].image[:medium].url}" ,size: "207x219"
+                %div
+                  %h3.item-title 
+                    = product.name 
+                  %div.item-price 
+                    = product.price
+                    = icon 'fas fa-heart',class:"item-price-iine"   
       %div.item-all
         = link_to "全ての商品を見る","#"
 
-    %section.main-top__category--box.clearfix
-      %h3 
-        = link_to "#{@product_middle[0].big_category.name}新着アイテム","#"  
-      %div.main-top__category--box__items.clearfix
-        - @product_middle.each do |product|
-          %section.main-top__category--box__items__item.clearfix
-            = link_to product_path(product) do
-              %div
-                = image_tag "#{product.images[0].image[:medium].url}" ,size: "207x219"
-              %div
-                %h3.item-title 
-                  = product.name 
-                %div.item-price 
-                  = product.price
-                  = icon 'fas fa-heart',class:"item-price-iine"
-      %div.item-all
-        = link_to "全ての商品を見る","#"
-    %section.main-top__category--box.clearfix
-      %h3 
-        = link_to "#{@product_bottom[0].big_category.name}新着アイテム","#"  
-      %div.main-top__category--box__items.clearfix
-        - @product_bottom.each do |product|
-          %section.main-top__category--box__items__item.clearfix
-            = link_to product_path(product) do
-              %div
-                = image_tag "#{product.images[0].image[:medium].url}" ,size: "207x219"
-              %div
-                %h3.item-title 
-                  = product.name 
-                %div.item-price 
-                  = product.price
-                  = icon 'fas fa-heart',class:"item-price-iine"
-      %div.item-all
-        = link_to "全ての商品を見る","#"
   %section.main-top__category
-    %h2  ピックアップブランド
-    %section.main-top__category--box.clearfix
-      %h3 
-        = link_to "#{@brand_top[0].brand.name}新着アイテム","#"  
-      %div.main-top__category--box__items.clearfix
-        - @brand_top.each do |product|
-          %section.main-top__category--box__items__item.clearfix
-            = link_to product_path(product) do
-              %div
-                = image_tag "#{product.images[0].image[:medium].url}" ,size: "207x219"
-              %div
-                %h3.item-title 
-                  = product.name 
-                %div.item-price 
-                  = product.price
-                  = icon 'fas fa-heart',class:"item-price-iine"
-      %div.item-all
-        = link_to "全ての商品を見る","#"
-    %section.main-top__category--box.clearfix
-      %h3 
-        = link_to "#{@brand_middle[0].brand.name}新着アイテム","#"  
-      %div.main-top__category--box__items.clearfix
-        - @brand_middle.each do |product|
-          %section.main-top__category--box__items__item.clearfix
-            = link_to product_path(product) do
-              %div
-                = image_tag "#{product.images[0].image[:medium].url}" ,size: "207x219"
-              %div
-                %h3.item-title 
-                  = product.name 
-                %div.item-price 
-                  = product.price
-                  = icon 'fas fa-heart',class:"item-price-iine"
-      %div.item-all
-        = link_to "全ての商品を見る","#"
-    %section.main-top__category--box.clearfix
-      %h3 
-        = link_to "#{@brand_bottom[0].brand.name}新着アイテム","#"  
-      %div.main-top__category--box__items.clearfix
-        - @brand_bottom.each do |product|
-          %section.main-top__category--box__items__item.clearfix
-            = link_to product_path(product) do
-              %div
-                = image_tag "#{product.images[0].image[:medium].url}" ,size: "207x219"
-              %div
-                %h3.item-title 
-                  = product.name 
-                %div.item-price 
-                  = product.price
-                  = icon 'fas fa-heart',class:"item-price-iine"
-      %div.item-all
-        = link_to "全ての商品を見る","#"
+    - @pickup_brands.each do |brand|
+      %h2  ピックアップブランド
+      %section.main-top__category--box.clearfix
+        %h3 
+          = link_to "#{brand.name}新着アイテム","#"  
+        %div.main-top__category--box__items.clearfix
+          - brand.products.order("id desc").limit(4).each do |product|
+            %section.main-top__category--box__items__item.clearfix
+              = link_to product_path(product) do
+                %div
+                  = image_tag "#{product.images[0].image[:medium].url}" ,size: "207x219"
+                %div
+                  %h3.item-title 
+                    = product.name 
+                  %div.item-price 
+                    = product.price
+                    = icon 'fas fa-heart',class:"item-price-iine"
+        %div.item-all
+          = link_to "全ての商品を見る","#"
       
 = render partial: "footer"
 = render "exhibit_btn"
