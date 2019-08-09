@@ -5,18 +5,19 @@
   .product_exibit__title
     %p  商品の情報を入力
   .product_exibit__contents
-    = form_with model:@product ,local: true  do |f|
+    = form_with model:[@product] ,local: true  do |f|
       .product_exibit__image-box.clearfix
         .product_exibit__form
           .field
             %i 出品画像
             %span.product_exibit__form__required  必須
             %p  最大10枚までアップロードできます
-        .product_exibit__image-box__image
-          %pre  
-            ドラッグアンドドロップ
-            またはクリックしてファイルをアップロード  
-          = f.file_field :images ,style:"display: none"      
+        = f.label :image, class: "form-image" do
+          .product_exibit__image-box__image
+            = f.file_field :image ,style: "display:none"
+            %pre  
+              ドラッグアンドドロップ
+              またはクリックしてファイルをアップロード     
       .product_exibit__content
         .product_exibit__form
           .field
