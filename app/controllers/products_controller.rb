@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index,:show]
+  before_action :header_big_category, only: [:index]
+  before_action :header_brand, only: [:index]
 
   def index
   end

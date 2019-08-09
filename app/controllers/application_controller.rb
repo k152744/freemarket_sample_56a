@@ -4,6 +4,13 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
   private
+
+  def header_big_category
+    @big_categories = BigCategory.all
+  end
+  def header_brand
+    @brands = Brand.all
+  end
   
   def production?
     Rails.env.production?
