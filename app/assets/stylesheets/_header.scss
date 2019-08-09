@@ -127,8 +127,35 @@
           font-size: 14px;
           vertical-align: middle;
         }
+
+        .new-user-btn{
+          .new-user-btn-color{
+            border: 1px solid #ea352d;
+            padding: 9.5px 15px 3px 15px;
+            background: #ea352d;
+            color:white;
+            border-radius: 4px;
+          }
+        }
+
+
         .last-child{
           padding-right: 0;
+
+          
+
+          .login-btn{
+            height:30px;
+            border: 1px solid #0099e8;
+            background: #fff;
+            border-radius: 4px;
+
+            .login-btn-color{
+              color: #0099e8;
+              padding-right:10px;
+              
+            }
+          }
         }
       }
     }

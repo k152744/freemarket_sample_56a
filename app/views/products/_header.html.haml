@@ -1,37 +1,74 @@
-.header
-  .header__container
-    .header__container__top
-      %h1
-        = link_to image_tag("mercari_logo_color.png",alt: "mercari",width: "134",height:"36"),products_path 
-      %form.header-form
-        %input{placeholder: "何かお探しですか?"}
-        = icon 'fas fa-search' ,class:"fa-search"
-    .header__container__bottom.clearfix
-      .bottom-left
-        %ul
-          %li.first-child
-            %h2
+- if user_signed_in?
+  .header
+    .header__container
+      .header__container__top
+        %h1
+          = link_to image_tag("mercari_logo_color.png",alt: "mercari",width: "134",height:"36"),products_path 
+        %form.header-form
+          %input{placeholder: "何かお探しですか?"}
+          = icon 'fas fa-search' ,class:"fa-search"
+      .header__container__bottom.clearfix  
+        .bottom-left
+          %ul
+            %li.first-child
+              %h2
+                = link_to do
+                  = icon 'fas fa-list-ul' ,class:"fa-list"
+                  %span カテゴリーから探す
+            %li.second-child
+              %h2
+                = link_to do
+                  = icon 'fas fa-tag' ,class:"fa-list"
+                  %span ブランドから探す
+        .bottom-right
+          %ul
+            %li
               = link_to do
-                = icon 'fas fa-list-ul' ,class:"fa-list"
-                %span カテゴリーから探す
-          %li.second-child
-            %h2
+                = icon 'far fa-bell' ,class:"fa-bell-list"
+                %span お知らせ
+            %li
               = link_to do
-                = icon 'fas fa-tag' ,class:"fa-list"
-                %span ブランドから探す
-      .bottom-right
-        %ul
-          %li
-            = link_to do
-              = icon 'far fa-bell' ,class:"fa-bell-list"
-              %span お知らせ
-          %li
-            = link_to do
-              = icon 'fas fa-check' ,class:"fa-bell-list"
-              %span やることリスト
-          %li.last-child
-            = link_to users_path do
-              = icon 'fas fa-user-alt' ,class:"fa-bell-list"
-              %span マイページ
-.header-under
-  %ul
+                = icon 'fas fa-check' ,class:"fa-bell-list"
+                %span やることリスト
+            %li.last-child
+              = link_to users_path do
+                = icon 'fas fa-user-alt' ,class:"fa-bell-list"
+                %span マイページ
+  .header-under
+    %ul
+
+- else
+  .header
+    .header__container
+      .header__container__top
+        %h1
+          = link_to image_tag("mercari_logo_color.png",alt: "mercari",width: "134",height:"36"),products_path 
+        %form.header-form
+          %input{placeholder: "何かお探しですか?"}
+          = icon 'fas fa-search' ,class:"fa-search"
+      .header__container__bottom.clearfix  
+        .bottom-left
+          %ul
+            %li.first-child
+              %h2
+                = link_to do
+                  = icon 'fas fa-list-ul' ,class:"fa-list"
+                  %span カテゴリーから探す
+            %li.second-child
+              %h2
+                = link_to do
+                  = icon 'fas fa-tag' ,class:"fa-list"
+                  %span ブランドから探す
+        .bottom-right
+          %ul
+            %li
+              %div.new-user-btn
+                = link_to new_user_sign_ups_path, method: 'get' do
+                  %span.new-user-btn-color 新規会員登録
+            %li.last-child
+              %div.login-btn
+                = link_to users_path do
+                  %span.login-btn-color  ログイン 
+                  
+    .header-under
+      %ul
