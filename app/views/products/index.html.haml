@@ -12,9 +12,9 @@
     %h2  ピックアップカテゴリー
     %section.main-top__category--box.clearfix
       %h3 
-        = link_to "#{@product3[0].big_category.name}新着アイテム","#"  
+        = link_to "#{@product_top[0].big_category.name}新着アイテム","#"  
       %div.main-top__category--box__items.clearfix
-        - @product3.each do |product|
+        - @product_top.each do |product|
           %section.main-top__category--box__items__item.clearfix
             = link_to product_path(product) do
               %div
@@ -30,9 +30,9 @@
 
     %section.main-top__category--box.clearfix
       %h3 
-        = link_to "#{@product2[0].big_category.name}新着アイテム","#"  
+        = link_to "#{@product_middle[0].big_category.name}新着アイテム","#"  
       %div.main-top__category--box__items.clearfix
-        - @product2.each do |product|
+        - @product_middle.each do |product|
           %section.main-top__category--box__items__item.clearfix
             = link_to product_path(product) do
               %div
@@ -47,9 +47,9 @@
         = link_to "全ての商品を見る","#"
     %section.main-top__category--box.clearfix
       %h3 
-        = link_to "#{@product4[0].big_category.name}新着アイテム","#"  
+        = link_to "#{@product_bottom[0].big_category.name}新着アイテム","#"  
       %div.main-top__category--box__items.clearfix
-        - @product4.each do |product|
+        - @product_bottom.each do |product|
           %section.main-top__category--box__items__item.clearfix
             = link_to product_path(product) do
               %div
@@ -66,9 +66,9 @@
     %h2  ピックアップブランド
     %section.main-top__category--box.clearfix
       %h3 
-        = link_to "#{@product_brand1[0].brand.name}新着アイテム","#"  
+        = link_to "#{@brand_top[0].brand.name}新着アイテム","#"  
       %div.main-top__category--box__items.clearfix
-        - @product_brand1.each do |product|
+        - @brand_top.each do |product|
           %section.main-top__category--box__items__item.clearfix
             = link_to product_path(product) do
               %div
@@ -83,9 +83,9 @@
         = link_to "全ての商品を見る","#"
     %section.main-top__category--box.clearfix
       %h3 
-        = link_to "#{@product_brand2[0].brand.name}新着アイテム","#"  
+        = link_to "#{@brand_middle[0].brand.name}新着アイテム","#"  
       %div.main-top__category--box__items.clearfix
-        - @product_brand2.each do |product|
+        - @brand_middle.each do |product|
           %section.main-top__category--box__items__item.clearfix
             = link_to product_path(product) do
               %div
@@ -100,9 +100,9 @@
         = link_to "全ての商品を見る","#"
     %section.main-top__category--box.clearfix
       %h3 
-        = link_to "#{@product_brand3[0].brand.name}新着アイテム","#"  
+        = link_to "#{@brand_bottom[0].brand.name}新着アイテム","#"  
       %div.main-top__category--box__items.clearfix
-        - @product_brand3.each do |product|
+        - @brand_bottom.each do |product|
           %section.main-top__category--box__items__item.clearfix
             = link_to product_path(product) do
               %div
