@@ -14,4 +14,14 @@ class Product < ApplicationRecord
   validates :detail, presence: true
   validates :price, presence: true
   validates :listing_status, presence: true
+  validates :user_id, presence: true
+  validates :brand_id, presence: true
+  validates :big_category_id, presence: true
+  validates :middle_category_id, presence: true
+  validates :small_category_id, presence: true
+  validates :status_id, presence: true
+  validates :delivary_fee_id, presence: true
+  validates :delivary_way_id, presence: true
+  validates :delivary_day_id, presence: true
+  validates :shipping_origin_id, presence: true
 end

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :users  do
     member do
       get :logout
+      get :add_card
     end
   end
   resources :user_informations  do
