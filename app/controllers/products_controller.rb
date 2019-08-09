@@ -1,16 +1,11 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index,:show]
-  before_action :header_big_category, only: [:index]
-  before_action :header_brand, only: [:index]
+  before_action :header_big_category, only: [:index,:show]
+  before_action :header_brand, only: [:index,:show]
 
   def index
-    @product_top = Product.where(big_category_id:2).limit(4).includes(:images)
-    @product_middle = Product.where(big_category_id:3).limit(4).includes(:images)
-    @product_bottom = Product.where(big_category_id:4).limit(4).includes(:images)
-  
-    @brand_top = Product.where(brand_id:1).limit(4).includes(:images)
-    @brand_middle = Product.where(brand_id:2).limit(4).includes(:images)
-    @brand_bottom = Product.where(brand_id:3).limit(4).includes(:images)
+    @pickup_categories = BigCategory.all.limit(3).includes(:products)
+    @pickup_brands = Brand.all.limit(3).includes(:products) 
   end
 
   def show

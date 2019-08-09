@@ -62,12 +62,20 @@
               %h2
                 = link_to do
                   = icon 'fas fa-list-ul' ,class:"fa-list"
-                  %span カテゴリーから探す
+                  %div#dropdowu-menus カテゴリーから探す
+                  %ul#dropdowu-menus__menu
+                    - @big_categories.each do |category| 
+                      %li 
+                        = category.name
             %li.second-child
               %h2
                 = link_to do
                   = icon 'fas fa-tag' ,class:"fa-list"
-                  %span ブランドから探す
+                  %div#dropdowu-brands ブランドから探す
+                  %ul#dropdowu-brands__menu
+                    - @brands.each do |brand| 
+                      %li 
+                        = brand.name
         .bottom-right
           %ul
             %li
