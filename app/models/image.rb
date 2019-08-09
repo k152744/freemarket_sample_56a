@@ -1,5 +1,6 @@
 class Image < ApplicationRecord
-  include ImageUploader[:image]  
 
+  include ImageUploader[:image]  
   belongs_to :product
+
 end

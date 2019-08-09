@@ -1,65 +1,69 @@
 = render partial: "header"
 
 %div.item-detail.crearfix
-  %h1 本日PM12:00削除！COACH コーチ バッグ
+  %h1 #{@product.name}
   %div.item-detail__content.crearfix
     %div.item-detail__content--image
       %div.item-detail__content--image__box
         %div 
-          = image_tag 'top-image1.png' ,size: "300x300"
-        %div
-          = image_tag 'top-image1.png' ,size: "60x60"
+          = image_tag "#{@product.images[0].image[:medium].url}",size: "300x300"
+        - @product.images.each do |image| 
+          %div
+            = image_tag "#{image.image[:medium].url}" ,size: "60x60"
     
     %table.item-detail__content--table
       %tbody
         %tr
           %th  出品者
           %td  
-            = link_to "出品者名","#" 
+            = link_to "#{@product.user.nickname}","#" 
             %div
-              = icon 'far fa-grin',class:"" 
+              = icon 'fas fa-grin',class:"" 
               %span 10
-              = icon 'far fa-meh',class:"" 
+              = icon 'fas fa-meh',class:"" 
               %span 10
-              = icon 'far fa-frown',class:"" 
+              = icon 'fas fa-frown',class:"" 
               %span 10
 
               
         %tr
           %th  カテゴリー
           %td  
-            %p  大カテゴリー
-            %p  >中カテゴリー
-            %p  >小カテゴリー
+            = link_to "#{@product.big_category.name}","#" 
+            = link_to ">#{@product.middle_category.name}","#" 
+            = link_to ">#{@product.small_category.name}","#" 
         %tr
           %th  ブランド
           %td
-            = link_to "ブランド名","#" 
+            = link_to "#{@product.brand.name}","#" 
         %tr
           %th  商品の状態
-          %td  目立った傷や汚れなし
+          %td  #{@product.status.name}
             
         %tr
           %th  配送料の負担
-          %td  送料込み(出品者負担)
+          %td  #{@product.delivary_fee.name}
         %tr
           %th  配送の方法
-          %td  らくらくメルカリ便
+          %td  #{@product.delivary_way.name}
         %tr
           %th  配送元地域
           %td
-            = link_to "大阪","#" 
+            = link_to "#{@product.shipping_origin.name}","#" 
         %tr  
           %th  発送日の目安
-          %td  1~2日で発送
+          %td  #{@product.delivary_day.name}
   %div.item-detail__price
-    %span.item-detail__price--fee  ¥7,000
+    %span.item-detail__price--fee  ¥#{@product.price.to_s(:delimited)}
     %span.item-detail__price--tax  (税込)
-    %span 送料込み
+    - if @product.delivary_fee.name == "送料込み(出品者負担)"
+      %span 送料込み
+    - else 
+      %span 着払い   
   %section       
-    = link_to "購入画面に進む", buy_product_path(id:"1") ,class: "item-detail__buybtn"
+    = link_to "購入画面に進む", buy_product_path(@product) ,class: "item-detail__buybtn"
   %div.item-detail__description
-    %p.item-detail__description--inner  テスト
+    = safe_join(@product.detail.split("\n"), tag(:br))
   %div.item-detail__buttons
     = link_to "#" ,class:'item-detail__buttons--heart' do
       = icon 'far fa-heart',class:""
@@ -114,174 +118,43 @@
 %div.main-top
   %section.main-top__category
     %section.main-top__category--box.clearfix#another-item 
-      = link_to "LoveFam♡お知らせ(有)さんのその他の出品","#" , class:"#another-item-color"
-      %div.main-top__category--box__items#another-cotegory
-        %section.main-top__category--box__items__item#another-cotegory__item
-          = link_to "#" do
-            %div
-              = image_tag 'top-image1.png' ,size: "215x215"
-            %div
-              %h3.item-title LIP SERVICEペイントストレッチデニム ,
-              %div.item-price 
-                ¥3100
-                = icon 'fas fa-heart',class:"item-price-iine"
-        %section.main-top__category--box__items__item#another-cotegory__item
-          = link_to "#" do
-            %div
-              = image_tag 'top-image1.png' ,size: "215x215"
-            %div
-              %h3.item-title LIP SERVICEペイントストレッチデニム ,
-              %div.item-price 
-                ¥3100
-                = icon 'fas fa-heart',class:"item-price-iine"
-        %section.main-top__category--box__items__item#another-cotegory__item
-          = link_to "#" do
-            %div
-              = image_tag 'top-image1.png' ,size: "215x215"
-            %div
-              %h3.item-title LIP SERVICEペイントストレッチデニム ,
-              %div.item-price 
-                ¥3100
-                = icon 'fas fa-heart',class:"item-price-iine"
-        %section.main-top__category--box__items__item#another-cotegory__item
-          = link_to "#" do
-            %div
-              = image_tag 'top-image1.png' ,size: "215x215"
-            %div
-              %h3.item-title LIP SERVICEペイントストレッチデニム ,
-              %div.item-price 
-                ¥3100
-                = icon 'fas fa-heart',class:"item-price-iine"
-        %section.main-top__category--box__items__item#another-cotegory__item
-          = link_to "#" do
-            %div
-              = image_tag 'top-image1.png' ,size: "215x215"
-            %div
-              %h3.item-title LIP SERVICEペイントストレッチデニム ,
-              %div.item-price 
-                ¥3100
-                = icon 'fas fa-heart',class:"item-price-iine"
-        %section.main-top__category--box__items__item#another-cotegory__item
-          = link_to "#" do
-            %div
-              = image_tag 'top-image1.png' ,size: "215x215"
-            %div
-              %h3.item-title LIP SERVICEペイントストレッチデニム ,
-              %div.item-price 
-                ¥3100
-                = icon 'fas fa-heart',class:"item-price-iine"
-    %section.main-top__category--box.clearfix#another-item 
-      = link_to "LoveFam♡お知らせ(有)さんのその他の出品","#" , class:"#another-item-color"
-      %div.main-top__category--box__items#another-cotegory
-        %section.main-top__category--box__items__item#another-cotegory__item
-          = link_to "#" do
-            %div
-              = image_tag 'top-image1.png' ,size: "215x215"
-            %div
-              %h3.item-title LIP SERVICEペイントストレッチデニム ,
-              %div.item-price 
-                ¥3100
-                = icon 'fas fa-heart',class:"item-price-iine"
-        %section.main-top__category--box__items__item#another-cotegory__item
-          = link_to "#" do
-            %div
-              = image_tag 'top-image1.png' ,size: "215x215"
-            %div
-              %h3.item-title LIP SERVICEペイントストレッチデニム ,
-              %div.item-price 
-                ¥3100
-                = icon 'fas fa-heart',class:"item-price-iine"
-        %section.main-top__category--box__items__item#another-cotegory__item
-          = link_to "#" do
-            %div
-              = image_tag 'top-image1.png' ,size: "215x215"
-            %div
-              %h3.item-title LIP SERVICEペイントストレッチデニム ,
-              %div.item-price 
-                ¥3100
-                = icon 'fas fa-heart',class:"item-price-iine"
-        %section.main-top__category--box__items__item#another-cotegory__item
-          = link_to "#" do
-            %div
-              = image_tag 'top-image1.png' ,size: "215x215"
-            %div
-              %h3.item-title LIP SERVICEペイントストレッチデニム ,
-              %div.item-price 
-                ¥3100
-                = icon 'fas fa-heart',class:"item-price-iine"
-        %section.main-top__category--box__items__item#another-cotegory__item
-          = link_to "#" do
-            %div
-              = image_tag 'top-image1.png' ,size: "215x215"
-            %div
-              %h3.item-title LIP SERVICEペイントストレッチデニム ,
-              %div.item-price 
-                ¥3100
-                = icon 'fas fa-heart',class:"item-price-iine"
-        %section.main-top__category--box__items__item#another-cotegory__item
-          = link_to "#" do
-            %div
-              = image_tag 'top-image1.png' ,size: "215x215"
-            %div
-              %h3.item-title LIP SERVICEペイントストレッチデニム ,
-              %div.item-price 
-                ¥3100
-                = icon 'fas fa-heart',class:"item-price-iine"
-    %section.main-top__category--box.clearfix#another-item 
-      = link_to "LoveFam♡お知らせ(有)さんのその他の出品","#" , class:"#another-item-color"
-      %div.main-top__category--box__items#another-cotegory
-        %section.main-top__category--box__items__item#another-cotegory__item
-          = link_to "#" do
-            %div
-              = image_tag 'top-image1.png' ,size: "215x215"
-            %div
-              %h3.item-title LIP SERVICEペイントストレッチデニム ,
-              %div.item-price 
-                ¥3100
-                = icon 'fas fa-heart',class:"item-price-iine"
-        %section.main-top__category--box__items__item#another-cotegory__item
-          = link_to "#" do
-            %div
-              = image_tag 'top-image1.png' ,size: "215x215"
-            %div
-              %h3.item-title LIP SERVICEペイントストレッチデニム ,
-              %div.item-price 
-                ¥3100
-                = icon 'fas fa-heart',class:"item-price-iine"
-        %section.main-top__category--box__items__item#another-cotegory__item
-          = link_to "#" do
-            %div
-              = image_tag 'top-image1.png' ,size: "215x215"
-            %div
-              %h3.item-title LIP SERVICEペイントストレッチデニム ,
-              %div.item-price 
-                ¥3100
-                = icon 'fas fa-heart',class:"item-price-iine"
-        %section.main-top__category--box__items__item#another-cotegory__item
-          = link_to "#" do
-            %div
-              = image_tag 'top-image1.png' ,size: "215x215"
-            %div
-              %h3.item-title LIP SERVICEペイントストレッチデニム ,
-              %div.item-price 
-                ¥3100
-                = icon 'fas fa-heart',class:"item-price-iine"
-        %section.main-top__category--box__items__item#another-cotegory__item
-          = link_to "#" do
-            %div
-              = image_tag 'top-image1.png' ,size: "215x215"
-            %div
-              %h3.item-title LIP SERVICEペイントストレッチデニム ,
-              %div.item-price 
-                ¥3100
-                = icon 'fas fa-heart',class:"item-price-iine"
-        %section.main-top__category--box__items__item#another-cotegory__item
-          = link_to "#" do
-            %div
-              = image_tag 'top-image1.png' ,size: "215x215"
-            %div
-              %h3.item-title LIP SERVICEペイントストレッチデニム ,
-              %div.item-price 
-                ¥3100
-                = icon 'fas fa-heart',class:"item-price-iine"                        
+      = link_to "#{@product.user.nickname}さんのその他の出品","#" , class:"#another-item-color"
+      %div.main-top__category--box__items.flex-start-box#another-cotegory
+        -if @user_other_products.present?
+          - @user_other_products.each do |product|
+            %section.main-top__category--box__items__item#another-cotegory__item
+              = link_to product_path(product) do
+                %div
+                  = image_tag "#{product.images[0].image[:medium].url}" ,size: "215x215"
+                %div
+                  %h3.item-title #{product.name}
+                  %div.item-price 
+                    ¥#{product.price.to_s(:delimited)}
+                    = icon 'far fa-heart',class:"item-price-iine"
+        -else
+          %p まだ出品はありません
+
+
+
+    %section.main-top__category--box.flex-start-box.clearfix#another-item 
+      = link_to "#{@product.brand.name}の#{@product.small_category.name} その他の出品","#" , class:"#another-item-color"
+      %div.main-top__category--box__items.flex-start-box#another-cotegory
+        -if @other_products.present?
+          - @other_products.each do |product|
+            %section.main-top__category--box__items__item#another-cotegory__item
+              = link_to product_path(product) do
+                %div
+                  = image_tag "#{product.images[0].image[:medium].url}" ,size: "215x215"
+                %div
+                  %h3.item-title #{product.name}
+                  %div.item-price 
+                    ¥#{product.price.to_s(:delimited)}
+                    = icon 'far fa-heart',class:"item-price-iine"
+        -else
+          %p まだ出品はありません
+
+
+
+
+                   
 = render "products/footer"
