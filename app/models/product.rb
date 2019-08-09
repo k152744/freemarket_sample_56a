@@ -9,6 +9,8 @@ class Product < ApplicationRecord
   belongs_to :delivary_fee
   belongs_to :delivary_way
   belongs_to :delivary_day
+  
+  has_many :images
 
   validates :name, presence: true
   validates :detail, presence: true
