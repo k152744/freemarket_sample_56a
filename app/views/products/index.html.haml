@@ -24,7 +24,7 @@
                   %h3.item-title 
                     = product.name 
                   %div.item-price 
-                    = product.price
+                    = '¥ ' + product.price.to_s
                     = icon 'fas fa-heart',class:"item-price-iine"   
       %div.item-all
         = link_to "全ての商品を見る","#"
@@ -45,7 +45,7 @@
                   %h3.item-title 
                     = product.name 
                   %div.item-price 
-                    = product.price
+                    = '¥ ' + product.price.to_s
                     = icon 'fas fa-heart',class:"item-price-iine"
         %div.item-all
           = link_to "全ての商品を見る","#"

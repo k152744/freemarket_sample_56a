@@ -1,16 +1,25 @@
 = render "products/header"
+- breadcrumb :mypage
+= render "/bread"
 .mypages
   .mypages__main
     = link_to "#", class:"mypage__profile" do
-      = image_tag "oyaji.png", class:"mypage__profile__image"
+      -# - if current_user.image.present?
+      -#   = image_tag current_user.image.url, class:"mypage__profile__image"
+      -# -else
+      = image_tag "no-image.jpg", class:"mypage__profile__image"
       .mypage__profile__name 
-        %h2 オヤジ
+        = current_user.nickname
       .mypage__profile__info
         .mypage__profile__info__scores
           %p 評価
           %p 0
         .mypage__profile__info__items
           %p 出品数
+        - if current_user.products.present?
+          %p
+            = current_user.products.length
+        - else
           %p 0
     .mypage__contents
       .mypage__contents__title

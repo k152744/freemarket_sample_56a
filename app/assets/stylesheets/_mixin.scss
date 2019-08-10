@@ -1,6 +1,6 @@
 $breakpoints: (
   'sp': 'screen and (min-width: 500px)',
-  'tb': 'screen and (min-width: 768px)',
+  'tb': 'screen and (min-width: 700px)',
   'pc': 'screen and (min-width: 1020px)',
 );
 @mixin Keita($breakpoint: tb) {
