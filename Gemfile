@@ -88,3 +88,4 @@ gem 'font-awesome-sass','~> 5.4.1'
 gem 'shrine'
 gem 'image_processing'
 gem 'mini_magick'
+gem "aws-sdk-s3"
