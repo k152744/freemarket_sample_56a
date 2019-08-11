@@ -8,13 +8,6 @@
   .active{
     display: block;
   }
-
-
-
-
-
-
-
   &__category{
     padding: 40px 0;
 
@@ -26,7 +19,10 @@
     &--box{
       h3 {
         margin:26px 11px;
-       
+       a{
+         color:#0099e8;
+         font-weight:bold;
+       }
       }
       &__items{
         display: flex;
@@ -57,12 +53,18 @@
   .item-title{
     font-size:16px;
     text-align: left;
+    color:black;
   }
   .item-price{
     font-size:16px;
     display: flex;
     margin:26px 11px;
     justify-content:space-between;
+    color:black;
+    font-weight:bold;
+    i{
+      color:gainsboro;
+    }
   }
 
   .item-all{
