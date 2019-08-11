@@ -29,8 +29,7 @@
       top: -50px;
       padding: 20px;
       border-radius: 5px;
-      background-color: gray;
-      &__text{}
+      background-color: #aaa;
       &__past{
         display: flex;
         color: white;
@@ -39,12 +38,11 @@
     }
   }
   &__text{
-    background-color: orange;
+    padding: 8px;
+    font-size: 14px;
+    background: #fff6de;
     width:100%;
     height: 40px;
-    & h3{
-      line-height:1.2;
-    }
   }
   &__form{
     width:100%;
@@ -56,7 +54,7 @@
     &__submit{
       width: 100%;
       margin: 10px 0 30px;
-      background-color: gray;
+      background-color: #aaa;
       color: white;
       height: 50px;
     }
@@ -68,18 +66,9 @@
   display: flex;
   justify-content: space-between;
   text-decoration: none;
-  &:hover{
-    opacity: .6;
-    .product-change__back{
-      text-decoration: underline;
-    }
-    .product-change__next{
-      text-decoration: underline;
-    }
-  }
   &__back{
     text-decoration: none;
-    color: aqua;
+    color: #0099e8;
     position: relative;
     margin-left: 15px;
     &::before{
@@ -90,8 +79,8 @@
       height: 6px;
       top: 2px;
       left: -15px;
-      border-top: 2px solid aqua;
-      border-left: 2px solid aqua;
+      border-top: 2px solid #0099e8;
+      border-left: 2px solid #0099e8;
       transform: rotate( -45deg)
     }
     &:hover{
@@ -102,7 +91,7 @@
   &__next{
     margin-right:15px;
     text-decoration: none;
-    color: aqua;
+    color: #0099e8;
     position: relative;
     &::before{
       content: "";
@@ -112,8 +101,8 @@
       right: -15px;
       width: 6px;
       height: 6px;
-      border-top: 2px solid aqua;
-      border-right: 2px solid aqua;
+      border-top: 2px solid #0099e8;
+      border-right: 2px solid #0099e8;
       transform: rotate(45deg)
     }
     &:hover{

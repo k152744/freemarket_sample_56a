@@ -5,6 +5,9 @@
   &__main{
     width: 100%;
   }
+  .side-bar{
+    margin-top:40px;
+  }
   @include Keita(sp){
     width:100vw;
   }
@@ -16,6 +19,7 @@
     width: 1020px;
     .side-bar{
       width: 280px;
+      margin-top: 0;
       order: 1;
     }
     &__main{
