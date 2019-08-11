@@ -4,9 +4,6 @@
 .mypages
   .mypages__main
     = link_to "#", class:"mypage__profile" do
-      -# - if current_user.image.present?
-      -#   = image_tag current_user.image.url, class:"mypage__profile__image"
-      -# -else
       = image_tag "no-image.jpg", class:"mypage__profile__image"
       .mypage__profile__name 
         = current_user.nickname

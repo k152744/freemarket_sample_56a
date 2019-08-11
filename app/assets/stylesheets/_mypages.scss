@@ -5,11 +5,11 @@
   &__main{
     width: 100%;
   }
+  .side-bar{
+    margin-top:40px;
+  }
   @include Keita(sp){
     width:100vw;
-    .side-bar{
-      margin-top:40px;
-    }
   }
   @include Keita(){
     width: 700px;
