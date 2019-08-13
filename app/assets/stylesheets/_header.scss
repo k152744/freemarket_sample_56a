@@ -178,23 +178,86 @@
 #dropdowu-menus{
   display:inline-block;
   position: relative;
-
-  
+  &:hover{
+    color:#0099e8;
+  }
+}
+#dropdowu-menus--open{
+  position: relative;
 }
 #dropdowu-menus__menu {
-    display:none;
-    list-style-type: none;
-    position: absolute;
-    z-index: 1 ;
-    background-color :white;
-    margin-top:12px;
-
-    li{
-      display: list-item;
-      padding:10px 100px 10px 10px;
-      border: 0.5px solid whitesmoke;
+  width:250px;
+  display:none;
+  list-style-type: none;
+  position: absolute;
+  top:44px;
+  left: -30px;
+  z-index: 1 ;
+  background-color :white;
+  border: 0.5px solid whitesmoke;
+  border-top: none;
+  a {
+    font-weight: 100;
+    height:25px;
+    line-height: 25px;
+  }
+  li{
+    display: list-item;
+    padding:10px 100px 10px 10px;
+    &:hover{
+      background-color: #ea352d;
+      a {
+        color: whitesmoke;
+      }
     }
   }
+  .dropdowu-menus--big--active{
+    background-color: #ea352d;
+    a {
+      color: whitesmoke;
+    }
+  }
+  &--middle{
+    display: none;
+    position: absolute;
+    top: 0;
+    left:209px;
+    width:200px;
+    height: 100%;
+    z-index: 1 ;
+    background-color :white;
+    border: 0.5px solid whitesmoke;
+    border-top: none;
+    & li{
+      display: list-item;
+      padding: 2px 16px;
+      &:hover{
+        background-color: whitesmoke;
+        a{
+          color: black;
+        }
+      }
+    }
+  }
+  .dropdowu-menus--middle--active{
+    background-color: whitesmoke;
+    a{
+      color: black;
+    }
+  }
+  &--small{
+    display: none;
+    position: absolute;
+    top: 0;
+    left:198px;
+    width:300px;
+    height: 100%;
+    z-index: 1 ;
+    background-color :white;
+    border: 0.5px solid whitesmoke;
+    border-top: none;
+  }
+}
 
 #dropdowu-brands{
   display:inline-block;
