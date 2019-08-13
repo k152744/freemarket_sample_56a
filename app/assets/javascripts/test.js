@@ -1,7 +1,50 @@
 $(function (){
 
-  $(".exhibit-btn").animate({'right':'1300px'},2000);
-  $(".exhibit-btn").animate({'left':'1100px'},2000);
+  $(".exhibit-btn")
+    .animate({
+      'top':'85%',
+      'left':'0',
+      'duration': 300,
+      'easing': 'linear'
+    },2000)
+    .animate({
+      'top':'0',
+      'left':'10%',
+      'duration': 300,
+      'easing': "swing"
+    },2000)
+    .animate({
+      'top':'30%',
+      'left':'85%',
+      'duration': 300,
+      'easing': "swing"
+    },2000)
+    .animate({
+      'top':'85%',
+      'left':'40%',
+      'duration': 300,
+      'easing': 'linear'
+    },2000)
+    .animate({
+      'top':'20%',
+      'left':'0',
+      'duration': 300,
+      'easing': "swing"
+    },2000)
+    .animate({
+      'top':'0',
+      'left':'30%',
+      'duration': 300,
+      'easing': 'linear'
+    },2000)
+    .animate({
+      'top':'80%',
+      'left':'85%',
+      'duration': 300,
+      'easing': "swing"
+    },2000)
+  ;
+    
 
   $("#dropdowu-menus--open").mouseover(function(){
     $("#dropdowu-menus__menu").slideDown(0);
