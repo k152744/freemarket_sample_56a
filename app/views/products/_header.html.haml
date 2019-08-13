@@ -70,27 +70,27 @@
       .header__container__bottom.clearfix  
         .bottom-left
           %ul
-            %li.first-child
+            %li.first-child#dropdowu-menus--open
               %h2
-                = link_to "#", id:"dropdowu-menus--open" do
+                = link_to "#" do
                   = icon 'fas fa-list-ul' ,class:"fa-list"
                   %div#dropdowu-menus
                     カテゴリーから探す
-                  %ul#dropdowu-menus__menu
-                    - @big_categories.each do |category| 
-                      %li.dropdowu-menus--big
+              %ul#dropdowu-menus__menu
+                - @big_categories.each do |category| 
+                  %li.dropdowu-menus--big
+                    = link_to "#" do
+                      = category.name
+                  %ul#dropdowu-menus__menu--middle.dropdowu-menus__menu--middle
+                    - category.middle_categories.each do |category|
+                      %li.dropdowu-menus--middle
                         = link_to "#" do
                           = category.name
-                      %ul#dropdowu-menus__menu--middle.dropdowu-menus__menu--middle
-                        - category.middle_categories.each do |category|
-                          %li.dropdowu-menus--middle
-                            = link_to "#" do
+                      %ul#dropdowu-menus__menu--small.dropdowu-menus__menu--small
+                        - category.small_categories.each do |category|
+                          %li 
+                            =link_to "#" do
                               = category.name
-                          %ul#dropdowu-menus__menu--small.dropdowu-menus__menu--small
-                            - category.small_categories.each do |category|
-                              %li 
-                                =link_to "#" do
-                                  = category.name
             %li.second-child
               %h2
                 = link_to do
