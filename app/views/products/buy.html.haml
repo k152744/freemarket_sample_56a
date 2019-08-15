@@ -10,7 +10,7 @@
         = image_tag "oyaji.png"
       .purchase-detail__title
         %p ★値下げ中！★ ナイキ エアマックス90 EZ
-      = form_with url: "#", method: :get,class:"purchase-detail__form", local: true do |f|
+      = form_with url: pay_product_card_path(@product), method: :get,class:"purchase-detail__form", local: true do |f|
         .purchase-detail__form__price
           %p.bold-price  ¥ 3,500
           %p  送料込み
