@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     member do
       get :buy
     end
+    collection do
+      get :search
+    end
   end
   resources :users  do
     member do
