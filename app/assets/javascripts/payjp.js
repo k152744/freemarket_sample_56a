@@ -14,9 +14,6 @@ if(document.URL.match("cards/new")){
         };
 
         Payjp.createToken(card, (status, response) => {
-          console.log(card)
-          console.log(status)
-          console.log(response)
           if (status === 200) {
             $("#card_card_number").removeAttr("name");
             $("#card_cvc").removeAttr("name");
@@ -26,7 +23,6 @@ if(document.URL.match("cards/new")){
               $('<input type="hidden" name="payjp-token">').val(response.id)
             ); 
             document.inputForm.submit();
-            alert("登録が完了しました");
           } else {
             alert("カード情報が正しくありません。");
           }

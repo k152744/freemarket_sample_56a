@@ -82,7 +82,6 @@ $(function (){
 
   $(function(){
     $('a.item-detail__buybtn--sold').click(function(){
-      alert("売り切れですーっ！汗")
       return false;
     })
   });
