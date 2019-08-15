@@ -1,50 +1,50 @@
 $(function (){
-
-  $(".exhibit-btn")
-    .animate({
-      'top':'85%',
-      'left':'0',
-      'duration': 300,
-      'easing': 'linear'
-    },2000)
-    .animate({
-      'top':'0',
-      'left':'10%',
-      'duration': 300,
-      'easing': "swing"
-    },2000)
-    .animate({
-      'top':'30%',
-      'left':'85%',
-      'duration': 300,
-      'easing': "swing"
-    },2000)
-    .animate({
-      'top':'85%',
-      'left':'40%',
-      'duration': 300,
-      'easing': 'linear'
-    },2000)
-    .animate({
-      'top':'20%',
-      'left':'0',
-      'duration': 300,
-      'easing': "swing"
-    },2000)
-    .animate({
-      'top':'0',
-      'left':'30%',
-      'duration': 300,
-      'easing': 'linear'
-    },2000)
-    .animate({
-      'top':'80%',
-      'left':'85%',
-      'duration': 300,
-      'easing': "swing"
-    },2000)
-  ;
-    
+  if(document.URL.match("/users")){
+    $(".exhibit-btn")
+      .animate({
+        'top':'85%',
+        'left':'0',
+        'duration': 300,
+        'easing': 'linear'
+      },2000)
+      .animate({
+        'top':'0',
+        'left':'10%',
+        'duration': 300,
+        'easing': "swing"
+      },2000)
+      .animate({
+        'top':'30%',
+        'left':'85%',
+        'duration': 300,
+        'easing': "swing"
+      },2000)
+      .animate({
+        'top':'85%',
+        'left':'40%',
+        'duration': 300,
+        'easing': 'linear'
+      },2000)
+      .animate({
+        'top':'20%',
+        'left':'0',
+        'duration': 300,
+        'easing': "swing"
+      },2000)
+      .animate({
+        'top':'0',
+        'left':'30%',
+        'duration': 300,
+        'easing': 'linear'
+      },2000)
+      .animate({
+        'top':'80%',
+        'left':'85%',
+        'duration': 300,
+        'easing': "swing"
+      },2000)
+     ;
+    }
 
   $("#dropdowu-menus--open").mouseover(function(){
     $("#dropdowu-menus__menu").slideDown(0);
@@ -79,4 +79,11 @@ $(function (){
   $("#dropdowu-brands--open").mouseout(function(){
     $("#dropdowu-brands__menu").slideUp(0);
   })
+
+  $(function(){
+    $('a.item-detail__buybtn--sold').click(function(){
+      alert("売り切れですーっ！汗")
+      return false;
+    })
+  });
 });

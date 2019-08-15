@@ -46,6 +46,31 @@ class ProductsController < ApplicationController
 
   def buy
     @product = Product.find(id = params[:id])
+    card = Card.where(user_id: current_user.id).first
+    if card.present?
+      Payjp.api_key = Rails.application.credentials.PAYJP_SECRET_KEY
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @card = customer.cards.retrieve(card.card_id)
+
+      case @card.brand  
+      when "Visa"
+        @card_src = "visa.svg"
+      when "JCB"
+        @card_src = "jcb.svg"
+      when "MasterCard"
+        @card_src = "master-card.svg"
+      when "American Express"
+        @card_src = "american_express.svg"
+      when "Diners Club"
+        @card_src = "dinersclub.svg"
+      when "Discover"
+        @card_src = "discover.svg"
+      end
+      
+    else
+      @card = nil
+      @card_src = nil
+    end
   end
 
   private

@@ -7,12 +7,14 @@
   .purchase-confirmation-contents__box.margin-zero
     .purchase-detail
       .purchase-detail__img
-        = image_tag "oyaji.png"
+        = image_tag "#{@product.images[0].image[:medium].url}"
       .purchase-detail__title
-        %p ★値下げ中！★ ナイキ エアマックス90 EZ
+        %p 
+          = @product.name
       = form_with url: pay_product_card_path(@product), method: :get,class:"purchase-detail__form", local: true do |f|
         .purchase-detail__form__price
-          %p.bold-price  ¥ 3,500
+          %p.bold-price
+            = "¥ " + @product.price.to_s
           %p  送料込み
         %ul.purchase-detail__form__point
           %li.purchase-detail__form__point__list 
@@ -23,7 +25,7 @@
             .purchase-detail__form__price-table__cell
               支払い金額
             .purchase-detail__form__price-table__cell
-              ¥ 3,500
+              = "¥ " + @product.price.to_s
         = f.submit '購入する', class: 'purchase-detail__form__submit'
   .purchase-confirmation-contents__box
     .purchase-delivary-info
@@ -36,12 +38,17 @@
   .purchase-confirmation-contents__box
     .purchase-credit-info
       %p.purchase-credit-info__title お支払い方法
-      %p  ************5555
-      %p  12 / 99
-      .purchase-credit-info__img
-        = image_tag "visa.svg"
+      - if @card.present?
+        %p  
+          = "**** **** **** " + @card.last4.to_s
+        %p
+          = @card.exp_month.to_s + " / " + @card.exp_year.to_s.slice(2,3)
+        .purchase-credit-info__img
+          = image_tag "#{@card_src}"
+      - else 
+        %p /
       .purchase-credit-info__change
-        = link_to "変更する >", "#", method: 'get' 
+        = link_to "変更する >", registrate_card_path(current_user), method: 'get' 
 
 = render partial: "/small_footer"
 

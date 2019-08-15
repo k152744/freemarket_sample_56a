@@ -5,8 +5,11 @@
   %div.item-detail__content.crearfix
     %div.item-detail__content--image
       %div.item-detail__content--image__box
-        %div 
+        %div.item-detail__sold
           = image_tag "#{@product.images[0].image[:medium].url}",size: "300x300"
+          - if @product.buyer_id.present?
+            .item-detail__sold__text
+              %h2 SOLD
         - @product.images.each do |image| 
           %div
             = image_tag "#{image.image[:medium].url}" ,size: "60x60"
@@ -59,9 +62,12 @@
     - if @product.delivary_fee.name == "送料込み(出品者負担)"
       %span 送料込み
     - else 
-      %span 着払い   
-  %section       
-    = link_to "購入画面に進む", buy_product_path(@product) ,class: "item-detail__buybtn"
+      %span 着払い 
+  %section    
+    - if @product.buyer_id.present?
+      = link_to "売り切れました", "https://zxcvbnmnbvcxz.com/" ,class: "item-detail__buybtn item-detail__buybtn--sold"  
+    - else
+      = link_to "購入画面に進む", buy_product_path(@product) ,class: "item-detail__buybtn"
   %div.item-detail__description
     = safe_join(@product.detail.split("\n"), tag(:br))
   %div.item-detail__buttons
@@ -90,9 +96,14 @@
   .comments__text
     %h3 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
   .comments__form
-    = form_with do |f|
-      = f.text_area :text, class: "comments__form__text"
-      = f.submit 'コメントする', class:"comments__form__submit"
+    - if @product.buyer_id.present?
+      = form_with do |f|
+        = f.text_area :text, class: "comments__form__text", disabled: "disabled"
+        = f.submit '売り切れのためコメントできまてん', class:"comments__form__submit", disabled: "disabled"
+    - else 
+      = form_with do |f|
+        = f.text_area :text, class: "comments__form__text"
+        = f.submit 'コメントする', class:"comments__form__submit"
 
 .product-change
   = link_to "#", class: "product-change__back" do
