@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :products do
     member do
       get :buy
+      get :detail
     end
   end
   resources :users  do
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
   resources :user_informations  do
     member do
       get :card
+      get :listing
     end
   end
   resource :user_sign_ups do

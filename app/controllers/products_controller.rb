@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index,:show]
-  before_action :header_big_category, only: [:index,:show]
-  before_action :header_brand, only: [:index,:show]
+  before_action :header_big_category, only: [:index,:show,:detail,:edit,:destroy]
+  before_action :header_brand, only: [:index,:show,:detail,:edit,:destroy]
 
   def index
     @pickup_categories = BigCategory.all.limit(3).includes(:products)
@@ -15,7 +15,31 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @product = Product.includes(:user,:big_category,:middle_category,:small_category,:brand,:delivary_day,:delivary_fee,:delivary_way,:shipping_origin,:status,:images).find(params[:id])
+  
+    @big_category = BigCategory.all
+    @middle_category = MiddleCategory.all
+    @small_category = SmallCategory.all
+    @brand = Brand.all
+    @delivary_day = DelivaryDay.all
+    @delivary_fee = DelivaryFee.all
+    @delivary_way = DelivaryWay.all
+    @shipping_origin = ShippingOrigin.all
+    @status = Status.all
+
+    @image = Image.where("product_id = ?",@product.id)
   end
+
+  def update
+    product = Product.find(params[:id])
+    if product.update(product_params)
+      image = Image.where("product_id = ?",product.id)
+      image.update(image_params(product.id))
+      
+      redirect_to root_path
+    end
+  end
+ 
   
 
   def new
@@ -44,7 +68,17 @@ class ProductsController < ApplicationController
     end
   end
 
+  def destroy
+    product = Product.find(params[:id])
+    product.destroy
+    redirect_to root_path
+  end
+
   def buy
+  end
+
+  def detail
+    @product = Product.includes(:user,:big_category,:middle_category,:small_category,:brand,:delivary_day,:delivary_fee,:delivary_way,:shipping_origin,:status,:images).find(params[:id])
   end
 
   private

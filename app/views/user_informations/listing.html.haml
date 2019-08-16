@@ -1,0 +1,31 @@
+= render "products/header"
+.mypages
+  .mypages__main
+    .listing--container
+      %h2.item--title 出品した商品
+      %ul.listing--tabs
+        %li.active
+          %h3 出品中
+        %li
+          %h3 取引中
+        %li
+          %h3 売却済
+      .listing--container__user
+        %ul
+          - @products.each do |product|
+            %li
+              = link_to "/products/#{product.id}/detail" do
+                = image_tag  "#{product.images[0].image[:medium].url}" ,size: "48x48"
+                .display--item
+                  %p 
+                    = product.name
+                  .display--item__status
+                    = icon "far fa-heart",class: "far fa-heart"
+                    %span 0
+                    = icon "far fa-comment-alt",class:"far fa-comment-alt"
+                    %span 0
+                    .display--item__status__awiting
+                      出品中
+  = render "products/side_bar" 
+= render "products/footer"
+= render "products/exhibit_btn"
