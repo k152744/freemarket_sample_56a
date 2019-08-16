@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index,:show]
-  before_action :header_big_category, only: [:index,:show]
-  before_action :header_brand, only: [:index,:show]
+  before_action :header_big_category, only: [:index,:show,:search]
+  before_action :header_brand, only: [:index,:show,:search]
 
   def index
     @pickup_categories = BigCategory.all.limit(3).includes(:products)
@@ -45,6 +45,10 @@ class ProductsController < ApplicationController
   end
 
   def buy
+  end
+
+  def search
+    @products = Product.where('name LIKE(?)', "%#{params[:keyword]}%").limit(132)
   end
 
   private
