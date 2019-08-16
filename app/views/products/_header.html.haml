@@ -3,10 +3,13 @@
     .header__container
       .header__container__top
         %h1
-          = link_to image_tag("mercari_logo_color.png",alt: "mercari",width: "134",height:"36"),products_path 
-        %form.header-form
-          %input{placeholder: "何かお探しですか?"}
-          = icon 'fas fa-search' ,class:"fa-search"
+          = link_to image_tag("mercari_logo_color.png",alt: "mercari",width: "134",height:"36"),products_path
+        = form_with url: search_products_path, method: :get ,local: true ,class:"header-form" do |f|
+          
+          %input{placeholder: "何かお探しですか?",name: "keyword"}
+            %button{type:"submit",class: "search-btn"} 
+              = icon 'fas fa-search' ,class:"fa-search"
+            
       .header__container__bottom.clearfix  
         .bottom-left
           %ul

@@ -1,0 +1,23 @@
+= render partial: "header"
+.mypages
+  .mypages__main.crearfix
+    .search-result
+      %h2 
+        テスト
+        %span#search-result__text の検索結果
+      .search-result__number
+        132件の検索結果
+      .search-result__items
+        - @products.each do |product|
+          %section.search-result__items__box
+            = link_to product_path(product) do
+              = image_tag "#{product.images[0].image[:medium].url}" ,size: "160x160"
+              %div.search-result__items__box__body
+                %h3.item-title 
+                  = product.name 
+                %div.item-price 
+                  = '¥ ' + product.price.to_s
+                  = icon 'fas fa-heart',class:"item-price-iine"    
+
+  = render "products/side_bar" 
+= render "products/footer"  

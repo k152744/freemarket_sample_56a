@@ -7,12 +7,12 @@
           .user-sign-up__title
             %p  クレジットカード情報入力
           .user-sign-up__content  
-            = form_with url: post_controll_user_sign_ups_path ,local: true  do |f|
+            = form_with model: @card,local: true, html: { name: "inputForm" }  do |f|
               .user-sign-up__form
                 .field
                   %i カード番号
                   %span.user-sign-up__form__required  必須
-                  = f.email_field :email, autofocus: true,placeholder:"半角数字のみ",class:"user-form-input margin-bottom-none"
+                  = f.text_field :card_number, autofocus: true,placeholder:"半角数字のみ",maxlength: "16",class:"user-form-input margin-bottom-none"
                 .user-sign-up__form__card-images
                   = image_tag "visa.svg"
                   = image_tag "master-card.svg"
@@ -26,23 +26,23 @@
                   %span.user-sign-up__form__required  必須
                   %br
                   .user-sign-up__form__select.select-harf
-                    = f.select :year, [["12", "12"], ["11", "11"]],  prompt:"--"
+                    = f.select :exp_month, [["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11", 11],["12", 12]],  prompt:"--"
                     %span  月
-                    = f.select :year, [["2019", "2019"], ["2018", "2018"]],  prompt:"--"
+                    = f.select :exp_year, [["19",2019],["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025]],  prompt:"--"
                     %span  年
 
 
                 .field
                   %i セキュリティコード
                   %span.user-sign-up__form__required  必須
-                  = f.email_field :email, autofocus: true,placeholder:"カード背面4桁もしくは3桁の番号",class:"user-form-input margin-bottom-none"
+                  = f.text_field :cvc, autofocus: true,maxlength: "4",placeholder:"カード背面4桁もしくは3桁の番号",class:"user-form-input margin-bottom-none"
 
                 .user-sign-up__form__text
                   .user-sign-up__form__text--right
                     %p.question-mark  ?
                     %p  カード裏面の番号とは？
-                .actions
-                  = f.submit "追加する",class:"user-login__form__submit user-btn"
+                .actions#card_token
+                  = f.submit "追加する",class:"user-login__form__submit user-btn", id: 'token_submit'
   = render "products/side_bar" 
 = render "products/footer"
 = render "products/exhibit_btn"
