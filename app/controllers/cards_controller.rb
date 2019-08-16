@@ -44,7 +44,7 @@ class CardsController < ApplicationController
 
   def pay
     card = Card.where(user_id: current_user.id).first
-    product = Product.find(id = params[:product_id])
+    product = Product.find(params[:product_id])
     if card.blank? || product.blank?
       redirect_to "products#buy"
     else

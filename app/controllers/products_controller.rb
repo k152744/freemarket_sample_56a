@@ -45,7 +45,7 @@ class ProductsController < ApplicationController
   end
 
   def buy
-    @product = Product.find(id = params[:id])
+    @product = Product.find(params[:id])
     card = Card.where(user_id: current_user.id).first
     if card.present?
       Payjp.api_key = Rails.application.credentials.PAYJP_SECRET_KEY
