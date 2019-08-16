@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   root to: "products#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :products do
+    resources :cards do
+      member do
+        get :pay
+      end
+    end
     member do
       get :buy
     end
@@ -13,14 +18,16 @@ Rails.application.routes.draw do
   resources :users  do
     member do
       get :logout
-      get :add_card
     end
   end
-  resources :user_informations  do
+  resources :cards do
     member do
-      get :card
+      get :registrate
     end
   end
+
+  resources :user_informations
+
   resource :user_sign_ups do
     collection do
       get :tell

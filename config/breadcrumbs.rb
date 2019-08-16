@@ -17,6 +17,11 @@ crumb :profile do
   parent :mypage
 end
 
+crumb :pay do
+  link "支払方法", cards_path
+  parent :mypage
+end
+
 crumb :products do |product|
   link product.name, product_path(product)
   parent :root

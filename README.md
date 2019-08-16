@@ -51,7 +51,7 @@ Things you may want to cover:
 - has_many :traiding_comment
 - has_many :fav_products, through: :favorites, source: :products
 - has_one :user_information
-- has_one :user_card
+- has_many :cards
 
 ## User_information テーブル
 |Column|Type|Options|
@@ -71,7 +71,7 @@ Things you may want to cover:
 - belongs_to :user
 - belongs_to :shipping_origin
 
-## User_card テーブル
+## card テーブル
 |Column|Type|Options|
 |------|----|-------|
 |user|reference|foreign_key: true|
