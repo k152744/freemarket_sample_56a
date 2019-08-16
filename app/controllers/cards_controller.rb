@@ -45,11 +45,11 @@ class CardsController < ApplicationController
   def pay
     card = Card.where(user_id: current_user.id).first
     product = Product.find(params[:product_id])
-    if card.blank? || product.blank?
-      redirect_to "products#buy"
+    if card.blank? || product.blank? || product.user_id == current_user.id
+      redirect_to controller: "products", action:"buy"
     else
       if product.buyer_id.present?
-        redirect_to "products#buy"
+        redirect_to controller: "products", action:"show"
       else
         Payjp.api_key = Rails.application.credentials.PAYJP_SECRET_KEY
         Payjp::Charge.create(
