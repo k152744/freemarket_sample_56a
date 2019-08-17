@@ -16,10 +16,12 @@ class UserSignUpsController < ApplicationController
   end
 
   def shipping
+
     path = Rails.application.routes.recognize_path(request.referer)
     if path[:controller] != "user_sign_ups" && path[:action] != "auth_tell"
       redirect_to root_url
     end
+    @shipping_origin = ShippingOrigin.all
   end
 
   def card
