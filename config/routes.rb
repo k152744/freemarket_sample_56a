@@ -26,15 +26,16 @@ Rails.application.routes.draw do
   end
   resources :cards do
     member do
-
       get :card
-      get :listing
       get :registrate
-
     end
   end
 
-  resources :user_informations
+  resources :user_informations do
+    member do
+      get :listing
+    end
+  end
 
   resource :user_sign_ups do
     collection do
