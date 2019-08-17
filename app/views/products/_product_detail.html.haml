@@ -3,8 +3,11 @@
   %div.item-detail__content.crearfix
     %div.item-detail__content--image
       %div.item-detail__content--image__box
-        %div 
+        %div.item-detail__sold
           = image_tag "#{@product.images[0].image[:medium].url}",size: "300x300"
+          - if @product.buyer_id.present?
+            .item-detail__sold__text
+              %h2 SOLD
         - @product.images.each do |image| 
           %div
             = image_tag "#{image.image[:medium].url}" ,size: "60x60"
@@ -57,21 +60,22 @@
     - if @product.delivary_fee.name == "送料込み(出品者負担)"
       %span 送料込み
     - else 
-      %span 着払い
-  - if request.path_info == product_path(@product)
-    %section       
+      %span 着払い 
+  %section    
+    - if @product.buyer_id.present?
+      = link_to "売り切れました", "https://zxcvbnmnbvcxz.com/" ,class: "item-detail__buybtn item-detail__buybtn--sold"  
+    - else
       = link_to "購入画面に進む", buy_product_path(@product) ,class: "item-detail__buybtn"
-    %div.item-detail__description
-      = safe_join(@product.detail.split("\n"), tag(:br))
-    %div.item-detail__buttons
-      = link_to "#" ,class:'item-detail__buttons--heart' do
-        = icon 'far fa-heart',class:""
-        %span いいね!
-        %span 10
-      = link_to "#" ,class:"item-detail__buttons--flag" do
-        = icon 'far fa-flag',class:""
-        %span 不適切な商品を報告
-      = link_to "#" ,class:"item-detail__buttons--lock" do
-        = icon 'fas fa-lock',class:""
-        %span あんしん・あんぜんへの取り組み
-  
+  %div.item-detail__description
+    = safe_join(@product.detail.split("\n"), tag(:br))
+  %div.item-detail__buttons
+    = link_to "#" ,class:'item-detail__buttons--heart' do
+      = icon 'far fa-heart',class:""
+      %span いいね!
+      %span 10
+    = link_to "#" ,class:"item-detail__buttons--flag" do
+      = icon 'far fa-flag',class:""
+      %span 不適切な商品を報告
+    = link_to "#" ,class:"item-detail__buttons--lock" do
+      = icon 'fas fa-lock',class:""
+      %span あんしん・あんぜんへの取り組み
