@@ -1,7 +1,9 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index,:show]
+  before_action :set_product,only: [:destroy,:update]
   before_action :header_big_category, only: [:index,:show,:detail,:edit,:destroy]
   before_action :header_brand, only: [:index,:show,:detail,:edit,:destroy]
+  
 
   def index
     @pickup_categories = BigCategory.all.limit(3).includes(:products)
@@ -31,10 +33,9 @@ class ProductsController < ApplicationController
   end
 
   def update
-    product = Product.find(params[:id])
-    if product.update(product_params)
-      image = Image.where("product_id = ?",product.id)
-      image.update(image_params(product.id))
+    if @product.update(product_params)
+      image = Image.where("product_id = ?",@product.id)
+      image.update(image_params(@product.id))
       
       redirect_to root_path
     end
@@ -58,7 +59,6 @@ class ProductsController < ApplicationController
   end
 
   def create
-
     product = Product.new(product_params)
     if product.save!
       id = product.id
@@ -69,9 +69,13 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    product = Product.find(params[:id])
-    product.destroy
-    redirect_to root_path
+    if current_user.id == @product.user_id
+      if @product.destroy
+        redirect_to root_path
+      else
+        render :detail
+      end
+    end
   end
 
   def buy
@@ -90,4 +94,7 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:image).merge(product_id:id)
   end
 
+  def set_product
+    @product = Product.find(params[:id])
+  end
 end

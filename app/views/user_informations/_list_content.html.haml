@@ -1,0 +1,13 @@
+%li
+  = link_to "/products/#{product.id}/detail" do
+    = image_tag  "#{product.images[0].image[:medium].url}" ,size: "48x48"
+    .display--item
+      %p 
+        = product.name
+      .display--item__status
+        = icon "far fa-heart",class: "far fa-heart"
+        %span 0
+        = icon "far fa-comment-alt",class:"far fa-comment-alt"
+        %span 0
+        .display--item__status__awiting
+          出品中
