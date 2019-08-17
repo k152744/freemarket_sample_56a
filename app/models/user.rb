@@ -12,7 +12,7 @@ class User < ApplicationRecord
   validates :first_name_kana, presence: true
   validates :birthday, presence: true
   has_many :products
-
+  has_many :cards
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
 

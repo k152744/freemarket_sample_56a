@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index,:show]
-  before_action :header_big_category, only: [:index,:show]
-  before_action :header_brand, only: [:index,:show]
+  before_action :header_big_category, only: [:index,:show,:search]
+  before_action :header_brand, only: [:index,:show,:search]
 
   def index
     @pickup_categories = BigCategory.all.limit(3).includes(:products)
@@ -45,6 +45,36 @@ class ProductsController < ApplicationController
   end
 
   def buy
+    @product = Product.find(params[:id])
+    card = Card.where(user_id: current_user.id).first
+    if card.present?
+      Payjp.api_key = Rails.application.credentials.PAYJP_SECRET_KEY
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @card = customer.cards.retrieve(card.card_id)
+
+      case @card.brand  
+      when "Visa"
+        @card_src = "visa.svg"
+      when "JCB"
+        @card_src = "jcb.svg"
+      when "MasterCard"
+        @card_src = "master-card.svg"
+      when "American Express"
+        @card_src = "american_express.svg"
+      when "Diners Club"
+        @card_src = "dinersclub.svg"
+      when "Discover"
+        @card_src = "discover.svg"
+      end
+      
+    else
+      @card = nil
+      @card_src = nil
+    end
+  end
+
+  def search
+    @products = Product.where('name LIKE(?)', "%#{params[:keyword]}%").limit(132)
   end
 
   private
