@@ -1,13 +1,14 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index,:show]
+
   before_action :set_product,only: [:destroy,:update]
-  before_action :header_big_category, only: [:index,:show,:detail,:edit,:destroy]
-  before_action :header_brand, only: [:index,:show,:detail,:edit,:destroy]
-  
+  before_action :header_big_category, only: [:index,:show,:detail,:edit,:destroy,:search]
+  before_action :header_brand, only: [:index,:show,:detail,:edit,:destroy,:search]
+
 
   def index
     @pickup_categories = BigCategory.all.limit(3).includes(:products)
-    @pickup_brands = Brand.all.limit(3).includes(:products) 
+    @pickup_brands = Brand.all.limit(3).includes(:products)
   end
 
   def show
@@ -18,7 +19,7 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.includes(:user,:big_category,:middle_category,:small_category,:brand,:delivary_day,:delivary_fee,:delivary_way,:shipping_origin,:status,:images).find(params[:id])
-  
+
     @big_category = BigCategory.all
     @middle_category = MiddleCategory.all
     @small_category = SmallCategory.all
@@ -36,12 +37,12 @@ class ProductsController < ApplicationController
     if @product.update(product_params)
       image = Image.where("product_id = ?",@product.id)
       image.update(image_params(@product.id))
-      
+
       redirect_to root_path
     end
   end
- 
-  
+
+
 
   def new
     @big_category = BigCategory.all
@@ -79,6 +80,36 @@ class ProductsController < ApplicationController
   end
 
   def buy
+    @product = Product.find(params[:id])
+    card = Card.where(user_id: current_user.id).first
+    if card.present?
+      Payjp.api_key = Rails.application.credentials.PAYJP_SECRET_KEY
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @card = customer.cards.retrieve(card.card_id)
+
+      case @card.brand
+      when "Visa"
+        @card_src = "visa.svg"
+      when "JCB"
+        @card_src = "jcb.svg"
+      when "MasterCard"
+        @card_src = "master-card.svg"
+      when "American Express"
+        @card_src = "american_express.svg"
+      when "Diners Club"
+        @card_src = "dinersclub.svg"
+      when "Discover"
+        @card_src = "discover.svg"
+      end
+
+    else
+      @card = nil
+      @card_src = nil
+    end
+  end
+
+  def search
+    @products = Product.where('name LIKE(?)', "%#{params[:keyword]}%").limit(132)
   end
 
   def detail
