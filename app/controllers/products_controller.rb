@@ -1,11 +1,14 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index,:show]
-  before_action :header_big_category, only: [:index,:show,:search]
-  before_action :header_brand, only: [:index,:show,:search]
+
+  before_action :set_product,only: [:destroy,:update]
+  before_action :header_big_category, only: [:index,:show,:detail,:edit,:destroy,:search]
+  before_action :header_brand, only: [:index,:show,:detail,:edit,:destroy,:search]
+
 
   def index
     @pickup_categories = BigCategory.all.limit(3).includes(:products)
-    @pickup_brands = Brand.all.limit(3).includes(:products) 
+    @pickup_brands = Brand.all.limit(3).includes(:products)
   end
 
   def show
@@ -15,8 +18,31 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @product = Product.includes(:user,:big_category,:middle_category,:small_category,:brand,:delivary_day,:delivary_fee,:delivary_way,:shipping_origin,:status,:images).find(params[:id])
+
+    @big_category = BigCategory.all
+    @middle_category = MiddleCategory.all
+    @small_category = SmallCategory.all
+    @brand = Brand.all
+    @delivary_day = DelivaryDay.all
+    @delivary_fee = DelivaryFee.all
+    @delivary_way = DelivaryWay.all
+    @shipping_origin = ShippingOrigin.all
+    @status = Status.all
+
+    @image = Image.where("product_id = ?",@product.id)
   end
-  
+
+  def update
+    if @product.update(product_params)
+      image = Image.where("product_id = ?",@product.id)
+      image.update(image_params(@product.id))
+
+      redirect_to root_path
+    end
+  end
+
+
 
   def new
     @big_category = BigCategory.all
@@ -34,13 +60,22 @@ class ProductsController < ApplicationController
   end
 
   def create
-
     product = Product.new(product_params)
     if product.save!
       id = product.id
       image = Image.new(image_params(id))
       image.save
       redirect_to root_path
+    end
+  end
+
+  def destroy
+    if current_user.id == @product.user_id
+      if @product.destroy
+        redirect_to root_path
+      else
+        render :detail
+      end
     end
   end
 
@@ -52,7 +87,7 @@ class ProductsController < ApplicationController
       customer = Payjp::Customer.retrieve(card.customer_id)
       @card = customer.cards.retrieve(card.card_id)
 
-      case @card.brand  
+      case @card.brand
       when "Visa"
         @card_src = "visa.svg"
       when "JCB"
@@ -66,7 +101,7 @@ class ProductsController < ApplicationController
       when "Discover"
         @card_src = "discover.svg"
       end
-      
+
     else
       @card = nil
       @card_src = nil
@@ -75,6 +110,10 @@ class ProductsController < ApplicationController
 
   def search
     @products = Product.where('name LIKE(?)', "%#{params[:keyword]}%").limit(132)
+  end
+
+  def detail
+    @product = Product.includes(:user,:big_category,:middle_category,:small_category,:brand,:delivary_day,:delivary_fee,:delivary_way,:shipping_origin,:status,:images).find(params[:id])
   end
 
   private
@@ -86,4 +125,7 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:image).merge(product_id:id)
   end
 
+  def set_product
+    @product = Product.find(params[:id])
+  end
 end

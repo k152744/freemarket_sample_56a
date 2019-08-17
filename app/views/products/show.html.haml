@@ -1,5 +1,9 @@
 = render partial: "header"
 
+= render partial: "product_detail"
+= render partial: "comment"
+
+
 %div.item-detail.crearfix
   %h1 #{@product.name}
   %div.item-detail__content.crearfix
@@ -104,6 +108,7 @@
       = form_with do |f|
         = f.text_area :text, class: "comments__form__text"
         = f.submit 'コメントする', class:"comments__form__submit"
+
 
 .product-change
   = link_to "#", class: "product-change__back" do

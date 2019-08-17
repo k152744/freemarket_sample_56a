@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     end
     member do
       get :buy
+      get :detail
     end
     collection do
       get :search
@@ -25,7 +26,11 @@ Rails.application.routes.draw do
   end
   resources :cards do
     member do
+
+      get :card
+      get :listing
       get :registrate
+
     end
   end
 

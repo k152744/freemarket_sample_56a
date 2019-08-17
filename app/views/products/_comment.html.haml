@@ -1,0 +1,18 @@
+.comments
+  .comments__comment  
+    = link_to "#", class: "comments__comment__user-info" do
+      = image_tag "oyaji.png", class: "comments__comment__user-info__image"
+      .comments__comment__user-info__name
+        %h2 オヤジ
+    .comments__comment__contents
+      .comments__comment__contents__text
+        %p この商品を買うためにいきてきました
+        .comments__comment__contents__past
+          = icon "fas fa-clock", class: "comments__comment__contents__past--icon"
+          %p ５日前
+  .comments__text
+    %h3 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+  .comments__form
+    = form_with do |f|
+      = f.text_area :text, class: "comments__form__text"
+      = f.submit 'コメントする', class:"comments__form__submit"
