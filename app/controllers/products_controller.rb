@@ -64,11 +64,15 @@ class ProductsController < ApplicationController
 
   def create
     product = Product.new(product_params)
-    if product.save!
-      id = product.id
-      image = Image.new(image_params(id))
-      image.save
-      redirect_to root_path
+    image = Image.new(image_params)
+    if image.image.present?
+      if product.save!
+        image.product_id = product.id
+        image.save
+        redirect_to root_path
+      end
+    else
+      redirect_to action: "new"
     end
   end
 
@@ -124,8 +128,8 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:name,:detail,:big_category_id,:middle_category_id,:small_category_id,:brand_id,:delivary_day_id,:delivary_fee_id,:delivary_way_id,:shipping_origin_id,:status_id,:price).merge(listing_status:"出品中",user_id:current_user.id)
   end
 
-  def image_params(id)
-    params.require(:product).permit(:image).merge(product_id:id)
+  def image_params
+    params.require(:product).permit(:image)
   end
 
   def set_product
