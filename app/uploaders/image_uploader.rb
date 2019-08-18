@@ -11,6 +11,11 @@ class ImageUploader < Shrine
 
     io.download do |original|
       pipeline = ImageProcessing::MiniMagick.source(original)
+      unless io.mime_type == "image/png"
+        pipeline = pipeline
+          .convert("jpeg")
+          .saver(interlace: true)
+      end
 
       versions[:large]  = pipeline.resize_to_limit!(800, 800)
       versions[:medium] = pipeline.resize_to_limit!(500, 500)
