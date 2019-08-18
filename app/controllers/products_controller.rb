@@ -34,11 +34,14 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if @product.update(product_params)
-      image = Image.where("product_id = ?",@product.id)
-      image.update(image_params(@product.id))
-
-      redirect_to root_path
+    if current_user.id == @product.user_id
+      if @product.update(product_params)
+        image = Image.where("product_id = ?",@product.id)
+        image.update(image_params(@product.id))
+        redirect_to root_path
+      else
+        render :edit
+      end
     end
   end
 
