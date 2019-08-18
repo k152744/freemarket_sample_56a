@@ -1,6 +1,3 @@
-
-= render partial: "/small_header"
-
 .product_exibit
   .product_exibit__title
     %p  商品の情報を入力
@@ -13,12 +10,11 @@
             %span.product_exibit__form__required  必須
             %p  最大10枚までアップロードできます
         = f.label :image, class: "form-image" do
-          .product_exibit__image-box__image#width-responce
+          .product_exibit__image-box__image
             = f.file_field :image ,style: "display:none"
             %pre  
               ドラッグアンドドロップ
-              またはクリックしてファイルをアップロード
-        .product_exibit--wrap
+              またはクリックしてファイルをアップロード     
       .product_exibit__content
         .product_exibit__form
           .field
@@ -106,28 +102,29 @@
                 %p 販売利益
               .field.product_exibit__form__bottom__text__right
                 %p ¥300
-
       .product_exibit__content
-        .product_exibit__content__text
-          %p  
-            =link_to "禁止されている出品","#"
-            、
-            =link_to "行為","#"
-            を必ずご確認ください。
-          %p  
-            またブランド品でシリアルナンバー等がある場合はご記載ください。
-            = link_to "偽ブランドの販売","#"
-            は犯罪であり処罰される可能性があります。
-          %p
-            また、出品をもちまして
-            = link_to "加盟店規約","#"
-            に同意したことになります。
-        .product_exibit__form
-          .actions
-            = f.submit "出品する",class:"user-login__form__submit user-btn"
-
-          = link_to "もどる", "#", class:"product_exibit__form__back-btn" 
-
-= render partial: "product_exibit"
-= render partial: "/small_footer"
-      
+        - if request.path_info == new_product_path
+          .product_exibit__content__text
+            %p  
+              =link_to "禁止されている出品","#"
+              、
+              =link_to "行為","#"
+              を必ずご確認ください。
+            %p  
+              またブランド品でシリアルナンバー等がある場合はご記載ください。
+              = link_to "偽ブランドの販売","#"
+              は犯罪であり処罰される可能性があります。
+            %p
+              また、出品をもちまして
+              = link_to "加盟店規約","#"
+              に同意したことになります。 
+          .product_exibit__form
+            .actions
+              = f.submit "出品する",class:"user-login__form__submit user-btn"
+            = link_to "もどる", "#", class:"product_exibit__form__back-btn" 
+        - else
+          .product_exibit__form
+            .actions
+              = f.submit "変更する",class:"user-login__form__submit user-btn"
+            = link_to "もどる", "#", class:"product_exibit__form__back-btn" 
+          

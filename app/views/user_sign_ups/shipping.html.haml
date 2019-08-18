@@ -20,38 +20,38 @@
         .field
           %i お名前
           %span.user-sign-up__form__required  必須
-          = f.email_field :email, autofocus: true,placeholder:"例)目瑠花理",class:"user-form-input margin-bottom-short"
-          = f.email_field :email, autofocus: true,placeholder:"例)太郎",class:"user-form-input"
+          = f.text_field :family_name_kanji_shipping, autofocus: true,placeholder:"例)目瑠花理",class:"user-form-input margin-bottom-short"
+          = f.text_field :first_name_kanji_shipping, autofocus: true,placeholder:"例)太郎",class:"user-form-input"
         .field
           %i お名前カナ
           %span.user-sign-up__form__required  必須
-          = f.email_field :email, autofocus: true,placeholder:"例)メルカリ",class:"user-form-input margin-bottom-short"
-          = f.email_field :email, autofocus: true,placeholder:"例)タロウ",class:"user-form-input"
+          = f.text_field :family_name_kana_shipping, autofocus: true,placeholder:"例)メルカリ",class:"user-form-input margin-bottom-short"
+          = f.text_field :first_name_kana_shipping, autofocus: true,placeholder:"例)タロウ",class:"user-form-input"
         .field
           %i 郵便番号
           %span.user-sign-up__form__required  必須
-          = f.email_field :email, autofocus: true,placeholder:"例)123-4567",class:"user-form-input"
+          = f.text_field :post_number, autofocus: true,placeholder:"例)123-4567",class:"user-form-input"
         .field
           %i 都道府県
           %span.user-sign-up__form__required  必須
           %br
           .user-sign-up__form__select.select-long
-            = f.select :year, [["北海道", "北海道"], ["沖縄", "沖縄"]],  prompt:"--"
+            = f.select :shipping_origin_id, @shipping_origin.map{|t| [t.name, t.id]},  prompt:"---"
 
         .field
           %i 市区町村
           %span.user-sign-up__form__required  必須
-          = f.email_field :email, autofocus: true,placeholder:"例)横浜市",class:"user-form-input"
+          = f.text_field :village, autofocus: true,placeholder:"例)横浜市",class:"user-form-input"
         .field
           %i 番地
           %span.user-sign-up__form__required  必須
-          = f.email_field :email, autofocus: true,placeholder:"例)鮴松55-55",class:"user-form-input"
+          = f.text_field :address, autofocus: true,placeholder:"例)鮴松55-55",class:"user-form-input"
           %i 建物名
           %span.user-sign-up__form__any  任意
-          = f.email_field :email, autofocus: true,placeholder:"例)煮干ビル99階",class:"user-form-input"
+          = f.text_field :building_name, autofocus: true,placeholder:"例)煮干ビル99階",class:"user-form-input"
           %i 電話
           %span.user-sign-up__form__any  任意
-          = f.email_field :email, autofocus: true,placeholder:"例)090894893029",class:"user-form-input"
+          = f.text_field :phone_number, autofocus: true,placeholder:"例)090894893029",class:"user-form-input"
 
         .actions
           = f.submit "次へ進む",class:"user-login__form__submit user-btn"

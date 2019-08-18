@@ -1,0 +1,12 @@
+= render partial: "header"
+= render partial: "product_detail"
+
+.item--changing
+  = link_to "商品の編集" ,edit_product_path(@product),class: 'edit--btn'
+  %p or
+  = form_with do |f|
+    = f.submit '出品を一旦停止する',class: "btn-gray"
+  = link_to "この商品を削除する",product_path,method: :delete,class: "btn-gray"
+
+= render partial: "comment"
+= render partial: "footer"

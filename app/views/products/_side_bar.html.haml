@@ -10,7 +10,7 @@
       %h3 いいね一覧
     = link_to "#", class:"side-bar__content" do
       %h3 出品する
-    = link_to "#", class:"side-bar__content" do
+    = link_to listing_user_information_path(current_user) ,class:"side-bar__content" do
       %h3 出品した商品 - 出品中
     = link_to "#", class:"side-bar__content" do
       %h3 出品した商品 - 取引中
