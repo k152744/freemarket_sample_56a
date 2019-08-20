@@ -1,6 +1,9 @@
 require "shrine"
-require "shrine/storage/file_system"
-require 'shrine/storage/s3'
+if Rails.env.production?
+    require 'shrine/storage/s3'
+else
+    require "shrine/storage/file_system"
+end
 
 if Rails.env.production?
 s3_options = {
