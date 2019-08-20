@@ -38,7 +38,7 @@
     %h2.side-bar__box__text 設定
     = link_to edit_user_path(current_user), class:"side-bar__content" do
       %h3 プロフィール
-    = link_to "#", class:"side-bar__content" do
+    = link_to shipping_edit_user_information_path(current_user), class:"side-bar__content" do
       %h3 発送元・お届け先住所変更
     = link_to registrate_card_path(current_user), class:"side-bar__content" do
       %h3 支払方法

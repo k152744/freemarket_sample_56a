@@ -1,3 +1,10 @@
+-if Rails.env.production?
+  -facebook_url = "#"
+  -google_url = "#"
+-else
+  -facebook_url = user_facebook_omniauth_authorize_path
+  -google_url = user_google_oauth2_omniauth_authorize_path
+
 = render partial: "/small_header"
 .user-sign-up
   .user-sign-up__title
@@ -7,11 +14,11 @@
       = link_to new_user_registration_path, method: 'get' ,class:"user-btn user-btn-mail" do
         = icon "far fa-envelope btn-icon",class:""
         メールアドレスで登録する
-      = link_to user_facebook_omniauth_authorize_path, method: :post do
+      = link_to facebook_url, method: :post do
         %button.user-btn.user-btn-facebook  
           = icon "fab fa-facebook-square btn-icon",class:""
           Facebookでログイン
-      = link_to user_google_oauth2_omniauth_authorize_path, method: :post do
+      = link_to google_url, method: :post do
         %button.user-btn.user-btn-google 
           Googleでログイン
 = render partial: "/small_footer"

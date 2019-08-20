@@ -1,4 +1,4 @@
-if(document.URL.match("cards/new")){
+if(document.URL.match("cards/new") || document.URL.match("user_sign_ups/card")){
   document.addEventListener(
     "DOMContentLoaded", (e) => {
       Payjp.setPublicKey("pk_test_85ee9e404a2187c0470a828d");
