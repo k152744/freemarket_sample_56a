@@ -1,11 +1,9 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index,:show]
-
   before_action :set_product,only: [:destroy,:update]
-  before_action :header_big_category, only: [:index,:show,:detail,:edit,:destroy,:search]
-  before_action :header_brand, only: [:index,:show,:detail,:edit,:destroy,:search]
-
-
+  before_action :header_big_category, only: [:index,:show,:detail,:edit,:destroy,:search,:search_another]
+  before_action :header_brand, only: [:index,:show,:detail,:edit,:destroy,:search,:search_another]
+  
   def index
     @pickup_categories = BigCategory.all.limit(3).includes(:products)
     @pickup_brands = Brand.all.limit(3).includes(:products)
@@ -122,7 +120,42 @@ class ProductsController < ApplicationController
   end
 
   def search
+    @keyword = params[:q][:name_cont]
+    @search = Product.ransack(params[:q])
+    @big_category = BigCategory.pluck(:name)
+    @middle_category = ""
+    @small_category = SmallCategory.all
+    @products = @search.result
+    
+  end
+  
+  def search_another
+    @keyword = params[:keyword]
+    @big_category = BigCategory.pluck(:name)
+    @middle_category = ""
+    @small_category = SmallCategory.all
+    @search = Product.ransack(params[:q])
     @products = Product.where('name LIKE(?)', "%#{params[:keyword]}%").limit(132)
+    render template: "products/search" 
+  end
+
+  def category
+    bigcategory=BigCategory.where("name = ?",params[:keyword])
+    @middlecategory=MiddleCategory.where("big_category_id = ?",bigcategory[0].id)
+    respond_to do |format|
+      format.html { render :template => "products/search" }
+      format.json
+    end
+  end
+
+  def category_middle
+    
+    middlecategory = MiddleCategory.where("(name = ?) and (big_category_id = ?)",params[:keyword],params[:id])
+    @smallcategory = SmallCategory.where("middle_category_id = ?",middlecategory[0].id)
+    respond_to do |format|
+      format.html { render :template => "products/search" }
+      format.json
+    end
   end
 
   def detail
