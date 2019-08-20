@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   resources :user_informations do
     member do
       get :listing
+      get :shipping_edit
+      patch :shipping_change
     end
   end
 
