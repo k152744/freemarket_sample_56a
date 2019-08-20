@@ -7,12 +7,12 @@ class ApplicationController < ActionController::Base
   private
 
   def header_big_category
-    @big_categories = BigCategory.all
+    @big_categories = BigCategory.all.includes(middle_categories: :small_categories)
   end
   def header_brand
-    @brands = Brand.all
+    @brands = Brand.order("RAND()").limit(5)
   end
-  
+
   def production?
     Rails.env.production?
   end
