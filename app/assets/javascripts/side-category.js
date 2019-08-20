@@ -16,13 +16,11 @@ $(function () {
 });
 $(function(){
   $("#status-all").on("click",function(){
-    console.log("クリック")
     $(".status-checkbox").prop('checked', this.checked);
   })
 })
 $(function(){
   $("#delivary-fee-all").on("click",function(){
-    console.log("クリック")
     $(".delivary-fee-checkbox").prop('checked', this.checked);
   })
 })
@@ -88,7 +86,7 @@ $(function() {
     $(".side-bar__box__groups__form__checkboxs__hidden").slideDown(0);
     //選択したvalue値を変数に格納
     var middle = $(this).val();
-    var bigId =  $(this).children().attr("data-big-id");
+    var bigId =  $(this).children().data("big-id");
 
     $.ajax({
       url: "/products/category_middle",

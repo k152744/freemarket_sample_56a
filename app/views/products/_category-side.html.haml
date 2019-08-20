@@ -12,7 +12,7 @@
       %div.side-bar__box__groups__form
         = f.label "" ,class: "side-bar__box__groups__form--label fas fa-list"  do
           %span カテゴリーを選択する
-        = f.select :big_category_name_cont,@big_category,{:prompt => "選択してください"},  class: 'side-bar__box__btn side-bar__box__btn__change'
+        = f.select :big_category_name_cont,@big_category,{prompt:"選択してください"},  class: 'side-bar__box__btn side-bar__box__btn__change'
         = f.select :middle_category_name_cont,@middle_category,{},  class: 'side-bar__box__btn side-bar__box__btn__select'
         %div.side-bar__box__groups__form__checkboxs.side-bar__box__groups__form__checkboxs__hidden.clearfix
           %div.side-bar__box__groups__form__checkboxs__label
