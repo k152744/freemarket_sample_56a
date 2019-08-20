@@ -1,11 +1,12 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index,:show]
-  before_action :header_big_category, only: [:index,:show,:search,:search_another]
-  before_action :header_brand, only: [:index,:show,:search ,:search_another]
+  before_action :set_product,only: [:destroy,:update]
+  before_action :header_big_category, only: [:index,:show,:detail,:edit,:destroy,:search,:search_another]
+  before_action :header_brand, only: [:index,:show,:detail,:edit,:destroy,:search,:search_another]
   
   def index
     @pickup_categories = BigCategory.all.limit(3).includes(:products)
-    @pickup_brands = Brand.all.limit(3).includes(:products) 
+    @pickup_brands = Brand.all.limit(3).includes(:products)
   end
 
   def show
@@ -15,8 +16,34 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @product = Product.includes(:user,:big_category,:middle_category,:small_category,:brand,:delivary_day,:delivary_fee,:delivary_way,:shipping_origin,:status,:images).find(params[:id])
+
+    @big_category = BigCategory.all
+    @middle_category = MiddleCategory.all
+    @small_category = SmallCategory.all
+    @brand = Brand.all
+    @delivary_day = DelivaryDay.all
+    @delivary_fee = DelivaryFee.all
+    @delivary_way = DelivaryWay.all
+    @shipping_origin = ShippingOrigin.all
+    @status = Status.all
+
+    @image = Image.where("product_id = ?",@product.id)
   end
-  
+
+  def update
+    if current_user.id == @product.user_id
+      if @product.update(product_params)
+        image = Image.where("product_id = ?",@product.id)
+        image.update(image_params(@product.id))
+        redirect_to root_path
+      else
+        render :edit
+      end
+    end
+  end
+
+
 
   def new
     @big_category = BigCategory.all
@@ -31,20 +58,65 @@ class ProductsController < ApplicationController
 
     @product = Product.new
     @image = Image.new
+    
   end
 
   def create
-
     product = Product.new(product_params)
-    if product.save!
-      id = product.id
-      image = Image.new(image_params(id))
-      image.save
-      redirect_to root_path
+    image = Image.new(image_params)
+    if image.image.present?
+      if product.save!
+        image.product_id = product.id
+        image.save!
+        respond_to do |format|
+          format.html {redirect_to root_path }
+          format.json { render json: {id: product.id} }
+        end
+      else
+        redirect_to action: "new"
+      end
+    else
+      redirect_to action: "new"
+    end
+  end
+
+  def destroy
+    if current_user.id == @product.user_id
+      if @product.destroy
+        redirect_to root_path
+      else
+        render :detail
+      end
     end
   end
 
   def buy
+    @product = Product.find(params[:id])
+    card = Card.where(user_id: current_user.id).first
+    if card.present?
+      Payjp.api_key = Rails.application.credentials.PAYJP_SECRET_KEY
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @card = customer.cards.retrieve(card.card_id)
+
+      case @card.brand
+      when "Visa"
+        @card_src = "visa.svg"
+      when "JCB"
+        @card_src = "jcb.svg"
+      when "MasterCard"
+        @card_src = "master-card.svg"
+      when "American Express"
+        @card_src = "american_express.svg"
+      when "Diners Club"
+        @card_src = "dinersclub.svg"
+      when "Discover"
+        @card_src = "discover.svg"
+      end
+
+    else
+      @card = nil
+      @card_src = nil
+    end
   end
 
   def search
@@ -86,13 +158,20 @@ class ProductsController < ApplicationController
     end
   end
 
+  def detail
+    @product = Product.includes(:user,:big_category,:middle_category,:small_category,:brand,:delivary_day,:delivary_fee,:delivary_way,:shipping_origin,:status,:images).find(params[:id])
+  end
+
   private
   def product_params
     params.require(:product).permit(:name,:detail,:big_category_id,:middle_category_id,:small_category_id,:brand_id,:delivary_day_id,:delivary_fee_id,:delivary_way_id,:shipping_origin_id,:status_id,:price).merge(listing_status:"出品中",user_id:current_user.id)
   end
 
-  def image_params(id)
-    params.require(:product).permit(:image).merge(product_id:id)
+  def image_params
+    params.require(:product).permit(:image)
   end
 
+  def set_product
+    @product = Product.find(params[:id])
+  end
 end

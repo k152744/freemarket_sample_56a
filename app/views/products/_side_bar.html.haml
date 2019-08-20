@@ -10,7 +10,7 @@
       %h3 いいね一覧
     = link_to "#", class:"side-bar__content" do
       %h3 出品する
-    = link_to "#", class:"side-bar__content" do
+    = link_to listing_user_information_path(current_user) ,class:"side-bar__content" do
       %h3 出品した商品 - 出品中
     = link_to "#", class:"side-bar__content" do
       %h3 出品した商品 - 取引中
@@ -38,9 +38,9 @@
     %h2.side-bar__box__text 設定
     = link_to edit_user_path(current_user), class:"side-bar__content" do
       %h3 プロフィール
-    = link_to "#", class:"side-bar__content" do
+    = link_to shipping_edit_user_information_path(current_user), class:"side-bar__content" do
       %h3 発送元・お届け先住所変更
-    = link_to card_user_information_path(current_user), class:"side-bar__content" do
+    = link_to registrate_card_path(current_user), class:"side-bar__content" do
       %h3 支払方法
     = link_to "#", class:"side-bar__content" do
       %h3 メール/パスワード

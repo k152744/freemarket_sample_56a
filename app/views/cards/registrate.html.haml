@@ -1,4 +1,6 @@
 = render "products/header"
+- breadcrumb :pay
+= render "/bread"
 .mypages
   .mypages__main
     .mypage--card
@@ -10,7 +12,7 @@
             %ul
           .mypage--card__inner__top
             .mypage--card__inner__top__content
-              = link_to add_card_user_path do
+              = link_to new_card_path do
                 = icon 'far fa-credit-card' ,class:"fa-credit-card"
                 クレジットカードを追加する
           .mypage--card__inner__bottom

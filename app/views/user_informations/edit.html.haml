@@ -16,13 +16,13 @@
                 = icon 'fas fa-chevron-right' ,class:"fa-chevron-right"
           .form-group
             %label お名前
-            %p 山田
+            %p #{current_user.family_name_kanji} #{current_user.first_name_kanji} 
           .form-group
             %label お名前カナ
-            %p ヤマダ
+            %p #{current_user.family_name_kana} #{current_user.first_name_kana} 
           .form-group
             %label 生年月日
-            %p 2000/01/01
+            %p #{current_user.birthday.strftime("%Y/%m/%d")}
           .form-group
             %label 郵便番号
             %span 任意
