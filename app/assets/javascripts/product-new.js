@@ -1,4 +1,3 @@
-// 画像アップロード
 $(function(){
   function buildHTMLImage(index){
     var html = `<div class="product_exibit__add-card" id = "card-${index}">
@@ -16,9 +15,12 @@ $(function(){
   var defaultwidth = 620
   var delete_array = []
   var maxSize = 5 * 1024 * 1024;
+  var image_data = []
   $('#product_image').change(function(e){
     var file = e.target.files[0];
     var reader = new FileReader();
+    console.log(e.target)
+    console.log(e.target.files[0])
     if(file.type.indexOf("image") < 0){
       alert("画像ファイルを指定してください。");
       return false;
@@ -37,6 +39,7 @@ $(function(){
         var id = 'img-' + index
         document.getElementById(id).src = e.target.result;
         document.getElementById(id).title = file.name;
+        image_data.push(file)
       };
     })(file);
     reader.readAsDataURL(file);
@@ -103,6 +106,9 @@ $(function(){
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action')
+    formData.append('product[image][]',image_data );
+    for(item of formData) console.log(item);
+    console.log(url)
     $.ajax({
       url: url,
       type: "POST",

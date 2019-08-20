@@ -64,6 +64,7 @@ class ProductsController < ApplicationController
   end
 
   def create
+    binding.pry
     product = Product.new(product_params)
     image = Image.new(image_params)
     if image.image.present?
