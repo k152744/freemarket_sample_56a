@@ -60,6 +60,7 @@ class ProductsController < ApplicationController
 
     @product = Product.new
     @image = Image.new
+    
   end
 
   def create
@@ -68,8 +69,13 @@ class ProductsController < ApplicationController
     if image.image.present?
       if product.save!
         image.product_id = product.id
-        image.save
-        redirect_to root_path
+        image.save!
+        respond_to do |format|
+          format.html {redirect_to root_path }
+          format.json { render json: {id: product.id} }
+        end
+      else
+        redirect_to action: "new"
       end
     else
       redirect_to action: "new"

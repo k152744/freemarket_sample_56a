@@ -2,4 +2,11 @@
 = render partial: "/small_header"
 = render partial: "product_exibit"
 = render partial: "/small_footer"
-      
+.exhibit-modal
+  .exhibit-modal__content
+    .exhibit-modal__content__title
+      %p 出品が完了しました
+    .exhibit-modal__content__text
+      %p　あなたが出品した商品は「出品した商品一覧」からいつでも確認できます。
+    = link_to new_product_path, class: "exhibit-modal__content__btn" do
+      %p 続けて出品する

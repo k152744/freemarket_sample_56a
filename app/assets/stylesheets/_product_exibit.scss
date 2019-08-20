@@ -36,6 +36,12 @@
       float: right;
       margin-left: 2%;
       margin-top:30px;
+      transition: .3s;
+      transition-property:box-shadow;
+      &.dragover{
+        border: none;
+        box-shadow: 0px 0px 5px #aaa;
+      }
       pre{
         position: absolute;
         top: 40%;
@@ -263,3 +269,52 @@
   text-align: right;
 }
 
+.exhibit-modal{
+  position: fixed;
+  top:0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 400;
+  background-color: rgba($color: #000000, $alpha: 0.6);
+  display: none;
+  &__content{
+    background: #fff;
+    left: 50%;
+    padding: 40px;
+    position: absolute;
+    top: 30%;
+    transform: translate(-50%,-50%);
+    width: 620px;
+    text-align: center;
+    &__title{
+      font-size:20px;
+    }
+    &__text{
+      display: block;
+      margin-top: 20px;
+      padding: 40px 0px;
+    }
+    &__btn{
+      text-decoration: none;
+      display: block;
+      width:540px;
+      height:50px;
+      background-color: #ea352d;
+      color: #fff;
+      line-height: 50px;
+      font-size: 18px;
+      &:hover{
+        background-color: rgba($color: #ea352d, $alpha: .7);
+      }
+    }
+    &__link{
+      text-decoration: none;
+      display: block;
+      padding-top: 20px;
+      &:hover{
+        opacity: .7;
+      }
+    }
+  }
+}
