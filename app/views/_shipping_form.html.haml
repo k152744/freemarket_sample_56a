@@ -1,0 +1,60 @@
+
+.user-sign-up
+  .user-sign-up__title
+    -if request.path_info == "/user_sign_ups/shipping"
+      %p  発送元・お届け先住所入力
+    -else
+      %p  発送元・お届け先住所変更
+  .user-sign-up__content  
+    .user-sign-up__title
+    -if request.path_info == "/user_sign_ups/shipping"
+      - url = post_controll_user_sign_ups_path
+      - method = :post
+    -else
+      - url = shipping_change_user_information_path   
+      - method = :patch
+    = form_with  model: @user_info,url: url ,local: true, method: method do |f|
+      .user-sign-up__form
+        .field
+          %i お名前
+          %span.user-sign-up__form__required  必須
+          = f.text_field :family_name_kanji_shipping, autofocus: true,placeholder:"例)目瑠花理",class:"user-form-input margin-bottom-short"
+          = f.text_field :first_name_kanji_shipping, autofocus: true,placeholder:"例)太郎",class:"user-form-input"
+        .field
+          %i お名前カナ
+          %span.user-sign-up__form__required  必須
+          = f.text_field :family_name_kana_shipping, autofocus: true,placeholder:"例)メルカリ",class:"user-form-input margin-bottom-short"
+          = f.text_field :first_name_kana_shipping, autofocus: true,placeholder:"例)タロウ",class:"user-form-input"
+        .field
+          %i 郵便番号
+          %span.user-sign-up__form__required  必須
+          = f.text_field :post_number, autofocus: true,placeholder:"例)123-4567",class:"user-form-input"
+        .field
+          %i 都道府県
+          %span.user-sign-up__form__required  必須
+          %br
+          .user-sign-up__form__select.select-long
+            = f.select :shipping_origin_id, @shipping_origin.map{|t| [t.name, t.id]},  prompt:"---"
+
+        .field
+          %i 市区町村
+          %span.user-sign-up__form__required  必須
+          = f.text_field :village, autofocus: true,placeholder:"例)横浜市",class:"user-form-input"
+        .field
+          %i 番地
+          %span.user-sign-up__form__required  必須
+          = f.text_field :address, autofocus: true,placeholder:"例)鮴松55-55",class:"user-form-input"
+          %i 建物名
+          %span.user-sign-up__form__any  任意
+          = f.text_field :building_name, autofocus: true,placeholder:"例)煮干ビル99階",class:"user-form-input"
+          %i 電話
+          %span.user-sign-up__form__any  任意
+          = f.text_field :phone_number, autofocus: true,placeholder:"例)090894893029",class:"user-form-input"
+
+        .actions
+          -if request.path_info == "/user_sign_ups/shipping"
+            = f.submit "次へ進む",class:"user-login__form__submit user-btn"
+          -else
+            = f.submit "変更する",class:"user-login__form__submit user-btn"
+
+

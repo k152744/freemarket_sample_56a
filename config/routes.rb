@@ -1,10 +1,19 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users,:controllers => { 
+    :registrations => 'users/registrations',
+    :omniauth_callbacks => "users/omniauth_callbacks" }
+
   root to: "products#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :products do
+    resources :cards do
+      member do
+        get :pay
+      end
+    end
     member do
       get :buy
+      get :detail
     end
     collection do
       get :search
@@ -16,14 +25,23 @@ Rails.application.routes.draw do
   resources :users  do
     member do
       get :logout
-      get :add_card
     end
   end
-  resources :user_informations  do
+  resources :cards do
     member do
       get :card
+      get :registrate
     end
   end
+
+  resources :user_informations do
+    member do
+      get :listing
+      get :shipping_edit
+      patch :shipping_change
+    end
+  end
+
   resource :user_sign_ups do
     collection do
       get :tell

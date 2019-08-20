@@ -1,0 +1,19 @@
+= render "products/header"
+.mypages
+  .mypages__main
+    .listing--container
+      %h2.item--title 出品した商品
+      %ul.listing--tabs
+        %li.active
+          %h3 出品中
+        %li
+          %h3 取引中
+        %li
+          %h3 売却済
+      .listing--container__user
+        %ul
+          %li
+            = render partial: "list_content", collection: @products ,as: "product"
+  = render "products/side_bar" 
+= render "products/footer"
+= render "products/exhibit_btn"
