@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     end
     collection do
       get :search
+      get :search_another
+      get :category
+      get :category_middle
     end
   end
   resources :users  do

@@ -1,0 +1,95 @@
+.side-bar
+  .side-bar__box
+    = form_with url: search_another_products_path, method: :get ,local: true ,class:"" do |f|
+      = f.select :sample,["並べ替え","価格の安い順"] ,{},  class: 'side-bar__box__btn'
+  = search_form_for @search, url: search_products_path do |f|  
+    .side-bar__box__groups.clearfix
+      %h3 詳細検索
+      %div.side-bar__box__groups__form
+        = f.label "" ,class: "side-bar__box__groups__form--label fas fa-plus" do
+          %span キーワードを追加する
+        = f.search_field :name_cont ,placeholder: '検索するテキストを入力...',class:"side-bar__box__groups__form--text_field"
+      %div.side-bar__box__groups__form
+        = f.label "" ,class: "side-bar__box__groups__form--label fas fa-list"  do
+          %span カテゴリーを選択する
+        = f.select :big_category_name_cont,@big_category,{:prompt => "選択してください"},  class: 'side-bar__box__btn side-bar__box__btn__change'
+        = f.select :middle_category_name_cont,@middle_category,{},  class: 'side-bar__box__btn side-bar__box__btn__select'
+        %div.side-bar__box__groups__form__checkboxs.side-bar__box__groups__form__checkboxs__hidden.clearfix
+          %div.side-bar__box__groups__form__checkboxs__label
+              
+      %div.side-bar__box__groups__form
+        = f.label "" ,class: "side-bar__box__groups__form--label fas fa-tag" do
+          %span  ブランド名から探す
+        = f.search_field :brand_name_cont ,placeholder: '例 )シャネル',class:"side-bar__box__groups__form--text_field"
+      %div.side-bar__box__groups__form
+        = f.label "" ,class: "side-bar__box__groups__form--label fas fa-balance-scale " do
+          %span  サイズを指定する
+        = f.select :listing_status_cont,["出品中","サンプル2"],{},  class: 'side-bar__box__btn' 
+      %div.side-bar__box__groups__form
+        = f.label "" ,class: "side-bar__box__groups__form--label fas fa-money-check-alt" do
+          %span  価格
+        = f.search_field :price_eq ,placeholder: '例 )¥300',class:"side-bar__box__groups__form--text_field"
+        %div.side-bar__box__groups__form__content
+          = f.search_field :price_gteq ,placeholder: '¥min',class:"side-bar__box__groups__form--text_field"
+          %span#price-form-another ~
+          = f.search_field :price_lteq ,placeholder: '¥max',class:"side-bar__box__groups__form--text_field"
+      %div.side-bar__box__groups__form       
+        = f.label "" ,class: "side-bar__box__groups__form--label fas fa-star"  do
+          %span  商品の状態
+        %div.side-bar__box__groups__form__checkboxs.clearfix
+          %div.side-bar__box__groups__form__checkboxs__label
+            = f.check_box :status_name_cont_any,{id:'status-all',multiple: true},checked_value = "", nil
+            = f.label "すべて" ,class: "side-bar__box__groups__form--label"
+          %div.side-bar__box__groups__form__checkboxs__label
+            = f.check_box :status_name_cont_any,{class:"status-checkbox",multiple: true},checked_value = "新品、未使用",nil
+            = f.label "新品、未使用" ,class: "side-bar__box__groups__form--label" 
+          %div.side-bar__box__groups__form__checkboxs__label
+            = f.check_box :status_name_cont_any,{class:"status-checkbox",multiple: true},checked_value = "未使用に近い", nil
+            = f.label "未使用に近い" ,class: "side-bar__box__groups__form--label" 
+          %div.side-bar__box__groups__form__checkboxs__label
+            = f.check_box :status_name_cont_any,{class:"status-checkbox",multiple: true},checked_value = "目立った傷や汚れなし",nil  
+            = f.label "目立った傷や汚れなし" ,class: "side-bar__box__groups__form--label" 
+          %div.side-bar__box__groups__form__checkboxs__label
+            = f.check_box :status_name_cont_any,{class:"status-checkbox",multiple: true},checked_value = "やや傷や汚れあり", nil  
+            = f.label "やや傷や汚れあり" ,class: "side-bar__box__groups__form--label" 
+          %div.side-bar__box__groups__form__checkboxs__label  
+            = f.check_box :status_name_cont_any,{class:"status-checkbox",multiple: true},checked_value = "傷や汚れあり",nil
+            = f.label "傷や汚れあり" ,class: "side-bar__box__groups__form--label" 
+          %div.side-bar__box__groups__form__checkboxs__label
+            = f.check_box :status_name_cont_any,{class:"status-checkbox",multiple: true},checked_value = "全体的に状態が悪い",nil
+            = f.label "全体的に状態が悪い" ,class: "side-bar__box__groups__form--label" 
+          
+      %div.side-bar__box__groups__form
+        = f.label "" ,class: "side-bar__box__groups__form--label fas fa-truck" do
+          %span  配送料の負担
+        %div.side-bar__box__groups__form__checkboxs.clearfix
+          %div.side-bar__box__groups__form__checkboxs__label
+            = f.check_box :delivary_fee_name_cont_any,{id:'delivary-fee-all',multiple: true},checked_value = "", nil 
+            = f.label "すべて" ,class: "side-bar__box__groups__form--label" 
+          %div.side-bar__box__groups__form__checkboxs__label
+            = f.check_box :delivary_fee_name_cont_any,{class:"delivary-fee-checkbox",multiple: true},checked_value = "着払い(購入者負担)", nil
+            = f.label "着払い(購入者負担)" ,class: "side-bar__box__groups__form--label" 
+          %div.side-bar__box__groups__form__checkboxs__label
+            = f.check_box :delivary_fee_name_cont_any,{class:"delivary-fee-checkbox",multiple: true},checked_value = "送料込み(出品者負担)", nil   
+            = f.label "送料込み(出品者負担)" ,class: "side-bar__box__groups__form--label" 
+      %div.side-bar__box__groups__form
+        = f.label "" ,class: "side-bar__box__groups__form--label fas fa-cart-plus" do
+          %span  販売状況
+        %div.side-bar__box__groups__form__checkboxs.clearfix
+          %div.side-bar__box__groups__form__checkboxs__label
+            = f.check_box :listing_status_cont_any,{id:'listing_status-all',multiple: true},checked_value = "", nil
+            = f.label "すべて" ,class: "side-bar__box__groups__form--label" 
+          %div.side-bar__box__groups__form__checkboxs__label
+            = f.check_box :listing_status_cont_any,{class:"listing_status-checkbox",multiple: true},checked_value = "出品中", nil
+            = f.label "販売中" ,class: "side-bar__box__groups__form--label" 
+          %div.side-bar__box__groups__form__checkboxs__label  
+            = f.check_box :listing_status_cont_any,{class:"listing_status-checkbox",multiple: true},checked_value = "売り切れ", nil
+            = f.label "売り切れ" ,class: "side-bar__box__groups__form--label" 
+      %div.side-bar__box__groups__form__checkboxs.category-btn.clearfix
+        %input{type:"button",class:"category-btn__clear",value:"クリア"}
+        %input{type:"submit",class:"category-btn__regist",value:"完了"}
+    
+      
+
+
+    

@@ -26,6 +26,8 @@ class ApplicationController < ActionController::Base
     tell_user_sign_ups_path
 
   end
+
+
   protected
 
   def configure_permitted_parameters

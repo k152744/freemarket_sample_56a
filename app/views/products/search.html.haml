@@ -2,9 +2,12 @@
 .mypages
   .mypages__main.crearfix
     .search-result
-      %h2 
-        テスト
-        %span#search-result__text の検索結果
+      %h2
+        - if @keyword.present?  
+          = @keyword
+          %span#search-result__text の検索結果
+        - else 
+          新着情報  
       .search-result__number
         132件の検索結果
       .search-result__items
@@ -19,5 +22,5 @@
                   = '¥ ' + product.price.to_s
                   = icon 'fas fa-heart',class:"item-price-iine"    
 
-  = render "products/side_bar" 
+  = render "products/category-side" 
 = render "products/footer"  
