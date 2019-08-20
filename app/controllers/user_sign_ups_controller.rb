@@ -1,7 +1,7 @@
 class UserSignUpsController < ApplicationController
   skip_before_action :authenticate_user!
   require "payjp"
-  
+
   def tell
     path = Rails.application.routes.recognize_path(request.referer)
     if path[:controller] != "users/registrations" && path[:controller] != "users"
@@ -55,7 +55,6 @@ class UserSignUpsController < ApplicationController
         redirect_to shipping_user_sign_ups_url       
       end
     elsif  path[:controller] == "user_sign_ups" && path[:action] == "card"
-      binding.pry
       Payjp.api_key = Rails.application.credentials.PAYJP_SECRET_KEY
       customer = Payjp::Customer.create(
         description: 'test-card',
