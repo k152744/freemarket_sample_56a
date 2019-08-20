@@ -2,7 +2,7 @@
   .product_exibit__title
     %p  商品の情報を入力
   .product_exibit__contents
-    = form_with model:[@product] ,local: true  do |f|
+    = form_with model:[@product],id: "new-product" ,local: true  do |f|
       .product_exibit__image-box.clearfix
         .product_exibit__form
           .field
@@ -97,12 +97,12 @@
               .field.product_exibit__form__middle__text__left
                 %p 販売手数料 (10%)
               .field.product_exibit__form__middle__text__right
-                %p ¥33
+                %p -
             .field.product_exibit__form__bottom.clearfix
               .field.product_exibit__form__bottom__text__left
                 %p 販売利益
               .field.product_exibit__form__bottom__text__right
-                %p ¥300
+                %p -
 
       .product_exibit__content
         .product_exibit__content__text
