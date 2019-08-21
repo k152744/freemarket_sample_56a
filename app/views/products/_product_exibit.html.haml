@@ -11,8 +11,12 @@
             %p  最大10枚までアップロードできます
         = f.label :image, class: "form-image" do
           .product_exibit__image-box__image#width-responce
-            = f.file_field :image ,style: "display:none"
-            %pre  
+            = f.file_field :image, multiple: true, style: "display:none"
+            %pre
+              ドラッグアンドドロップ
+              またはクリックしてファイルをアップロード
+          .product_exibit__image-box__image.product_exibit__image-box__image--second#width-responce-second{ style: "display:none;"}
+            %pre
               ドラッグアンドドロップ
               またはクリックしてファイルをアップロード
         .product_exibit--wrap
