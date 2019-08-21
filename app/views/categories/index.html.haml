@@ -1,0 +1,31 @@
+= render partial: "/products/header"
+- breadcrumb :categories
+= render "/bread"
+.category_show_contents
+  .category_names_content
+    %p カテゴリー一覧
+    -@category_all.each do |category|
+      =link_to category_path(category) ,class:"category_names_content__name" do
+        = category.name
+  .category_list_content
+    -@category_all.each do |big_category|
+      .category_list_content__box
+        .category_list_content__box__subject
+          = big_category.name
+        .category_list_content__box__text
+          .category_list_content__box__text__big
+            = link_to "すべて",category_path(big_category)
+          -big_category.middle_categories.each do |middle_category|
+            .category_list_content__box__text__middle
+              = middle_category.name
+            .category_list_content__box__text__small.clearfix
+              .category_list_content__box__text__small__box
+                = link_to "すべて",middle_category_path(middle_category)
+              -middle_category.small_categories.each do |small_category|
+                .category_list_content__box__text__small__box
+                  = link_to small_category_path(small_category) do
+                    = small_category.name
+
+
+= render partial: "/products/footer"
+= render "/products/exhibit_btn"

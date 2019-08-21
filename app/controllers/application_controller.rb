@@ -2,16 +2,17 @@ class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :production?
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
+  protect_from_forgery with: :exception
 
   private
 
   def header_big_category
-    @big_categories = BigCategory.all
+    @big_categories = BigCategory.all.includes(middle_categories: :small_categories)
   end
   def header_brand
-    @brands = Brand.all
+    @brands = Brand.order("RAND()").limit(5)
   end
-  
+
   def production?
     Rails.env.production?
   end
@@ -26,6 +27,8 @@ class ApplicationController < ActionController::Base
     tell_user_sign_ups_path
 
   end
+
+
   protected
 
   def configure_permitted_parameters

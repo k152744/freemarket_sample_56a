@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_14_072722) do
+ActiveRecord::Schema.define(version: 2019_08_19_032724) do
 
   create_table "big_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -130,6 +130,8 @@ ActiveRecord::Schema.define(version: 2019_08_14_072722) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "shipping_origin_id"
+    t.index ["shipping_origin_id"], name: "index_user_informations_on_shipping_origin_id"
     t.index ["user_id"], name: "index_user_informations_on_user_id"
   end
 
@@ -167,5 +169,6 @@ ActiveRecord::Schema.define(version: 2019_08_14_072722) do
   add_foreign_key "products", "statuses"
   add_foreign_key "products", "users"
   add_foreign_key "small_categories", "middle_categories"
+  add_foreign_key "user_informations", "shipping_origins"
   add_foreign_key "user_informations", "users"
 end
