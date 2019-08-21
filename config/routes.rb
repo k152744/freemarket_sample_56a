@@ -51,4 +51,11 @@ Rails.application.routes.draw do
       post :post_controll  
     end
   end
+
+  resources :categories do
+    member do
+      get :middle
+      get :small
+    end
+  end
 end

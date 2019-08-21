@@ -26,3 +26,26 @@ crumb :products do |product|
   link product.name, product_path(product)
   parent :root
 end
+
+crumb :categories do 
+  link "カテゴリー一覧", categories_path
+  parent :root
+end
+
+crumb :big_category do |category|
+  link category.name, category_path(category)
+  parent :categories
+end
+
+
+crumb :middle_category do |category|
+  big_category = BigCategory.find(category.big_category_id)
+  link category.name, middle_category_path(category)
+  parent :big_category,big_category
+end
+
+crumb :small_category do |category|
+  middle_category = MiddleCategory.find(category.middle_category_id)
+  link category.name, small_category_path(category)
+  parent :middle_category,middle_category
+end

@@ -1,0 +1,26 @@
+.category_products
+  .category_products__subject
+    %p  #{@category.name}の商品一覧
+  .category_products__boxes
+    -if @products.present?
+      -@products.each do |product|
+        .category_products__box
+          = link_to product_path(product) do
+            .category_products__box__image
+              = image_tag "#{product.images[0].image[:medium].url}" ,size: "188x188"
+            .category_products__box__content
+              .category_products__box__content__title
+                %p #{product.name}
+              .category_products__box__content__bottom
+                .category_products__box__content__bottom__price
+                  ¥#{product.price.to_s(:delimited)}
+                = icon 'far fa-heart',class:"category_products__box__content__bottom__favo"
+    -else
+      %p まだ商品はありません。
+  .category_products__detail
+    .category_products__detail__title
+      %p  #{@category.name}
+    .category_products__detail__content
+      %p  #{@category.name}の着ない服、いらない洋服を売るならメルカリへ。#{@category.name}の商品は100万点以上あります。人気のあるカテゴリーはシャツ/ブラウス(半袖/袖なし)とパーカーです。人気の商品は「値下げ❥今季 マジェスティックレゴン レースギャザーシアーブラウス モカ」や「x-girl アノラックパーカー」があります。#{@category.name}の買い取りやリサイクル処分、服の整理を検討中の方にお勧めです。
+= render partial: "/products/footer"
+= render "/products/exhibit_btn"

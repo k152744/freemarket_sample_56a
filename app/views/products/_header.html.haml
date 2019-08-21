@@ -16,27 +16,32 @@
           %ul
             %li.first-child#dropdowu-menus--open
               %h2
-                = link_to "#" do
+                = link_to categories_path do
                   = icon 'fas fa-list-ul' ,class:"fa-list"
                   %div#dropdowu-menus
                     カテゴリーから探す
               %ul#dropdowu-menus__menu
                 - @big_categories.each do |category| 
                   %li.dropdowu-menus--big
-                    = link_to "#" do
+                    = link_to category_path(category) do
                       = category.name
                   %ul#dropdowu-menus__menu--middle.dropdowu-menus__menu--middle
                     - category.middle_categories.each do |category|
                       %li.dropdowu-menus--middle
-                        = link_to "#" do
+                        = link_to middle_category_path(category) do
                           = category.name
                       %ul#dropdowu-menus__menu--small.dropdowu-menus__menu--small
+                        - index = 0
                         - category.small_categories.each do |category|
                           %li 
-                            =link_to "#" do
+                            =link_to small_category_path(category) do
                               = category.name
+                          -if index < 15
+                            -index += 1 
+                          -else
+                            -break
                 %li
-                  = link_to "#" do
+                  = link_to categories_path do
                     カテゴリー一覧
             %li.second-child
               %h2
