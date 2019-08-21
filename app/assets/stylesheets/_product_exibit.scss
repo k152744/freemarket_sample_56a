@@ -20,8 +20,6 @@
     z-index: 3;
     &__image{
       width:100%;
-      // width: calc(100% - 126px);
-      padding: 40px;
       position: relative;
       z-index: 5;
       min-height: 162px;
@@ -36,20 +34,24 @@
       float: right;
       margin-left: 2%;
       margin-top:30px;
-      transition: .3s;
+      transition: .5s;
       transition-property:box-shadow;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       &.dragover{
         border: none;
         box-shadow: 0px 0px 5px #aaa;
       }
       pre{
-        position: absolute;
-        top: 40%;
-        left: 16px;
-        right: 16px;
-        text-align: center;
+        width:100%;
         font-size: 14px;
         line-height: 1.5;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      &--second{
+        margin-top: 225px;
       }
     }
   }
@@ -60,18 +62,19 @@
     left: 0px;
     width: 100%;
     height: 100%;
-    padding: 40px;
+    padding: 68px 40px 40px;
     display: flex;
-    align-items: flex-end;
+    flex-wrap: wrap;
   }
   &__add-card{
     position: relative;;
     width:116px;
     height:162px;
     border: 1px solid #eee;
+    margin-top: 30px;
     margin-left: 8px;
-    &:first-child{
-      margin: 0;
+    &:first-child, &:nth-child(6){
+      margin-left: 0;
     }
     &__image{
       width: 116px;
@@ -296,16 +299,43 @@
       padding: 40px 0px;
     }
     &__btn{
-      text-decoration: none;
       display: block;
       width:540px;
       height:50px;
+      text-align: center;
       background-color: #ea352d;
-      color: #fff;
-      line-height: 50px;
       font-size: 18px;
-      &:hover{
-        background-color: rgba($color: #ea352d, $alpha: .7);
+      line-height: 50px;
+      color: #FFF;
+      text-decoration: none;
+      font-weight: bold;
+      border: 2px solid #ea352d;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      &:hover {
+        color: #ea352d;
+      }
+      &:after{
+        width: 100%;
+        height: 0;
+        content:"";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background : #FFF;
+        opacity: 0;
+        transform: translateX(-50%) translateY(-50%) rotate(45deg);
+        transition: .2s;
+        z-index: -1;
+      }
+      &:hover:after{
+        height: 540%;
+        opacity: 1;
+      }
+      &:active:after{
+        height: 540%;
+        opacity: 1;
       }
     }
     &__link{
