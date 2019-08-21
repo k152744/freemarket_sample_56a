@@ -22,19 +22,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    if session["devise.sns_data"].present?
-      @user = User.new(user_params)
-      @user.password = @user.password_confirmation = Devise.friendly_token[0,20]
-      if @user.save
-        sign_in @user
-        session["devise.sns_data"] = nil
-        redirect_to tell_user_sign_ups_url
+    if verify_recaptcha
+      if session["devise.sns_data"].present?
+        @user = User.new(user_params)
+        @user.password = @user.password_confirmation = Devise.friendly_token[0,20]
+        if @user.save
+          sign_in @user
+          session["devise.sns_data"] = nil
+          redirect_to tell_user_sign_ups_url
+        else
+          session["devise.sns_data"]['valid'] = true
+          redirect_to new_user_registration_url
+        end
       else
-        session["devise.sns_data"]['valid'] = true
-        redirect_to new_user_registration_url
+        super
       end
     else
-      super
+      redirect_to new_user_registration_url
     end
   end
 
