@@ -21,7 +21,9 @@ class CategoriesController < ApplicationController
   
   def search
     if params[:select_number] == "0"
-      @middlecategories = MiddleCategory.where('(big_category_id = ?)', params[:id])
+      @categories = MiddleCategory.where('(big_category_id = ?)', params[:id])
+    else 
+      @categories = SmallCategory.where('(middle_category_id = ?)', params[:id])
     end
   end
 end

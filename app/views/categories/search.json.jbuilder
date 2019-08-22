@@ -1,4 +1,4 @@
-json.array! @middlecategories do |middlecategory|
-  json.name middlecategory.name
-  json.id middlecategory.id
+json.array! @categories do |category|
+  json.name category.name
+  json.id category.id
 end

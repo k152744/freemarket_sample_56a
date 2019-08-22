@@ -126,35 +126,37 @@ $(function(){
     window.onload = PageLoad();
   }
   // 出品
-  $('#new-product').on('submit', function(e){
-    e.preventDefault();
-    var formData = new FormData(this);
-    var url = $(this).attr('action');
-    delete_array.forEach(function(index){
-      delete image_data[index]
+  if(document.URL.match("products/new")){
+    $('#new-product').on('submit', function(e){
+      e.preventDefault();
+      var formData = new FormData(this);
+      var url = $(this).attr('action');
+      delete_array.forEach(function(index){
+        delete image_data[index]
+      })
+      formData.delete( 'product[image][]' ) ;
+      image_data.forEach(function(image){
+        formData.append('product[image][]',image );
+      })
+      $.ajax({
+        url: url,
+        type: "POST",
+        data: formData,
+        dataType: 'json',
+        processData: false,
+        contentType: false
+      })
+      .done(function(product){
+        $(".exhibit-modal").fadeIn();
+        var html = `<a class="exhibit-modal__content__link" href="/products/${product.id}"><p>商品ページへ行ってシェアする</p></a>`
+        $('.exhibit-modal__content').append(html);
+      })
+      .fail(function(){
+        alert('error');
+        $('.user-btn').removeAttr('disabled');
+      })
     })
-    formData.delete( 'product[image][]' ) ;
-    image_data.forEach(function(image){
-      formData.append('product[image][]',image );
-    })
-    $.ajax({
-      url: url,
-      type: "POST",
-      data: formData,
-      dataType: 'json',
-      processData: false,
-      contentType: false
-    })
-    .done(function(product){
-      $(".exhibit-modal").fadeIn();
-      var html = `<a class="exhibit-modal__content__link" href="/products/${product.id}"><p>商品ページへ行ってシェアする</p></a>`
-      $('.exhibit-modal__content').append(html);
-    })
-    .fail(function(){
-      alert('error');
-      $('.user-btn').removeAttr('disabled');
-    })
-  })
+  }
 });
 
 // 購入後

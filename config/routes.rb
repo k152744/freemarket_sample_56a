@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       get :search_another
       get :category
       get :category_middle
+      get :brand_incremental
     end
   end
   resources :users  do
