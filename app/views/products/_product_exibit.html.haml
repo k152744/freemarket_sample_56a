@@ -40,8 +40,8 @@
               %br
               .product_exibit__form__select.select-long
                 = f.select :big_category_id, @big_category.map{|t| [t.name, t.id]},  prompt:"---"
-                = f.select :middle_category_id, @middle_category.map{|t| [t.name, t.id]},  prompt:"---"
-                = f.select :small_category_id, @small_category.map{|t| [t.name, t.id]},  prompt:"---"
+                = f.select :middle_category_id,"", prompt:"---", style:"display:none"
+                = f.select :small_category_id,"",{prompt:"---", style:"display:none"}
 
             .field
               %i ブランド

@@ -18,4 +18,10 @@ class CategoriesController < ApplicationController
     @category = SmallCategory.find(params[:id])
     @products = Product.where('(small_category_id = ?)', params[:id]).order("created_at DESC")
   end
+  
+  def search
+    if params[:select_number] == "0"
+      @middlecategories = MiddleCategory.where('(big_category_id = ?)', params[:id])
+    end
+  end
 end

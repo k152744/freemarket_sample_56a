@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     member do
       get :card
       get :registrate
+      get :snow
     end
   end
 
@@ -56,6 +57,9 @@ Rails.application.routes.draw do
     member do
       get :middle
       get :small
+    end
+    collection do
+      get :search
     end
   end
 end

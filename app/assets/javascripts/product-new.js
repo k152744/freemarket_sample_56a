@@ -50,6 +50,7 @@ $(function(){
   var image_data = []
   var delete_array = []
   var maxSize = 5 * 1024 * 1024;
+  // 選択で出品
   $('#product_image').change(function(e){
     for(var i=0;i<e.target.files.length;i++){
       var file = e.target.files[i];
@@ -120,10 +121,8 @@ $(function(){
     dropFrame_second.addEventListener('dragleave', function () {
       dropFrame_second.classList.remove('dragover');
     });
-    // 商品編集時
-
   }
-  if(document.URL.match("products/new")){
+  if((document.URL.match("edit") && document.URL.match("products")) || document.URL.match("products/new")){
     window.onload = PageLoad();
   }
   // 出品
@@ -157,35 +156,6 @@ $(function(){
     })
   })
 });
-// 手数料計算
-$(function(){
-  function buildTax(money){
-    var html = `<p>${money}</p>`
-    return html
-  }
-  $("#product_price").on("input",function() {
-    $(".product_exibit__form__middle__text__right").empty();
-    $(".product_exibit__form__bottom__text__right").empty();
-    var input = $(this).val();
-    var tax_origin = Math.floor(input * 0.1);
-    var tax = "¥ " + String(tax_origin).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
-    if (tax == "¥ NaN") {tax = "数字にしてくれ"}
-    if (tax_origin < 30 ) {tax = "-"}
-    var html = buildTax(tax);
-    $('.product_exibit__form__middle__text__right').append(html);
-    var income_origin = input - tax_origin
-    var income = "¥ " + String(income_origin).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
-    if (income == "¥ NaN") {income = ""}
-    if (income_origin < 270) {income = "-"}
-    if (input == 19950505) {income = "Keita HappyBirthDay!!"}
-    if (input == 19931210) {income = "Kyotaka HappyBirthDay!!"}
-    var incomehtml = buildTax(income);
-    $('.product_exibit__form__bottom__text__right').append(incomehtml);
-  });
-})
-// ブランド：インクリメンタルサーチ
-
-// カテゴリー登録
 
 // 購入後
 $(function(){
