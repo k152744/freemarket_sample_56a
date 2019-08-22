@@ -20,6 +20,8 @@ Rails.application.routes.draw do
       get :search_another
       get :category
       get :category_middle
+      get :favorite_create
+      get :favorite_delete
     end
   end
   resources :users  do
