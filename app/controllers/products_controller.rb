@@ -23,9 +23,8 @@ class ProductsController < ApplicationController
     @product = Product.includes(:user,:big_category,:middle_category,:small_category,:brand,:delivary_day,:delivary_fee,:delivary_way,:shipping_origin,:status,:images).find(params[:id])
 
     @big_category = BigCategory.all
-    @middle_category = MiddleCategory.all
-    @small_category = SmallCategory.all
-    @brand = Brand.all
+    @middle_category = MiddleCategory.where('(big_category_id = ? )',@product.big_category_id)
+    @small_category = SmallCategory.where('(middle_category_id = ? )',@product.middle_category_id)
     @delivary_day = DelivaryDay.all
     @delivary_fee = DelivaryFee.all
     @delivary_way = DelivaryWay.all
@@ -39,7 +38,7 @@ class ProductsController < ApplicationController
     if current_user.id == @product.user_id
       if @product.update(product_params)
         image = Image.where("product_id = ?",@product.id)
-        image.update(image_params(@product.id))
+        # image.update(image_params(@product.id))
         redirect_to root_path
       else
         render :edit
@@ -192,6 +191,10 @@ class ProductsController < ApplicationController
       format.html
       format.json { render json: favorite_lenght }
     end
+  end
+
+  def brand_incremental
+    @brands = Brand.where("name LIKE(?)", "%#{params[:keyword]}%")
   end
 
   private

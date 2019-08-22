@@ -40,15 +40,17 @@
               %br
               .product_exibit__form__select.select-long
                 = f.select :big_category_id, @big_category.map{|t| [t.name, t.id]},  prompt:"---"
-                = f.select :middle_category_id, @middle_category.map{|t| [t.name, t.id]},  prompt:"---"
-                = f.select :small_category_id, @small_category.map{|t| [t.name, t.id]},  prompt:"---"
+                = f.select :middle_category_id,@middle_category.map{|t| [t.name, t.id]}, prompt:"---"
+                = f.select :small_category_id,@small_category.map{|t| [t.name, t.id]},prompt:"---"
 
             .field
               %i ブランド
               %span.product_exibit__form__required  必須
               %br
               .product_exibit__form__select.select-long
-                = f.select :brand_id, @brand.map{|t| [t.name, t.id]},  prompt:"---"
+                = f.text_field :search_fake,placeholder:"例）シャネル",class:"product-form-input"
+                .product_exibit__form__search-result
+                = f.hidden_field :brand_id
             .field
               %i 商品の状態
               %span.product_exibit__form__required  必須
