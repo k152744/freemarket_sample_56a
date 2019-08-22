@@ -6,7 +6,15 @@
   %p or
   = form_with do |f|
     = f.submit '出品を一旦停止する',class: "btn-gray"
-  = link_to "この商品を削除する",product_path,method: :delete,class: "btn-gray"
-
+  = link_to "この商品を削除する",product_path,method: :delete,class: "btn-gray del" ,id:"delete-btn"
+.modal
+  .modal__content
+    %h2 確認
+    %p 削除すると二度と復活できません。
+    %p 削除する代わりに停止することもできます。
+    %p.bottom--text 本当に削除しますか？
+    .modal__content__text
+      = link_to "キャンセル",detail_product_path(@product),class: "cancel-btn"
+      = link_to "削除する",product_path(@product),method: :delete,class: "remove-btn"
 = render partial: "comment"
 = render partial: "footer"

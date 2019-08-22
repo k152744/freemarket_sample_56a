@@ -1,54 +1,59 @@
-- if user_signed_in?
-  .header
-    .header__container
-      .header__container__top
-        %h1
-          = link_to image_tag("mercari_logo_color.png",alt: "mercari",width: "134",height:"36"),products_path
+
+.header
+  .header__container
+    .header__container__top
+      %h1
+        = link_to image_tag("mercari_logo_color.png",alt: "mercari",width: "134",height:"36"),products_path
+        
+      = form_with url: search_another_products_path, method: :get ,local: true ,class:"header-form" do |f|
+        
+        %input{placeholder: "何かお探しですか?",name: "keyword"}
+          %button{type:"submit",class: "search-btn"} 
+            = icon 'fas fa-search' ,class:"fa-search"
           
-        = form_with url: search_another_products_path, method: :get ,local: true ,class:"header-form" do |f|
-          
-          %input{placeholder: "何かお探しですか?",name: "keyword"}
-            %button{type:"submit",class: "search-btn"} 
-              = icon 'fas fa-search' ,class:"fa-search"
-            
-      .header__container__bottom.clearfix  
-        .bottom-left
-          %ul
-            %li.first-child#dropdowu-menus--open
-              %h2
-                = link_to "#" do
-                  = icon 'fas fa-list-ul' ,class:"fa-list"
-                  %div#dropdowu-menus
-                    カテゴリーから探す
-              %ul#dropdowu-menus__menu
-                - @big_categories.each do |category| 
-                  %li.dropdowu-menus--big
-                    = link_to "#" do
-                      = category.name
-                  %ul#dropdowu-menus__menu--middle.dropdowu-menus__menu--middle
-                    - category.middle_categories.each do |category|
-                      %li.dropdowu-menus--middle
-                        = link_to "#" do
-                          = category.name
-                      %ul#dropdowu-menus__menu--small.dropdowu-menus__menu--small
-                        - category.small_categories.each do |category|
-                          %li 
-                            =link_to "#" do
-                              = category.name
-                %li
-                  = link_to "#" do
-                    カテゴリー一覧
-            %li.second-child
-              %h2
-                = link_to "#", id: "dropdowu-brands--open" do
-                  = icon 'fas fa-tag' ,class:"fa-list"
-                  %div#dropdowu-brands
-                    ブランドから探す
-                  %ul#dropdowu-brands__menu
-                    - @brands.each do |brand| 
-                      %li 
-                        = brand.name
-            
+    .header__container__bottom.clearfix  
+      .bottom-left
+        %ul
+          %li.first-child#dropdowu-menus--open
+            %h2
+              = link_to categories_path do
+                = icon 'fas fa-list-ul' ,class:"fa-list"
+                %div#dropdowu-menus
+                  カテゴリーから探す
+            %ul#dropdowu-menus__menu
+              - @big_categories.each do |category| 
+                %li.dropdowu-menus--big
+                  = link_to category_path(category) do
+                    = category.name
+                %ul#dropdowu-menus__menu--middle.dropdowu-menus__menu--middle
+                  - category.middle_categories.each do |category|
+                    %li.dropdowu-menus--middle
+                      = link_to middle_category_path(category) do
+                        = category.name
+                    %ul#dropdowu-menus__menu--small.dropdowu-menus__menu--small
+                      - index = 0
+                      - category.small_categories.each do |category|
+                        %li 
+                          =link_to small_category_path(category) do
+                            = category.name
+                        -if index < 15
+                          -index += 1 
+                        -else
+                          -break
+              %li
+                = link_to categories_path do
+                  カテゴリー一覧
+          %li.second-child
+            %h2
+              = link_to "#", id: "dropdowu-brands--open" do
+                = icon 'fas fa-tag' ,class:"fa-list"
+                %div#dropdowu-brands
+                  ブランドから探す
+                %ul#dropdowu-brands__menu
+                  - @brands.each do |brand| 
+                    %li 
+                      = brand.name
+      - if user_signed_in?  
         .bottom-right
           %ul
             %li
@@ -63,54 +68,7 @@
               = link_to users_path do
                 = icon 'fas fa-user-alt' ,class:"fa-bell-list"
                 %span マイページ
-  .header-under
-
-- else
-  .header
-    .header__container
-      .header__container__top
-        %h1
-          = link_to image_tag("mercari_logo_color.png",alt: "mercari",width: "134",height:"36"),products_path 
-        %form.header-form
-          %input{placeholder: "何かお探しですか?"}
-          = icon 'fas fa-search' ,class:"fa-search"
-      .header__container__bottom.clearfix  
-        .bottom-left
-          %ul
-            %li.first-child#dropdowu-menus--open
-              %h2
-                = link_to "#" do
-                  = icon 'fas fa-list-ul' ,class:"fa-list"
-                  %div#dropdowu-menus
-                    カテゴリーから探す
-              %ul#dropdowu-menus__menu
-                - @big_categories.each do |category| 
-                  %li.dropdowu-menus--big
-                    = link_to "#" do
-                      = category.name
-                  %ul#dropdowu-menus__menu--middle.dropdowu-menus__menu--middle
-                    - category.middle_categories.each do |category|
-                      %li.dropdowu-menus--middle
-                        = link_to "#" do
-                          = category.name
-                      %ul#dropdowu-menus__menu--small.dropdowu-menus__menu--small
-                        - category.small_categories.each do |category|
-                          %li 
-                            =link_to "#" do
-                              = category.name
-                %li
-                  = link_to "#" do
-                    カテゴリー一覧
-            %li.second-child
-              %h2
-                = link_to do
-                  = icon 'fas fa-tag' ,class:"fa-list"
-                  %div#dropdowu-brands
-                    ブランドから探す
-                  %ul#dropdowu-brands__menu
-                    - @brands.each do |brand| 
-                      %li 
-                        = brand.name
+      - else
         .bottom-right
           %ul
             %li
@@ -121,5 +79,6 @@
               %div.login-btn
                 = link_to users_path do
                   %span.login-btn-color  ログイン 
-                  
-    .header-under
+.header-under
+
+

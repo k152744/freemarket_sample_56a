@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users,:controllers => { 
     :registrations => 'users/registrations',
+    :sessions => 'users/sessions',
     :omniauth_callbacks => "users/omniauth_callbacks" }
 
   root to: "products#index"
@@ -51,6 +52,13 @@ Rails.application.routes.draw do
       get :shipping
       get :card   
       post :post_controll  
+    end
+  end
+
+  resources :categories do
+    member do
+      get :middle
+      get :small
     end
   end
 end

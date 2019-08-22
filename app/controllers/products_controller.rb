@@ -66,12 +66,20 @@ class ProductsController < ApplicationController
   end
 
   def create
-    product = Product.new(product_params)
+    image_array = []
+    product = Product.new(product_params) 
     image = Image.new(image_params)
-    if image.image.present?
+    image.image.each do |data|
+      image = Image.new
+      image.image = data
+      image_array.push(image)
+    end
+    if image_array.length != 0 || image_array.length > 10
       if product.save!
-        image.product_id = product.id
-        image.save!
+        image_array.each do |image|
+          image.product_id = product.id
+          image.save!
+        end
         respond_to do |format|
           format.html {redirect_to root_path }
           format.json { render json: {id: product.id} }
@@ -87,7 +95,7 @@ class ProductsController < ApplicationController
   def destroy
     if current_user.id == @product.user_id
       if @product.destroy
-        redirect_to root_path
+          redirect_to listing_user_information_path(current_user),notice: '商品を削除しました'
       else
         render :detail
       end
@@ -192,7 +200,7 @@ class ProductsController < ApplicationController
   end
 
   def image_params
-    params.require(:product).permit(:image)
+    params.require(:product).permit(image: [])
   end
 
   def set_product
