@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index,:show]
+  skip_before_action :authenticate_user!, only: [:index,:show,:search,:search_another]
   before_action :set_product,only: [:destroy,:update]
   before_action :header_big_category, only: [:index,:show,:detail,:edit,:destroy,:search,:search_another]
   before_action :header_brand, only: [:index,:show,:detail,:edit,:destroy,:search,:search_another]
@@ -7,12 +7,16 @@ class ProductsController < ApplicationController
   def index
     @pickup_categories = BigCategory.all.limit(3).includes(:products)
     @pickup_brands = Brand.all.limit(3).includes(:products)
+    
   end
 
   def show
     @product = Product.includes(:user,:big_category,:middle_category,:small_category,:brand,:delivary_day,:delivary_fee,:delivary_way,:shipping_origin,:status,:images).find(params[:id])
     @user_other_products = Product.where('(user_id = ?) and (id != ?)', @product.user_id, @product.id).order("created_at DESC").limit(6)
     @other_products = Product.where('(brand_id = ?) and (small_category_id = ?) and (id != ?)', @product.brand_id, @product.small_category_id, @product.id).order("created_at DESC").limit(6)
+    @favorite  = Favorite.where("(product_id = ?)",params[:id])
+    @favorited = Favorite.where("(user_id = ?)and(product_id = ?)",current_user.id,params[:id]) if user_signed_in?
+
   end
 
   def edit
@@ -90,7 +94,7 @@ class ProductsController < ApplicationController
   def destroy
     if current_user.id == @product.user_id
       if @product.destroy
-        redirect_to root_path
+          redirect_to listing_user_information_path(current_user),notice: '商品を削除しました'
       else
         render :detail
       end
@@ -167,6 +171,26 @@ class ProductsController < ApplicationController
 
   def detail
     @product = Product.includes(:user,:big_category,:middle_category,:small_category,:brand,:delivary_day,:delivary_fee,:delivary_way,:shipping_origin,:status,:images).find(params[:id])
+    @favorite  = Favorite.where("(product_id = ?)",params[:id])
+  end
+
+  def favorite_create
+    Favorite.find_or_create_by(user_id: current_user.id,product_id: params[:product_id].to_i)
+    favorite_lenght =Favorite.where(product_id: params[:product_id].to_i).length
+    respond_to do |format|
+      format.html
+      format.json { render json: favorite_lenght }
+    end
+  end
+
+  def favorite_delete
+    Favorite.where(user_id: current_user.id,product_id: params[:product_id].to_i).destroy_all
+    favorite_lenght =Favorite.where(product_id: params[:product_id].to_i).length
+
+    respond_to do |format|
+      format.html
+      format.json { render json: favorite_lenght }
+    end
   end
 
   def brand_incremental

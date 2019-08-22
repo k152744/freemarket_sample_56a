@@ -68,11 +68,26 @@
       = link_to "購入画面に進む", buy_product_path(@product) ,class: "item-detail__buybtn"
   %div.item-detail__description
     = safe_join(@product.detail.split("\n"), tag(:br))
-  %div.item-detail__buttons
-    = link_to "#" ,class:'item-detail__buttons--heart' do
-      = icon 'far fa-heart',class:""
-      %span いいね!
-      %span 10
+  %div.item-detail__buttons{data: {'product-id' => @product.id}}
+    -if user_signed_in?
+      -if @favorited.present?
+        = link_to "#" ,class:'item-detail__buttons--heart heart-btn-on' do
+          = icon 'far fa-heart',class:""
+          %span いいね!
+          %span 
+            = @favorite.length
+      -else      
+        = link_to "#" ,class:'item-detail__buttons--heart ' do
+          = icon 'far fa-heart',class:""
+          %span いいね!
+          %span  
+            = @favorite.length
+    - else
+      = link_to users_path ,class:'item-detail__buttons--noneclick ' do
+        = icon 'far fa-heart',class:""
+        %span いいね!
+        %span  
+          = @favorite.length         
     = link_to "#" ,class:"item-detail__buttons--flag" do
       = icon 'far fa-flag',class:""
       %span 不適切な商品を報告
