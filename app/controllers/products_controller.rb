@@ -91,7 +91,7 @@ class ProductsController < ApplicationController
   def destroy
     if current_user.id == @product.user_id
       if @product.destroy
-          redirect_to root_path
+          redirect_to listing_user_information_path(current_user),notice: '商品を削除しました'
       else
         render :detail
       end
