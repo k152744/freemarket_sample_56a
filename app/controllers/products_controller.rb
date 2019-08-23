@@ -17,7 +17,6 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.includes(:user,:big_category,:middle_category,:small_category,:brand,:delivary_day,:delivary_fee,:delivary_way,:shipping_origin,:status,:images).find(params[:id])
-
     @big_category = BigCategory.all
     @middle_category = MiddleCategory.where('(big_category_id = ? )',@product.big_category_id)
     @small_category = SmallCategory.where('(middle_category_id = ? )',@product.middle_category_id)
@@ -26,8 +25,8 @@ class ProductsController < ApplicationController
     @delivary_way = DelivaryWay.all
     @shipping_origin = ShippingOrigin.all
     @status = Status.all
-
-    @image = Image.where("product_id = ?",@product.id)
+    @brand = Brand.find(@product.brand_id)
+    @images = Image.where("product_id = ?",@product.id)
   end
 
   def update
@@ -48,7 +47,6 @@ class ProductsController < ApplicationController
     @big_category = BigCategory.all
     @middle_category = MiddleCategory.all
     @small_category = SmallCategory.all
-    @brand = Brand.all
     @delivary_day = DelivaryDay.all
     @delivary_fee = DelivaryFee.all
     @delivary_way = DelivaryWay.all
