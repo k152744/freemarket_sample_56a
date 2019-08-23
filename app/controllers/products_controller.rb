@@ -30,6 +30,7 @@ class ProductsController < ApplicationController
       @delivary_way = DelivaryWay.all
       @shipping_origin = ShippingOrigin.all
       @status = Status.all
+      @brand = Brand.find(@product.brand_id)
       @image = Image.where("product_id = ?",@product.id)
     else
       redirect_to root_path
@@ -54,7 +55,6 @@ class ProductsController < ApplicationController
     @big_category = BigCategory.all
     @middle_category = MiddleCategory.all
     @small_category = SmallCategory.all
-    @brand = Brand.all
     @delivary_day = DelivaryDay.all
     @delivary_fee = DelivaryFee.all
     @delivary_way = DelivaryWay.all

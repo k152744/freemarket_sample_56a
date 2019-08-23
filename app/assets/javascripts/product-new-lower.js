@@ -86,6 +86,9 @@ $(function(){
       })
     }
   });
+  if(document.URL.match("edit") && document.URL.match("products")){
+    document.getElementById("product_search_fake").value = $("#fake_name").val()
+  }
 });
 
 // 手数料計算
