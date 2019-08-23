@@ -21,17 +21,19 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.includes(:user,:big_category,:middle_category,:small_category,:brand,:delivary_day,:delivary_fee,:delivary_way,:shipping_origin,:status,:images).find(params[:id])
-
-    @big_category = BigCategory.all
-    @middle_category = MiddleCategory.where('(big_category_id = ? )',@product.big_category_id)
-    @small_category = SmallCategory.where('(middle_category_id = ? )',@product.middle_category_id)
-    @delivary_day = DelivaryDay.all
-    @delivary_fee = DelivaryFee.all
-    @delivary_way = DelivaryWay.all
-    @shipping_origin = ShippingOrigin.all
-    @status = Status.all
-
-    @image = Image.where("product_id = ?",@product.id)
+    if current_user.id == @product.user_id
+      @big_category = BigCategory.all
+      @middle_category = MiddleCategory.where('(big_category_id = ? )',@product.big_category_id)
+      @small_category = SmallCategory.where('(middle_category_id = ? )',@product.middle_category_id)
+      @delivary_day = DelivaryDay.all
+      @delivary_fee = DelivaryFee.all
+      @delivary_way = DelivaryWay.all
+      @shipping_origin = ShippingOrigin.all
+      @status = Status.all
+      @image = Image.where("product_id = ?",@product.id)
+    else
+      redirect_to root_path
+    end
   end
 
   def update
