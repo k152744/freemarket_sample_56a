@@ -2,7 +2,7 @@
   display:block;
   background: #fff;
   &__container{
-    width:700px;
+    width: 1020px;
     margin:0 auto;
     padding:8px 0 0;
     
@@ -100,6 +100,7 @@
           display: inline-block;
           padding: 0 7px;
           cursor: pointer;
+          
         }
         a{
           display: block;
@@ -107,6 +108,9 @@
           line-height: 32px;
           color: #333;
           text-decoration: none;
+          &:hover {
+            color:#0099e8;
+          }
         }
         .fa-bell-list{
           display: inline-block;
@@ -121,6 +125,7 @@
         i{
           font-size: 20px;
           color: #ccc;
+          
         }
         span{
           margin-left: 10px;

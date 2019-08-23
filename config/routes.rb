@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users,:controllers => { 
     :registrations => 'users/registrations',
+    :sessions => 'users/sessions',
     :omniauth_callbacks => "users/omniauth_callbacks" }
 
   root to: "products#index"
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :products do
     resources :cards do
       member do
@@ -21,6 +21,8 @@ Rails.application.routes.draw do
       get :category
       get :category_middle
       get :brand_incremental
+      get :favorite_create
+      get :favorite_delete
     end
   end
   resources :users  do

@@ -9,9 +9,13 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    if verify_recaptcha
+      super
+    else
+      redirect_to new_user_session_url
+    end
+  end
 
   # DELETE /resource/sign_out
   # def destroy
