@@ -3,14 +3,17 @@
   %div.item-detail__content.crearfix
     %div.item-detail__content--image
       %div.item-detail__content--image__box
-        %div.item-detail__sold
-          = image_tag "#{@product.images[0].image[:medium].url}",size: "300x300"
+        %div.item-detail__sold.slider_flex
+          - @product.images.each_with_index do |image, i|
+            %div
+              = image_tag "#{@product.images[i].image[:medium].url}",size: "300x300",class:"slider_big-#{i} "
           - if @product.buyer_id.present?
             .item-detail__sold__text
               %h2 SOLD
-        - @product.images.each do |image| 
-          %div
-            = image_tag "#{image.image[:medium].url}" ,size: "60x60"
+        %ul.thumbnail_slider_class      
+          - @product.images.each_with_index do |image, i| 
+            %li{data: {'slide-id' => i},class:"thumbnail_slider thumbnail_slider__opacity"}
+              = image_tag "#{image.image[:medium].url}" ,size: "60x60",class:""
     
     %table.item-detail__content--table
       %tbody

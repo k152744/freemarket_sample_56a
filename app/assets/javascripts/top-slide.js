@@ -12,3 +12,22 @@ $(function() {
     $('.slider').slick('goTo', $(this).index());
   });
 });
+
+ $(function(){
+
+  
+   $(".slider_flex").slick({
+     speed: 1000,
+     arrows: false,
+   });
+   $(".thumbnail_slider").on('mouseover',function(){
+     var index = $(this).attr("data-slide-id");
+     $(".slider_flex").slick("slickGoTo",index,false);
+   });
+ });
+ 
+
+
+
+
+

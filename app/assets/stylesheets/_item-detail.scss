@@ -176,3 +176,19 @@
   justify-content: flex-start;
 }
 
+.slider_flex{
+  display:flex;
+}
+.thumbnail_slider_class{
+  display:flex;
+  width: 100%;
+  display: contents;
+}
+.thumbnail_slider{
+    opacity: 0.2;
+    &:hover{
+      opacity: 1;
+      cursor: pointer;
+    }
+}
+
