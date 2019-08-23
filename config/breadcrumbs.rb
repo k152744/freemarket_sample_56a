@@ -32,6 +32,11 @@ crumb :categories do
   parent :root
 end
 
+crumb :favorites do 
+  link "いいね！一覧", user_path(current_user)
+  parent :mypage
+end
+
 crumb :list do 
   link "出品した商品 - 出品中", listing_user_information_path(current_user)
   parent :mypage
