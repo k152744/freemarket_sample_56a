@@ -17,7 +17,7 @@ $(function(){
       reader.onload = (function(file){
         return function(e){
           if(defaultwidth_second === 0){
-            alert("画像の数半端ないって！こんなん処理できひんやん、普通");
+            $("#exhibit-modal-2").fadeIn();
             return false;
           }
           index += 1
@@ -32,6 +32,7 @@ $(function(){
       })(file);
     reader.readAsDataURL(file);    
   }
+  $("#exhibit-modal-2").click(function(){$(this).fadeOut()});
   function addcardwidth(){
     defaultwidth += -124
     defaultwidth_second += -124
@@ -177,7 +178,7 @@ $(function(){
       contentType: false
     })
     .done(function(product){
-      $(".exhibit-modal").fadeIn();
+      $("#exhibit-modal-1").fadeIn();
       var html = `<a class="exhibit-modal__content__link" href="/products/${product.id}"><p>商品ページへ行ってシェアする</p></a>`
       $('.exhibit-modal__content').append(html);
     })

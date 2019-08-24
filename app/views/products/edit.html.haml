@@ -4,7 +4,7 @@
 .fake-data-input{style:"display:none"}
   = form_with url: "",local: true  do |f|
     = f.hidden_field :fake_name, value: @brand.name
-.exhibit-modal
+.exhibit-modal#exhibit-modal-1
   .exhibit-modal__content
     .exhibit-modal__content__title
       %p 編集が完了しました
