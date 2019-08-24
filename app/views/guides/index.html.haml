@@ -1,0 +1,535 @@
+.header_guide
+  .header_guide__content.clearfix
+    = link_to root_path,class:"header_guide__content__logo" do
+      =image_tag "mercari_logo_color.png"
+    = link_to users_path,class:"header_guide__content__user" do
+      =image_tag "no-image.jpg"
+
+
+- breadcrumb :guides
+= render "/bread"
+.guide_contents.clearfix
+  .guide_head
+
+  .guide_center
+    .guide_center__content
+      .guide_center__content__head
+        %div
+          =image_tag "top_icon_beginner.svg"
+          %h4 初めての方へ
+      .guide_center__content__list
+        %ul
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p メルカリ初心者ガイド
+              %i.icon-arrow-right
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p 利用料
+              %i.icon-arrow-right
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p メルカリの名前の由来
+              %i.icon-arrow-right
+
+    .guide_center__content
+      .guide_center__content__head
+        %div
+          =image_tag "top_icon_rules.svg"
+          %h4 ルールとマナー
+      .guide_center__content__list
+        %ul
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p 禁止されている出品物
+              %i.icon-arrow-right
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p 禁止されている行為
+              %i.icon-arrow-right
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p 盗難品をみつけたら
+              %i.icon-arrow-right
+    .guide_center__content
+      .guide_center__content__head
+        %div
+          =image_tag "top_icon_buy.svg"
+          %h4 購入について
+      .guide_center__content__list
+        %h5 よくある質問
+        %ul
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p 売上金（またはメルペイ残高）での購入について
+              %i.icon-arrow-right
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p ポイントの購入について
+              %i.icon-arrow-right
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p 商品が届かない
+              %i.icon-arrow-right
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p 届いた商品が説明文と違う/壊れている
+              %i.icon-arrow-right
+      .guide_center__content__bottom
+        = link_to "すべて見る","#"
+    .guide_center__content
+      .guide_center__content__head
+        %div
+          =image_tag "top_icon_sell.svg"
+          %h4 出品について
+      .guide_center__content__list
+        %h5 よくある質問
+        %ul
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p 配送ナビ
+              %i.icon-arrow-right
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p 商品代金が支払われない
+              %i.icon-arrow-right
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p 受取評価をしてくれない
+              %i.icon-arrow-right
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p 取引をキャンセルしたい
+              %i.icon-arrow-right
+      .guide_center__content__bottom
+        = link_to "すべて見る","#"
+
+    .guide_center__content
+      .guide_center__content__head
+        %div
+          =image_tag "top_icon_shipping.svg"
+          %h4 メルカリ便とは
+      .guide_center__content__list
+        %ul
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p らくらくメルカリ便
+              %i.icon-arrow-right
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p ゆうゆうメルカリ便
+              %i.icon-arrow-right
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p 大型らくらくメルカリ便
+              %i.icon-arrow-right
+
+    .guide_center__content
+      .guide_center__content__head
+        %div
+          =image_tag "top_icon_account.svg"
+          %h4 キャンセル・返金について
+      .guide_center__content__list
+        %h5 よくある質問
+        %ul
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p 取引をキャンセルしたい
+              %i.icon-arrow-right
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p キャンセル時の返金方法について
+              %i.icon-arrow-right
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p 本人情報の登録について
+              %i.icon-arrow-right
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p 本人情報の登録・変更について
+              %i.icon-arrow-right
+      .guide_center__content__bottom
+        = link_to "すべて見る","#"
+
+    .guide_center__content
+      .guide_center__content__head
+        %div
+          =image_tag "top_icon_return.svg"
+          %h4 キャンセル・返金について
+      .guide_center__content__list
+        %h5 よくある質問
+        %ul
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p お知らせ・機能設定とは？
+              %i.icon-arrow-right
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p プッシュ通知が届かない
+              %i.icon-arrow-right
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p いつキャンセルできるようになりますか？
+              %i.icon-arrow-right
+      .guide_center__content__bottom
+        = link_to "すべて見る","#"
+
+
+
+  .guide_side
+    .guide_side__box
+      .guide_side__box__title
+        %h2 初めてのガイド
+      .guide_side__box__list
+        %ul
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p 初めての方へ
+              %i.icon-arrow-right
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p ルールとマナー
+              %i.icon-arrow-right
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p メルカリ便とは
+              %i.icon-arrow-right
+    .guide_side__box
+      .guide_side__box__title
+        %h2 よくある質問
+      .guide_side__box__list
+        %ul
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p 電話番号認証ができません
+              %i.icon-arrow-right
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p 取引関連のよくあるトラブルの解決策
+              %i.icon-arrow-right
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p お得チケットを使用するには
+              %i.icon-arrow-right
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p 商品が売れた後の流れ
+              %i.icon-arrow-right
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p 振込スケジュール
+              %i.icon-arrow-right
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p 機種変更をする際の注意
+              %i.icon-arrow-right
+    .guide_side__box
+      .guide_side__box__title
+        %h2 カテゴリーから探す
+      .guide_side__box__list
+        %ul
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p 購入について
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p 出品について
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p メルカリ便について
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p 登録ログイン通知などの機能について
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p キャンセル、返金について
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p メルペイについて
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p 自動車本体の取引について
+
+
+    .guide_side__box
+      .guide_side__box__title
+        %h2 公式Q&A メルカリボックス
+      .guide_side__box__list
+        %ul
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p 解決策を検索または質問する
+              %i.icon-arrow-right
+
+    .guide_side__box
+      .guide_side__box__title
+        %h2 利用規約など
+      .guide_side__box__list
+        %ul
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p 利用規約
+              %i.icon-arrow-right
+          %li
+            = link_to "#", class:"side-bar__content" do
+              %p 商標について
+              %i.icon-arrow-right
+= render partial: "/products/footer"
+
+.chat_btn
+  =image_tag "pc_bot.png"
+.chat_main.close_chat
+  .chat_main__top
+    =image_tag "close.svg"
+  .chat_main__body
+    .chat_auto
+      =image_tag "IMG_9901.GIF"
+      .chat_auto__message
+        %p こんにちは♪メルカリチャットボットです。
+        %p メルカリの疑問を自動応答でサポートします！
+        %p 難しいと答えられないため、短文で1つずつ質問をお願いします♪
+        %p 【入力例】
+        %p 「メルカリ便で送りたい」
+        %p  「梱包の仕方がわからない」
+        %p 【注意事項】
+        %p  取引、個人情報など事務局への問い合わせは「お問い合わせ」よりお願いします。
+        .chat_auto__message__links
+          %ul
+            %li
+              よくある質問を確認してみる
+            %li
+              メルペイについて
+            %li
+              お得チケットとは
+  .chat_main__bottom
+    %input{autofocus: true,placeholder:"メッセージを送信...",class:"chat_input"}
+    .chat_input__submit
+      = icon 'fas fa-paper-plane',class:""
+
+.teto_main.close_teto
+  .teto_main__top
+    =image_tag "close.svg"
+  .teto_main__body
+    %table#game
+      %tr
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+      %tr
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+      %tr
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+      %tr
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+      %tr
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+      %tr
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+      %tr
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+      %tr
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+      %tr
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+      %tr
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+      %tr
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+      %tr
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+      %tr
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+      %tr
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+      %tr
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+      %tr
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+      %tr
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+      %tr
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+      %tr
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+      %tr
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+
+  .teto_main__bottom

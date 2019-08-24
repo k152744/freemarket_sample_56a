@@ -1,3 +1,7 @@
+crumb :guides do 
+  link "メルカリガイド"
+end
+
 crumb :root do
   link "メルカリ", root_path
 end
@@ -59,3 +63,4 @@ crumb :small_category do |category|
   link category.name, small_category_path(category)
   parent :middle_category,middle_category
 end
+
