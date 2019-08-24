@@ -20,6 +20,14 @@
               ドラッグアンドドロップ
               またはクリックしてファイルをアップロード
         .product_exibit--wrap
+          - if @images.present?
+            - @images.each do |image|
+              .product_exibit__add-card.count_cards
+                .product_exibit__add-card__image
+                  = image_tag "#{image.image[:medium].url}" 
+                .product_exibit__add-card__btns
+                  %p 編集
+                  %p.product_exibit__add-card__btns--delete.card-delete-edit{"data-deleteid" => "#{image.id}"} 削除
       .product_exibit__content
         .product_exibit__form
           .field
