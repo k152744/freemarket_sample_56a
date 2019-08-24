@@ -142,9 +142,7 @@ $(function(){
     $(".card-delete-edit").click(function(){
       $(this).parent().parent().remove();
       delete_id = $(this).data("deleteid")
-      console.log($(this).data("deleteid"))
       edit_delete_array.push(delete_id);
-      console.log(edit_delete_array)
       deletecardwidth();
     })
   }
