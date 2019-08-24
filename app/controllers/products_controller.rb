@@ -40,8 +40,6 @@ class ProductsController < ApplicationController
   def update
     @images = Image.where("product_id = ?",@product.id)
     if current_user.id == @product.user_id
-      binding.pry
-      
       image_array = []
       image = Image.new(image_params)
       if image.image.present?
