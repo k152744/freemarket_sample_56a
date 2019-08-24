@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>rules_icn</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="6.85714286 0 14.4761905 0 14.4761905 13.0909091 10.7619978 9.68421053 6.85714286 13.0909091"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="index" transform="translate(-783.000000, -490.000000)">
+            <g id="block-2" transform="translate(712.000000, 462.000000)">
+                <g id="rules_icn" transform="translate(69.000000, 26.000000)">
+                    <g id="Group-5" transform="translate(2.000000, 2.000000)">
+                        <rect id="Rectangle" stroke="#E74D46" stroke-width="2" x="1" y="1" width="30" height="30" rx="6"></rect>
+                        <g id="Rectangle-2">
+                            <use fill="#E74D46" fill-rule="evenodd" xlink:href="#path-1"></use>
+                            <path stroke="#E74D46" stroke-width="1" d="M7.35714286,0.5 L13.9761905,0.5 L13.9761905,11.9538354 L11.0999691,9.31573339 L10.7703406,9.01339454 L10.433295,9.30744205 L7.35714286,11.9911584 L7.35714286,0.5 Z"></path>
+                        </g>
+                        <rect id="Rectangle-5" fill="#E74D46" x="7.61904762" y="16" width="17.5238095" height="2.18181818" rx="1.09090909"></rect>
+                        <rect id="Rectangle-5-Copy" fill="#E74D46" x="7.61904762" y="20.3636364" width="17.5238095" height="2.18181818" rx="1.09090909"></rect>
+                        <rect id="Rectangle-5-Copy-2" fill="#E74D46" x="7.61904762" y="24.7272727" width="17.5238095" height="2.18181818" rx="1.09090909"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

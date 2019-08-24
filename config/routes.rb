@@ -59,4 +59,5 @@ Rails.application.routes.draw do
       get :small
     end
   end
+  resources :guides 
 end

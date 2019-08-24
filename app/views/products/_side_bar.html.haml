@@ -8,7 +8,7 @@
       %h3 やることリスト
     = link_to "#", class:"side-bar__content" do
       %h3 いいね一覧
-    = link_to "#", class:"side-bar__content" do
+    = link_to new_product_path, class:"side-bar__content" do
       %h3 出品する
     = link_to listing_user_information_path(current_user) ,class:"side-bar__content" do
       %h3 出品した商品 - 出品中
@@ -24,7 +24,7 @@
       %h3 ニュース一覧
     = link_to "#", class:"side-bar__content" do
       %h3 評価一覧
-    = link_to "#", class:"side-bar__content" do
+    = link_to guides_path, class:"side-bar__content" do
       %h3 ガイド
     = link_to "#", class:"side-bar__content" do
       %h3 お問い合わせ

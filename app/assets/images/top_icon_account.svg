@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="34px" viewBox="0 0 28 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>account_icn</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="index" transform="translate(-778.000000, -1120.000000)" fill="#E74D46">
+            <g id="block-6" transform="translate(712.000000, 1091.000000)">
+                <g id="title" transform="translate(62.000000, 21.000000)">
+                    <g id="account_icn" transform="translate(0.000000, 7.000000)">
+                        <g id="Icon" transform="translate(4.000000, 1.000000)">
+                            <path d="M27.8848859,29.3503785 C27.8848859,23.8710605 21.6428542,19.4285714 13.942443,19.4285714 C6.24203171,19.4285714 0,23.8710605 0,29.3503785" id="Stroke-13"></path>
+                            <path d="M13.6198663,18.7259402 C18.7789686,18.7259402 22.9614507,14.6538652 22.9614507,9.63095038 C22.9614507,4.60803556 18.7789686,0.535960591 13.6198663,0.535960591 C8.46076402,0.535960591 4.27828191,4.60803556 4.27828191,9.63095038 C4.27828191,14.6538652 8.46076402,18.7259402 13.6198663,18.7259402 L13.6198663,18.7259402 Z" id="Stroke-15"></path>
+                            <path d="M27.8848859,28.3333333 L27.8848859,32.8313469 C27.8848859,33.2328452 27.7461586,33.814538 27.3418278,33.814538 L0.891619227,33.814538 C0.495653847,33.814538 0,33.2280491 0,32.8313469 L0,28.3333333" id="Stroke-17"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
