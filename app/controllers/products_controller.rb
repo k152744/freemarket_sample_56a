@@ -40,12 +40,16 @@ class ProductsController < ApplicationController
   def update
     @images = Image.where("product_id = ?",@product.id)
     if current_user.id == @product.user_id
+      binding.pry
+      
       image_array = []
       image = Image.new(image_params)
-      image.image.each do |data|
-        image = Image.new
-        image.image = data
-        image_array.push(image)
+      if image.image.present?
+        image.image.each do |data|
+          image = Image.new
+          image.image = data
+          image_array.push(image)
+        end
       end
       delete_images = Image.where(params[:delete_ids])
       image_counter = @images.length + image_array.length - delete_images.length
