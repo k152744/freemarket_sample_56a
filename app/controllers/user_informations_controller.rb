@@ -5,6 +5,7 @@ class UserInformationsController < ApplicationController
   def listing
     @products = Product.includes(:user).where(listing_status: "出品中")
   end
+  
   def shipping_edit
     @user_info = UserInformation.where("user_id = ?",params[:id])
     if @user_info.present?

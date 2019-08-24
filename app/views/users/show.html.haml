@@ -1,0 +1,29 @@
+= render "products/header"
+- breadcrumb :favorites
+= render "/bread"
+.mypages
+  .mypages__main
+    .favorite-all
+      %h2 いいね！一覧
+      - if @favorited_all.present?
+        - @favorited_all.each do |favorited|  
+          .favorite-all__container
+            %ul
+              %li
+                = link_to product_path(favorited.product) do
+                  = image_tag  "#{favorited.product.images[0].image[:medium].url}" ,size: "48x48"
+                  .favorite-all__container__item
+                    %div
+                      = favorited.product.name
+                    %div
+                      = favorited.product.price
+      - else     
+        .favorite-all__image
+          = image_tag "logo-gray.svg", class: 'favorite-all__image__icon'
+          %p いいね!がありません              
+
+
+
+  = render "products/side_bar" 
+= render "products/footer"
+= render "products/exhibit_btn"

@@ -63,4 +63,6 @@ class CardsController < ApplicationController
       end
     end
   end
+  def snow
+  end
 end

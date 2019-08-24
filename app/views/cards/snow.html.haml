@@ -1,0 +1,12 @@
+%header.mercari-logo-header{style:"position:fixed"}
+  .mercari-logo-header__img{style:"margin-left:30px"}
+    = link_to root_path, method: 'get' do
+      = image_tag "mercari_logo_color.png"
+%canvas#canvas
+.hello_world
+  .hello_world__btn 
+    %p Hello World
+.snow_modal--open{style: "display:none"}
+  .photo_team
+  .photo_team--shadow
+  .photo_team--text

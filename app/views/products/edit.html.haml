@@ -1,3 +1,6 @@
 = render partial: "/small_header"
 = render partial: "product_exibit" 
 = render partial: "/small_footer"
+.fake-data-input{style:"display:none"}
+  = form_with url: "",local: true  do |f|
+    = f.hidden_field :fake_name, value: @brand.name

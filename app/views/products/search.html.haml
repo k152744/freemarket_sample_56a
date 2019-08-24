@@ -20,7 +20,21 @@
                   = product.name 
                 %div.item-price 
                   = '¥ ' + product.price.to_s
-                  = icon 'fas fa-heart',class:"item-price-iine"    
+                  - flag = false
+                  - product.favorites.each do |favorite|
+                    - if user_signed_in?
+                      - if favorite.user_id == current_user.id
+                        - flag = true
+                        - break
+                  - if flag == true    
+                    %div
+                      = icon 'fas fa-heart iine-color-red',class:"item-price-iine"  
+                      = product.favorites.length  
+                  - else
+                    %div
+                      = icon 'fas fa-heart',class:"item-price-iine"  
+                      = product.favorites.length
+
 
   = render "products/category-side" 
 = render "products/footer"  

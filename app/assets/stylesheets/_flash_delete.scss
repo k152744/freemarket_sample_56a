@@ -1,0 +1,21 @@
+.notification {
+  position:relative;
+  .notice {
+    background-color:#98FB98;
+    color: #32CD32;
+    text-align: center;
+    height:70px;
+    line-height: 70px;
+    font-size: 13px;
+    z-index: 100;
+    position: absolute;
+    width:100%;
+  }
+  .fa-times{
+    position: absolute;
+    top:25px;
+    right: 15px;
+    font-size: 20px;
+    z-index: 100;
+  }
+}
