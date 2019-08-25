@@ -3,13 +3,14 @@
   %div.item-detail__content.crearfix
     %div.item-detail__content--image
       %div.item-detail__content--image__box
+        .item-detail__sold__text-wrap
+          - if @product.buyer_id.present?
+            .item-detail__sold__text
+              %h2 SOLD
         %div.item-detail__sold.slider_flex
           - @product.images.each_with_index do |image, i|
             %div
               = image_tag "#{@product.images[i].image[:medium].url}",size: "300x300",class:"slider_big-#{i} "
-          - if @product.buyer_id.present?
-            .item-detail__sold__text
-              %h2 SOLD
         %ul.thumbnail_slider_class      
           - @product.images.each_with_index do |image, i| 
             %li{data: {'slide-id' => i},class:"thumbnail_slider thumbnail_slider__opacity"}
