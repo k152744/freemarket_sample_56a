@@ -15,3 +15,11 @@ body {
   background: rgb(245, 245, 245);
 }
 
+input:focus{
+  outline: 0;
+  border: solid 1px #0099e8;
+}
+textarea:focus{
+  outline: 0;
+  border: solid 1px #0099e8;
+}
