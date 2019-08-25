@@ -33,6 +33,8 @@ class ProductsController < ApplicationController
       @status = Status.all
       @brand = Brand.find(@product.brand_id)
       @image = Image.where("product_id = ?",@product.id)
+      @comment = Comment.new
+      @comments = Comment.includes(:user).where("(product_id = ?)",params[:id])
     else
       redirect_to root_path
     end
