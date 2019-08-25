@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :products
   has_many :cards
   has_many :fav_products, through: :favorites, source: :products, dependent: :destroy
+  has_many :comments
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
 

@@ -16,7 +16,8 @@ class ProductsController < ApplicationController
     @other_products = Product.where('(brand_id = ?) and (small_category_id = ?) and (id != ?)', @product.brand_id, @product.small_category_id, @product.id).order("created_at DESC").limit(6)
     @favorite  = Favorite.where("(product_id = ?)",params[:id])
     @favorited = Favorite.where("(user_id = ?)and(product_id = ?)",current_user.id,params[:id]) if user_signed_in?
-
+    @comment = Comment.new
+    @comments = Comment.includes(:user).where("(product_id = ?)",params[:id])
   end
 
   def edit
