@@ -14,12 +14,12 @@ $(function() {
     e.preventDefault();
     var Id =  $(this).parent().data("product-id");
     if ($('.heart-btn-on').length){
-      console.log("デリート")
+      
       url = "/products/favorite_delete"
       
 
     }else{
-      console.log("create")
+      
       url = "/products/favorite_create"
     }
 
