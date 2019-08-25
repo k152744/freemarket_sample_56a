@@ -65,6 +65,10 @@ Rails.application.routes.draw do
       get :search
     end
   end
+  resources :guides 
+  resources :comments, only: :create do
+    collection do
+      get :stamp
   resources :guides do
     collection do
       get :complete
