@@ -45,6 +45,9 @@ class CardsController < ApplicationController
   def pay
     card = Card.where(user_id: current_user.id).first
     product = Product.find(params[:product_id])
+    use_point = params[:user_point].to_i
+    amount_price = product.price - use_point
+    @points = Point.where("(user_id = ?)and(number > ?)",current_user.id,0)
     if card.blank? || product.blank? || product.user_id == current_user.id
       redirect_to controller: "products", action:"buy"
     else
@@ -54,12 +57,29 @@ class CardsController < ApplicationController
         Payjp.api_key = Rails.application.credentials.PAYJP_SECRET_KEY
         Payjp::Charge.create(
           description: 'test-pay',
-          amount: product.price,
+          amount: amount_price,
           customer: card.customer_id,
           currency: 'jpy',
           metadata: {buyer_id: current_user.id, buyer_name: current_user.nickname}
         )
+        
         product.update(buyer_id: current_user.id)
+
+        
+        @points.each do |point|
+          if use_point < point.number
+            number = point.number - use_point
+            use_point = 0
+          else 
+            use_point  = use_point - point.number
+            number = 0
+          end
+          point.update(number: number)  
+        end
+
+        price = amount_price/10
+        Point.create(user_id: current_user.id,number: price)
+        
       end
     end
   end

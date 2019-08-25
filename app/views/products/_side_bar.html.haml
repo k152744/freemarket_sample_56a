@@ -26,7 +26,7 @@
       %h3 評価一覧
     = link_to guides_path, class:"side-bar__content" do
       %h3 ガイド
-    = link_to "#", class:"side-bar__content" do
+    = link_to guide_path(current_user), class:"side-bar__content" do
       %h3 お問い合わせ
   .side-bar__box.side-bar__box--margin-top
     %h2.side-bar__box__text メルペイ

@@ -64,3 +64,12 @@ crumb :small_category do |category|
   parent :middle_category,middle_category
 end
 
+crumb :contact do 
+  link "お問い合わせ", guide_path(current_user)
+  parent :mypage
+end
+
+crumb :contact_new do 
+  link "ご相談窓口", new_guide_path
+  parent :contact
+end
