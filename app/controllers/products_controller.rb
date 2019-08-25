@@ -33,8 +33,6 @@ class ProductsController < ApplicationController
       @status = Status.all
       @brand = Brand.find(@product.brand_id)
       @image = Image.where("product_id = ?",@product.id)
-      @comment = Comment.new
-      @comments = Comment.includes(:user).where("(product_id = ?)",@product.id)
     else
       redirect_to root_path
     end
@@ -178,6 +176,8 @@ class ProductsController < ApplicationController
   def detail
     @product = Product.includes(:user,:big_category,:middle_category,:small_category,:brand,:delivary_day,:delivary_fee,:delivary_way,:shipping_origin,:status,:images).find(params[:id])
     @favorite  = Favorite.where("(product_id = ?)",params[:id])
+    @comment = Comment.new
+    @comments = Comment.includes(:user).where("(product_id = ?)",@product.id)
   end
 
   def favorite_create
