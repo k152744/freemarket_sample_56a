@@ -69,6 +69,8 @@ Rails.application.routes.draw do
   resources :comments, only: :create do
     collection do
       get :stamp
+    end
+  end
   resources :guides do
     collection do
       get :complete
