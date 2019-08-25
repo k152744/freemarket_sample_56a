@@ -68,6 +68,7 @@ Rails.application.routes.draw do
   resources :guides do
     collection do
       get :complete
+      get :bot
     end
   end
 end

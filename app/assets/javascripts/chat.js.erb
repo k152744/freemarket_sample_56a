@@ -8,89 +8,53 @@ $(function() {
     $(".chat_main").removeClass("open_chat");
     $(".chat_main").addClass("close_chat");
   });
-  message_bot = ["よくわかりません。",
-                 "言いたいことも言えないこんな世の中じゃ,POISON。反町隆史がジャニーズ事務所に所属していた頃のプロフィールによると、趣味は「キティちゃんグッズ集め」",
-                 "私はオヤジです。",
-                 "もう一度お願いします。",
-                 "メルカリ最高。まじ卍。",
-                 "May the Force be with you!",
-                 "サンタクロースが着ている紅白の服は、コカ・コーラ社が自社のキャンペーンを行った際にデザインしたのが始まり。それまでは、紅白に限らず色とりどりの服を着用していた。",
-                 "エッフェル塔は、温度差の関係で夏と冬とで高さが15センチも違う。",
-                 "お父さんの靴下から出る臭いの元は、イソキチソウ酸という物質。",
-                 "電柱の中は空洞。",
-                 "JR品川駅がある住所は品川区ではなく隣の港区。(東京都港区港南2-1-78)三鷹市の大沢総合グラウンドも三鷹市ではなく隣の調布市にある。(正確には住所は三鷹市だが位置的に調布市に食い込んでいる形になっている。調布飛行場の真横。住所は東京都三鷹市大沢5-21-12)",
-                 "運転中にかけていると交通事故を起こしやすい曲。第1位はワーグナー作曲の『ワルキューレの騎行』。60BPMを超えるテンポの楽曲を聴くと、心拍数と血圧が上がり興奮状態になる。クラシックの場合ゆっくりな曲調でも音数の多さや、クレッシェンドとデクレッシェドの反復によって興奮状態になるため事故を起こしやすくなる。興奮状態が絶頂期になると赤信号を無視する傾向が増えその事故率は2倍。",
-                 "時々街で見かける、屋上からゴンドラやロープでぶら下がって作業をするビルの掃除。実は高い場所での作業よりも洗剤の取り扱いの方が命がけ。外壁のしつこい汚れを落とすのに人間の皮膚や骨を溶かすほどの強力な洗剤を使うため。",
-                 "豆腐を薄く切り塩を塗って陰干しをして作る六畳豆腐は、かなり固い豆腐なので思いっきり角に頭をぶつけたら死ぬ可能性もある。",
-                 "女性用の下着であるパンティーを日本で初めて着用したのは豊臣秀吉。",
-                 "アメリカではお年玉くじ付き年賀ハガキが外国の宝くじと見なされるため、送ると違法行為になる。",
-                 "ガチャピンとムックは友達ではなく師弟関係。ガチャピンが師匠、ムックが弟子。",
-                 "島根県は、カップヌードルに入っている乾燥いりたまごみたいな物の生産日本一。",
-                 "マクドナルドのカウンターは全店72ｃｍの高さに統一されている。これは、客がポケットからお金を出す際に一番最適な高さとされている。",
-                 "アンパンマンの頭の中に入っているあんこは、つぶあん。",
-                 "大阪人の歩くスピードは約毎秒1.6m。世界で１番歩くスピードが早い。",
-                 "ボーリング場の貸し靴がセンスのかけらもない色をしているのは盗難防止のため。",
-                 "薬局の前によくある、カエルのマスコット・ケロヨン。正面から見るとかわいらしく見えるけど、真後ろからだとすごくマッチョな体型に見える。",
-                 "人の1日の平均まばたき回数は、およそ1万5千回。1回のまばたきの所要時間は、およそ0.3秒かかっている。つまり、寝る時間以外にも1時間15分ほどは目を閉じているという計算になる。",
-                 "モスバーガーのモス(MOS)の意味。Mountain(山)、Ocean(海)、Sun(太陽)の頭文字からきている。",
-                 "急ぐ人のためにエスカレーターの右側を空ける習慣があるのは世界でも東京だけ。大阪や世界の各都市では左側を空けるのが常識なのだ。",
-                 "時代劇で人気の高い、『鬼平犯科帳』の鬼平と『遠山の金さん』の金さんは、同じ屋敷に住んでいた。",
-                 "1995年、アンドリュー・ワイルズによってやっと証明されたフェルマーの定理だが、300年前にフェルマー氏は証明を済ませていた。では、なぜこんなに時間がかかったのかというと、フェルマーの論文にはこうあった。「余白が無いのでこの証明を省略する。」",
-                 "ジーコ、カレカ、ドゥンガ、ブラジル人サッカー選手の名前は本名ではなくニックネームなのは有名な話。では、何故彼らがニックネームで登録するのか。それはブラジル人男子の名前はアントニオ、カルロス、ダ・シルバの三つで人口のほとんどを占めるから。本名で登録すると試合中紛らわしくなるのである。",
-                 "電気クラゲに刺されて死んだ人の死因のほとんどがビックリして溺れ死に。",
-                 "女性を悩ませる便秘。医学的定義によると“三日以上排便が無いこと”を 「便秘」と言うので二日目までは安心。",
-                 "Windows XP に付属の IME を話し言葉優先モードで使用し、「ぎれ」という言葉を入力し、変換すると、変換候補に「ピカチュウ」と表示される",
-                 "樽に剣をブスブスと刺していく「黒ヒゲ危機一髪ゲーム」。あのゲーム説明書には「樽の中にいる黒ヒゲ人形を飛び出させた人が勝ち」と書いてある。",
-                 "炊飯器の説明書に指示されている分量通りお米を炊いた場合、一番美味しく炊けるお米はササニシキ。これは炊飯器の開発段階で実験に使われるお米がササニシキのため。とはいえ、味の差は海原雄山がやっと気づくかどうかほどの微妙なモノ。",
-                ]
+  function insert_html_self(text) {
+       html = `<div class="chat_self">
+                <div class="chat_self__message">
+                ${text}
+                </div>
+                </div>`;
+        body = $('.chat_main__body');
+        body.append(html);
+        $('.chat_input').val("");
+        body.animate({scrollTop:body[0].scrollHeight}, 300, 'swing');
+  }
+
+  function insert_html_auto(text) {
+        html = `<div class="chat_auto">
+                  <img src="<%= image_path('IMG_9901.GIF') %>">
+                  <div class="chat_auto__message">
+                    ${text}
+                  </div>
+                </div>`;
+        body = $('.chat_main__body');
+        body.append(html);
+        body.animate({scrollTop:body[0].scrollHeight}, 300, 'swing');
+  }
   $('.chat_input__submit').on('click', function() {
     text = $('.chat_input').val();
     if(text !== ""){
       if(text === "テトリス"){
-        html = `<div class="chat_self">
-                <div class="chat_self__message">
-                ${text}
-                </div>
-                </div>`;
-        body = $('.chat_main__body');
-        body.append(html);
-        $('.chat_input').val("");
-        body.animate({scrollTop:body[0].scrollHeight}, 300, 'swing');
-        var random = Math.floor( Math.random() * (message_bot.length) );
-        text = message_bot[random];
-        html = `<div class="chat_auto">
-                  <img src="<%= image_path('IMG_9901.GIF') %>">
-                  <div class="chat_auto__message">
-                    <p>テトリスモードに遷移します。</p>
-                  </div>
-                </div>`;
-        body = $('.chat_main__body');
-        body.append(html);
-        body.animate({scrollTop:body[0].scrollHeight}, 300, 'swing');
-        setTimeout(function() {
-          mode_change();
-      }, 3000);
+          insert_html_self(text);
+          insert_html_auto("テトリスモードに遷移します。");
+          setTimeout(function() {
+            mode_change();
+        }, 3000);
       }else{
-        html = `<div class="chat_self">
-                <div class="chat_self__message">
-                ${text}
-                </div>
-                </div>`;
-        body = $('.chat_main__body');
-        body.append(html);
-        $('.chat_input').val("");
-        body.animate({scrollTop:body[0].scrollHeight}, 300, 'swing');
-        var random = Math.floor( Math.random() * (message_bot.length) );
-        text = message_bot[random];
-        html = `<div class="chat_auto">
-                  <img src="<%= image_path('IMG_9901.GIF') %>">
-                  <div class="chat_auto__message">
-                    <p>${text}</p>
-                  </div>
-                </div>`;
-        body = $('.chat_main__body');
-        body.append(html);
-        body.animate({scrollTop:body[0].scrollHeight}, 300, 'swing');
+        insert_html_self(text);
+        $.ajax({
+          url: "/guides/bot",
+          type: "GET",
+          data: {keyword: text},
+          dataType: "json",
+        })
+        .done(function(data) {
+          insert_html_auto(data.res_data.result);
+        })
+        .fail(function(data) {
+          insert_html_auto("わしもう疲れたわ、、、");
+        });
+
       } 
     }
   });
@@ -228,6 +192,7 @@ $(function() {
         }
     }
   }
+  
   function resetMove() {
     moveFlag = 0;
     for (var i = 0; i < 20; i++) {
