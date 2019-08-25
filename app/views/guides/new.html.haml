@@ -1,0 +1,20 @@
+= render "products/header"
+- breadcrumb :contact_new
+= render "/bread"
+.mypages
+  .mypages__main
+    .contact_us
+      .contact_us__title
+        %p  ご相談窓口
+      .contact_us__body__form
+        = form_with url: guides_path ,local: true, method: :post do |f|
+          .field
+            %i  お問合せの内容
+            %span.user-sign-up__form__required  必須
+            = f.text_area :contact, autofocus: true,class:"contact_us__body__form__input"
+            .contact_us__body__form__text
+              メールアドレスが間違っていたり、ドメイン指定受信していると返答が届きませんのでご注意ください。
+            = f.submit "送信する",class:"user-login__form__submit user-btn"
+
+  = render "products/side_bar" 
+= render "products/footer"

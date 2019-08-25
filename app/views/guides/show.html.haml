@@ -1,0 +1,29 @@
+= render "products/header"
+- breadcrumb :contact
+= render "/bread"
+.mypages
+  .mypages__main
+    .contact_us
+      .contact_us__title
+        %p  お問い合わせ項目を選ぶ
+      .contact_us__body
+        = link_to new_guide_path, class:"side-bar__content" do
+          %h3 会員登録・ログインについて
+        = link_to new_guide_path, class:"side-bar__content" do
+          %h3 購入・支払いについて
+        = link_to new_guide_path, class:"side-bar__content" do
+          %h3 発送・受取・評価について
+        = link_to new_guide_path, class:"side-bar__content" do
+          %h3 売上の振込申請について
+        = link_to new_guide_path, class:"side-bar__content" do
+          %h3 トラブルがあった
+        = link_to new_guide_path, class:"side-bar__content" do
+          %h3 機能要望
+        = link_to new_guide_path, class:"side-bar__content" do
+          %h3 不具合の報告
+        = link_to new_guide_path, class:"side-bar__content" do
+          %h3 退会したい
+        = link_to new_guide_path, class:"side-bar__content" do
+          %h3 その他  
+  = render "products/side_bar" 
+= render "products/footer"
