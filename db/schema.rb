@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_20_112653) do
+ActiveRecord::Schema.define(version: 2019_08_23_060537) do
 
   create_table "big_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -74,6 +74,14 @@ ActiveRecord::Schema.define(version: 2019_08_20_112653) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["big_category_id"], name: "index_middle_categories_on_big_category_id"
+  end
+
+  create_table "points", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "number", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_points_on_user_id"
   end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -169,6 +177,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_112653) do
   add_foreign_key "favorites", "users"
   add_foreign_key "images", "products"
   add_foreign_key "middle_categories", "big_categories"
+  add_foreign_key "points", "users"
   add_foreign_key "products", "big_categories"
   add_foreign_key "products", "brands"
   add_foreign_key "products", "delivary_days"

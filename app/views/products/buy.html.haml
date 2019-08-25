@@ -18,13 +18,18 @@
           %p  送料込み
         %ul.purchase-detail__form__point
           %li.purchase-detail__form__point__list 
-            .purchase-detail__form__point__list__button 
-              ポイントはありません
+            .purchase-detail__form__point__list__button
+              - if @points.present?
+                = "現在" + count_points(@points).to_s+ "ポイントがあります" 
+
+                = f.text_field :user_point ,class: "use_points_form" ,data: {user_point_id: count_points(@points).to_s,price_id: @product.price} ,value: ""
+              - else
+                ポイントはありません   
         %ul.purchase-detail__form__price-table
           %li.purchase-detail__form__price-table__row
             .purchase-detail__form__price-table__cell
               支払い金額
-            .purchase-detail__form__price-table__cell
+            .purchase-detail__form__price-table__cell#cell--text
               = "¥ " + @product.price.to_s
         = f.submit '購入する', class: 'purchase-detail__form__submit'
   .purchase-confirmation-contents__box
