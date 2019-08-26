@@ -99,7 +99,7 @@ class ProductsController < ApplicationController
       image.image = data
       image_array.push(image)
     end
-    if image_array.length != 0 || image_array.length > 10
+    if image_array.length != 0 && image_array.length <= 10
       if product.save!
         image_array.each do |image|
           image.product_id = product.id
