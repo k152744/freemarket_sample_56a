@@ -183,6 +183,7 @@ class ProductsController < ApplicationController
   end
 
   def favorite_create
+    @product = Product.find(params[:product_id].to_i)
     @favorite = Favorite.find_or_create_by(user_id: current_user.id,product_id: params[:product_id].to_i)
     favorite_lenght =Favorite.where(product_id: params[:product_id].to_i).length
     if @product.user != current_user
