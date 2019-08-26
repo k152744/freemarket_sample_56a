@@ -63,6 +63,9 @@
             %li
               = link_to do
                 = icon 'far fa-bell' ,class:"fa-bell-list"
+                -if @announces.present?
+                  .bottom-right__announces
+                    = @announces.length
                 %span お知らせ
             %li
               = link_to do
