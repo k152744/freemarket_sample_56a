@@ -7,7 +7,9 @@ class ProductsController < ApplicationController
   def index
     @pickup_categories = BigCategory.all.limit(3).includes(:products)
     @pickup_brands = Brand.all.limit(3).includes(:products)
-    @announces = Announce.where(user_id: current_user.id)
+    if user_signed_in?
+      @announces = Announce.where(user_id: current_user.id)
+    end
   end
 
   def show
