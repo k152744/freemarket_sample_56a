@@ -13,6 +13,7 @@ class Product < ApplicationRecord
   has_many :users, through: :favorites
   has_many :favorites,dependent: :destroy
   has_many :comments,dependent: :destroy
+  has_many :announces,dependent: :destroy
   validates :name, presence: true
   validates :detail, presence: true
   validates :price, presence: true

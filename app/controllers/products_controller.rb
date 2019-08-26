@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
   def index
     @pickup_categories = BigCategory.all.limit(3).includes(:products)
     @pickup_brands = Brand.all.limit(3).includes(:products)
-    
+    @announces = Announce.where(user_id: current_user.id)
   end
 
   def show
@@ -18,6 +18,8 @@ class ProductsController < ApplicationController
     @favorited = Favorite.where("(user_id = ?)and(product_id = ?)",current_user.id,params[:id]) if user_signed_in?
     @comment = Comment.new
     @comments = Comment.includes(:user).where("(product_id = ?)",params[:id])
+    Announce.where(user_id: current_user.id,product_id: @product.id).destroy_all
+    @announces = Announce.where(user_id: @product.user_id,product_id: @product.id)
   end
 
   def edit
@@ -181,8 +183,11 @@ class ProductsController < ApplicationController
   end
 
   def favorite_create
-    Favorite.find_or_create_by(user_id: current_user.id,product_id: params[:product_id].to_i)
+    @favorite = Favorite.find_or_create_by(user_id: current_user.id,product_id: params[:product_id].to_i)
     favorite_lenght =Favorite.where(product_id: params[:product_id].to_i).length
+    if @product.user != current_user
+      @announce = Announce.create(active_user_id: current_user.id, product_id: @product.id, user_id: @product.user.id, favorite_id: @favorite.id)
+    end
     respond_to do |format|
       format.html
       format.json { render json: favorite_lenght }
@@ -191,8 +196,8 @@ class ProductsController < ApplicationController
 
   def favorite_delete
     Favorite.where(user_id: current_user.id,product_id: params[:product_id].to_i).destroy_all
+    Announce.where(user_id: current_user.id,product_id: params[:product_id].to_i).destroy_all
     favorite_lenght =Favorite.where(product_id: params[:product_id].to_i).length
-
     respond_to do |format|
       format.html
       format.json { render json: favorite_lenght }

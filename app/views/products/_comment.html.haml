@@ -13,7 +13,8 @@
               = icon "fas fa-clock", class: "comments__comment__contents__past--icon"
               %p 
                 = time_ago_in_words(comment.created_at)
-              %p 既読
+              - if @announces.where(comment_id: comment.id).blank? && @product.user != current_user
+                %p 既読
             .comments__comment__stamp.comments__comment__stamp--current_user
               - url = 'nyan' + comment.stamp + '.png'
               = image_tag url
@@ -31,7 +32,8 @@
                 = icon "fas fa-clock", class: "comments__comment__contents__past--icon"
                 %p 
                   = time_ago_in_words(comment.created_at)
-                %p 既読
+                - if @announces.where(comment_id: comment.id).blank? && @product.user != current_user
+                  %p 既読
       - else 
         -if comment.stamp.present?
           = link_to "#", class: "comments__comment__user-info" do
