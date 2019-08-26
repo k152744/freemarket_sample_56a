@@ -15,6 +15,7 @@ $(function(){
       if(select_number === 0){
         $("#product_middle_category_id").fadeIn(0);
         $("#product_middle_category_id").empty();
+        $("#product_middle_category_id").append(`<option>---</option>`)
         categories.forEach(function(category){
           var html = buildOption(category)
           $("#product_middle_category_id").append(html);
@@ -22,6 +23,7 @@ $(function(){
       }else{
         $("#product_small_category_id").fadeIn(0);
         $("#product_small_category_id").empty();
+        $("#product_small_category_id").append(`<option>---</option>`)
         categories.forEach(function(category){
           var html = buildOption(category)
           $("#product_small_category_id").append(html);

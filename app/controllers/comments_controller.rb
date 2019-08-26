@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
     @product = Product.find(params[:product])
     @comment = @product.comments.new(comment_params)
     if @comment.save
+      create_announce(@product,@comment)
       respond_to do |format|
         format.html
         format.json
@@ -23,5 +24,10 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:content).merge(user_id: current_user.id)
+  end
+  def create_announce(product,comment)
+    @announce = Announce.new
+    @announce.push(active_user_id: current_user.id, product_id: product.id, user_id: product.user.id, comment_id: comment.id)
+    binding.pry
   end
 end
