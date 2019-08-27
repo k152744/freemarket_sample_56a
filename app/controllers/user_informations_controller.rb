@@ -3,7 +3,7 @@ class UserInformationsController < ApplicationController
   before_action :header_brand
 
   def listing
-    @products = Product.includes(:user).where(listing_status: "出品中")
+    @products = Product.includes(:user).where("(user_id = ?) and (listing_status = ?) ",current_user.id,"出品中")
   end
   
   def shipping_edit
