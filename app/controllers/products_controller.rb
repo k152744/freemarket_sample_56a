@@ -206,6 +206,8 @@ class ProductsController < ApplicationController
     @favorite  = Favorite.where("(product_id = ?)",params[:id])
     @comment = Comment.new
     @comments = Comment.includes(:user).where("(product_id = ?)",@product.id)
+    Announce.where(user_id: current_user.id,product_id: @product.id).destroy_all
+    @announces = Announce.where(user_id: @product.user_id,product_id: @product.id)
   end
 
   def favorite_create
