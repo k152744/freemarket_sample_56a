@@ -26,7 +26,7 @@ $(document).ready(function(){
                         };  
     var autoOut = function(){
                               URL = document.URL
-                              reURL = URL.replace("/game#","")
+                              reURL = URL.replace("/game","")
                               location.href= reURL;
                             }                                                      
     if(hit  == "50" || hit == "10" || hit =="100"){
