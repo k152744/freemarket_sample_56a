@@ -36,20 +36,44 @@ class ProductsController < ApplicationController
       @shipping_origin = ShippingOrigin.all
       @status = Status.all
       @brand = Brand.find(@product.brand_id)
-      @image = Image.where("product_id = ?",@product.id)
+      @images = Image.where("product_id = ?",@product.id)
     else
       redirect_to root_path
     end
   end
 
   def update
+    @images = Image.where("product_id = ?",@product.id)
     if current_user.id == @product.user_id
-      if @product.update(product_params)
-        image = Image.where("product_id = ?",@product.id)
-        # image.update(image_params(@product.id))
-        redirect_to root_path
+      image_array = []
+      image = Image.new(image_params)
+      if image.image.present?
+        image.image.each do |data|
+          image = Image.new
+          image.image = data
+          image_array.push(image)
+        end
+      end
+      delete_images = Image.where(params[:delete_ids])
+      image_counter = @images.length + image_array.length - delete_images.length
+      if image_counter > 0 && image_counter <= 10
+        if @product.update(product_params)
+          delete_images.each do |image|
+            image.destroy
+          end
+          image_array.each do |image|
+            image.product_id = @product.id
+            image.save!
+          end
+          respond_to do |format|
+            format.html {redirect_to root_path }
+            format.json { render json: {id: @product.id} }
+          end
+        else
+          render :edit
+        end
       else
-        render :edit
+        redirect_to action: "edit"
       end
     end
   end
@@ -80,7 +104,7 @@ class ProductsController < ApplicationController
       image.image = data
       image_array.push(image)
     end
-    if image_array.length != 0 || image_array.length > 10
+    if image_array.length != 0 && image_array.length <= 10
       if product.save!
         image_array.each do |image|
           image.product_id = product.id

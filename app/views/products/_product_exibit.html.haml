@@ -20,6 +20,14 @@
               ドラッグアンドドロップ
               またはクリックしてファイルをアップロード
         .product_exibit--wrap
+          - if @images.present?
+            - @images.each do |image|
+              .product_exibit__add-card.count_cards
+                .product_exibit__add-card__image
+                  = image_tag "#{image.image[:medium].url}" 
+                .product_exibit__add-card__btns
+                  %p 編集
+                  %p.product_exibit__add-card__btns--delete.card-delete-edit{"data-deleteid" => "#{image.id}"} 削除
       .product_exibit__content
         .product_exibit__form
           .field
@@ -130,5 +138,9 @@
             = f.submit "出品する",class:"user-login__form__submit user-btn"
 
           = link_to "もどる", "#", class:"product_exibit__form__back-btn" 
-
-          
+.exhibit-modal#exhibit-modal-2
+  .exhibit-modal__content
+    .exhibit-modal__content__image
+      = image_tag 'osako.png', class: ''
+    .exhibit-modal__content__alert
+      %p 画像、半端ないって
