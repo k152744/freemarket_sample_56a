@@ -1,0 +1,24 @@
+.point-game-top
+  %h2 ポイント獲得ゲーム
+  %p 宝箱を一つ選んでください
+  %ul.point-game
+
+
+.game-modal
+  .game-modal__overlay
+    .game-modal__overlay__content
+      %h2 結果 
+      %p.game-modal__overlay__content__point 
+      %p ポイント当たりました!!
+      %p 次回購入時にお使いください!!
+      = image_tag 's_cracker.png', class:"game-modal__overlay__content__left"
+      = image_tag 's_cracker.png', class:"game-modal__overlay__content__right"
+      
+.game-modal-out
+  .game-modal-out__overlay
+    .game-modal-out__overlay__content  
+      %h2 結果 
+      %p ハズレです!!
+      
+
+

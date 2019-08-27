@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       get :brand_incremental
       get :favorite_create
       get :favorite_delete
+      get :game
     end
   end
   resources :users  do

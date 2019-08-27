@@ -1,0 +1,152 @@
+.point-game-top{
+  text-align: center;
+  font-size:15px;
+  h2{
+    font-size:30px;
+    padding-top:10px;
+  }
+}
+
+
+.point-game li{
+  list-style: none;
+  width: 200px;
+  height: 200px;
+  margin: 20px;
+  cursor: pointer;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position:center center;
+  
+  
+}
+.point-game{
+  text-align: center;
+}
+.point-game li.normal{
+  background-image: image-url("s_hako.png");
+  animation: img_float 1s 2;
+}
+.point-game li.out{
+  background-image: image-url("IMG_9901.GIF");
+  
+}
+.point-game li.hit{
+  background-image: image-url("s_hako-open.png");
+  
+}
+
+@keyframes img_float {
+  0% { transform: translateY(0) }
+  33.33333% { transform: translateY(-10px) }
+  66.66667% { transform: translateY(0) }
+  100% { transform: translateY(0) }
+}
+
+
+.game-modal{
+  display:none;
+  &__overlay{
+    display: flex;
+    justify-content: center;
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    transform: scale(1);
+
+    &__content{
+      align-self: center;
+      height: 130px;
+      width: 60%;
+      max-width: 800px;
+      padding: 10px;
+      box-sizing: border-box;
+      background: #fff;
+      line-height: 1.4em;
+      transform: scale(1.2);
+      transition: 0.5s;
+      text-align: center;
+      p{
+        display: inline-block;
+      }
+      h2{
+          font-size:30px;
+        }
+      &__point{
+        display: inline-block;
+        padding-top:30px;
+        font-size:20px;
+        color:red;
+      }  
+
+      &__left{
+          float:left;
+          animation: cracker_left 1s linear infinite;
+          transform: rotate(90deg);
+        }
+        &__right{
+          float:right;
+          animation: cracker_right 1s linear infinite;
+        }
+    }
+  }
+}
+
+.game-modal-out{
+  display:none;
+  &__overlay{
+    display: flex;
+    justify-content: center;
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    transform: scale(1);
+    &__content{
+      align-self: center;
+      height: 130px;
+      width: 60%;
+      max-width: 800px;
+      padding: 10px;
+      box-sizing: border-box;
+      background: #fff;
+      line-height: 1.4em;
+      transform: scale(1.2);
+      transition: 0.5s;
+      text-align: center;
+      h2{
+        font-size:30px;
+        padding-top:10px;
+      }
+      p{
+        display: inline-block;
+        padding-top:40px;
+      }
+    }
+  }
+}
+@keyframes cracker_right
+{
+  0% { transform: rotate(0deg) }
+  25% { transform: rotate(20deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-20deg); }
+  100% { transform: rotate(0deg); }
+}
+@keyframes cracker_left
+{
+  0% { transform: rotate(90deg) }
+  25% { transform: rotate(110deg); }
+  50% { transform: rotate(90deg); }
+  75% { transform: rotate(70deg); }
+  100% { transform: rotate(90deg); }
+}
