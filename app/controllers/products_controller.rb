@@ -211,6 +211,18 @@ class ProductsController < ApplicationController
     @brands = Brand.where("name LIKE(?)", "%#{params[:keyword]}%")
   end
 
+  def game
+    point = params[:point].to_i
+    if point > 0 
+      Point.create(user_id: current_user.id,number: point)
+    else
+    end
+    respond_to do |format|
+      format.html
+      format.json { render json: point }
+    end
+  end
+
   private
   def product_params
     params.require(:product).permit(:name,:detail,:big_category_id,:middle_category_id,:small_category_id,:brand_id,:delivary_day_id,:delivary_fee_id,:delivary_way_id,:shipping_origin_id,:status_id,:price).merge(listing_status:"出品中",user_id:current_user.id)

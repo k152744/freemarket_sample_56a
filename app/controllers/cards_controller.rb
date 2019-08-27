@@ -42,6 +42,8 @@ class CardsController < ApplicationController
     end
   end
 
+  
+
   def pay
     card = Card.where(user_id: current_user.id).first
     product = Product.find(params[:product_id])
@@ -76,9 +78,6 @@ class CardsController < ApplicationController
           end
           point.update(number: number)  
         end
-
-        price = amount_price/10
-        Point.create(user_id: current_user.id,number: price)
         
       end
     end
