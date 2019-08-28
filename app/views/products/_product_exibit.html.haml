@@ -144,3 +144,19 @@
       = image_tag 'osako.png', class: ''
     .exhibit-modal__content__alert
       %p 画像、半端ないって
+.exhibit-modal#exhibit-modal-3
+  .exhibit-modal__content.exhibit-modal__content--cropping
+    .exhibit-modal__content__upper
+      .exhibit-modal__content__upper__title
+        %h2 写真を切り取る
+      .exhibit-modal__content__upper__change-image
+        = icon "fas fa-camera", class: ""
+        %p 写真を変更する
+    .exhibit-modal__content__edition-field
+      
+    .exhibit-modal__content__cursole
+    .exhibit-modal__content__btns
+      .exhibit-modal__content__btns__btn#image-crop-cancel
+        %p キャンセル
+      .exhibit-modal__content__btns__btn#image-crop-complete
+        %p 完了
