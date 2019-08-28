@@ -14,6 +14,7 @@
   border-radius: 75px;
   text-decoration: none;
   animation: Keita 15s infinite;
+  cursor: grab;
   @keyframes Keita{
     0% { transform: translateY(0px) scale(1); }
     92% { transform: translateY(0px) scale(1); }

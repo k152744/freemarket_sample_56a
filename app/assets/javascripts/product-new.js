@@ -6,7 +6,7 @@ $(function(){
                     <img src = "" id = "img-${index}" title = "">
                   </div>
                   <div class="product_exibit__add-card__btns" >
-                    <p>編集</p>
+                    <p class = "new-card-crop" data-index = "${index}">編集</p>
                     <p class = "product_exibit__add-card__btns--delete card-delete" data-index = "${index}" >削除</p>
                   </div>
                 </div>`
@@ -69,6 +69,8 @@ $(function(){
   var image_data = []
   var delete_array = []
   var edit_delete_array = []
+  var crop_replace_number = []
+  var crop_replace_image = []
   var maxSize = 5 * 1024 * 1024;
   // 選択で出品
   $('#product_image').change(function(e){
@@ -133,6 +135,79 @@ $(function(){
   if((document.URL.match("edit") && document.URL.match("products")) || document.URL.match("products/new")){
     window.onload = PageLoad();
   }
+  // トリミング  
+  $(function(){
+    var cropper;
+    var croppable = false;
+    function initIconCrop(){
+      cropper = new Cropper(crop_img, {
+        dragMode: 'move',
+        aspectRatio: 1,
+        restore: false,
+        guides: false,
+        center: false,
+        highlight: false,
+        cropBoxMovable: false,
+        cropBoxResizable: false,
+        minCropBoxWidth: 280,
+        minCropBoxHeight: 280,
+        ready: function(){
+          croppable = true;
+        }
+      });
+    }
+    var croppedCanvas;
+    function iconCropping(){
+      if (!croppable) {
+        alert('トリミングする画像が設定されていません。');
+        return false;
+      }
+      croppedCanvas = cropper.getCroppedCanvas({
+        width: 280,
+        height: 280,
+      });
+      document.getElementById(crop_image_id).src = croppedCanvas.toDataURL();
+      croppedCanvas.toBlob(function(b){
+        var blob = b;
+        crop_replace_number.push(number)
+        crop_replace_image.push(blob)
+      });
+    };
+    var number
+    var crop_image_id;
+    $(document).on("click",".new-card-crop",function(){
+      number = $(this).data('index') - 1
+      crop_image_id = 'img-' + $(this).data('index')
+      var file = image_data[number];
+      reader = new FileReader();
+      if(file.type.indexOf('image') < 0){
+        return false;
+      };
+      reader.onload = (function(e){
+        $('#exhibit-modal-3').fadeIn();
+        $('.exhibit-modal__content__edition-field').append($('<img>').attr({
+          src: e.target.result,
+          height: "100%",
+          class: "preview",
+          id: "crop_img",
+          title: file.name
+        }));
+        initIconCrop();
+      });
+      reader.readAsDataURL(file);
+    })
+    $(document).on("click","#image-crop-cancel",function(){
+      $('#exhibit-modal-3').fadeOut();
+      $('#crop_img').remove();
+      $('.cropper-container').remove();
+    });
+    $(document).on("click","#image-crop-complete",function(){
+      iconCropping();
+      $('#exhibit-modal-3').fadeOut();
+      $('#crop_img').remove();
+      $('.cropper-container').remove();
+    });
+  })
   // 商品編集
   if(document.URL.match("edit") && document.URL.match("products")){
     var edit_card_counter = $(".count_cards").length
@@ -152,6 +227,9 @@ $(function(){
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action');
+    for(var i=0;i<crop_replace_number.length;i++){
+      image_data[crop_replace_number[i]] = crop_replace_image[i]
+    }
     delete_array.forEach(function(index){
       delete image_data[index]
     })
