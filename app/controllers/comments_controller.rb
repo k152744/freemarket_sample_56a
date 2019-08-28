@@ -11,8 +11,6 @@ class CommentsController < ApplicationController
     @comment = @product.comments.new(comment_params)
     if @comment.save && @product.user != current_user
       @announce = Announce.create(active_user_id: current_user.id, product_id: @product.id, user_id: @product.user.id, comment_id: @comment.id)
-    else
-      redirect_to "/product/#{@product.id}"
     end
   end
 
