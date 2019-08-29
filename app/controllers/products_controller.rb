@@ -5,8 +5,8 @@ class ProductsController < ApplicationController
   before_action :header_brand, only: [:index,:show,:detail,:edit,:destroy,:search,:search_another]
   
   def index
-    @pickup_categories = BigCategory.all.limit(3).includes(:products)
-    @pickup_brands = Brand.all.limit(3).includes(:products)
+    @pickup_categories = BigCategory.all.limit(4).includes(:products)
+    @pickup_brands = Brand.all.limit(4).includes(:products)
     # if user_signed_in?
     #   @announces = Announce.where(user_id: current_user.id)
     # end
