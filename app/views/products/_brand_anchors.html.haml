@@ -1,0 +1,7 @@
+.anchors-space
+  .anchors-space__title
+    %p 人気のブランド
+  .anchors-space__anchors
+    - @pickup_brands.each do |brand|
+      = link_to "#{ "#brand" + brand.id.to_s}", class:"anchors-space__anchors__anchor" do
+        = brand.name
