@@ -1,6 +1,6 @@
 $(function(){
   function PageLoad(){
-    var canvas = document.getElementById('canvas');
+    var canvas = document.getElementById('snow');
     var ctx = canvas.getContext('2d');
     var wd_width = window.innerWidth;
     var wd_height = window.innerHeight;
