@@ -56,10 +56,13 @@
       - if user_signed_in?  
         .bottom-right
           %ul
-            %li
-              = link_to user_path(current_user) do
-                = icon 'far fa-heart' ,class:"far fa-heart"
-                %span いいね一覧
+            - if  current_page?(root_path) || current_page?(products_path)
+              
+            - else      
+              %li
+                = link_to user_path(current_user) do
+                  = icon 'far fa-heart' ,class:"far fa-heart"
+                  %span いいね一覧
             %li
               = link_to do
                 = icon 'far fa-bell' ,class:"fa-bell-list"
