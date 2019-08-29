@@ -81,7 +81,7 @@ class CardsController < ApplicationController
         
       end
     end
-    redirect_to controller: 'products', action: 'game'
+    redirect_to controller: 'products', action: 'game' 
   end
   def snow
   end
