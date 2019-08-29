@@ -75,13 +75,13 @@
   %div.item-detail__buttons{data: {'product-id' => @product.id}}
     -if user_signed_in?
       -if @favorited.present?
-        = link_to "#" ,class:'item-detail__buttons--heart heart-btn-on' do
+        = link_to "" ,class:'item-detail__buttons--heart heart-btn-on' do
           = icon 'far fa-heart',class:""
           %span いいね!
           %span 
             = @favorite.length
       -else      
-        = link_to "#" ,class:'item-detail__buttons--heart ' do
+        = link_to "" ,class:'item-detail__buttons--heart ' do
           = icon 'far fa-heart',class:""
           %span いいね!
           %span  
