@@ -1,0 +1,23 @@
+.anchors-space{
+  padding: 56px 0px 30px;
+  background-color: rgba(255, 255, 255,1.0);
+  font-weight:bold;
+  &__title{
+    font-size: 28px;
+    margin-bottom:20px;
+  }
+  &__anchors{
+    & a {
+      font-size: 14px;
+    }
+    &__anchor{
+      margin-left: 10px;
+      padding:8px 16px;
+      text-decoration: none;
+      color: black;
+      background-color: #EFEFEF;
+      border-radius: 15px;
+    }
+  }
+}
+

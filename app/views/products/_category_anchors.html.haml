@@ -1,0 +1,7 @@
+.anchors-space
+  .anchors-space__title
+    %p 人気のカテゴリー
+  .anchors-space__anchors
+    - @pickup_categories.each do |category|
+      = link_to "#{ "#category" + category.id.to_s}", class:"anchors-space__anchors__anchor" do
+        = category.name
