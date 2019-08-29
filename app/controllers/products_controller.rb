@@ -238,14 +238,19 @@ class ProductsController < ApplicationController
   end
 
   def game
-    point = params[:point].to_i
-    if point > 0 
-      Point.create(user_id: current_user.id,number: point)
-    else
-    end
-    respond_to do |format|
-      format.html
-      format.json { render json: point }
+    path = Rails.application.routes.recognize_path(request.referer)
+    if (path[:controller] == "products" && path[:action] == "buy") || (path[:controller] == "products" && path[:action] == "game")
+      point = params[:point].to_i
+      if point > 0 
+        Point.create(user_id: current_user.id,number: point)
+      else
+      end
+      respond_to do |format|
+        format.html
+        format.json { render json: point }
+      end 
+    else  
+      redirect_to root_url
     end
   end
 
