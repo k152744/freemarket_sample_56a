@@ -7,64 +7,48 @@
         = image_tag 'top-image1.png' ,size: "500x300" 
       %li
         = image_tag 'top-image1.png' ,size: "500x300" 
-
+  = render "category_anchors"
   %section.main-top__category
-    %h2  ピックアップカテゴリー
     - @pickup_categories.each do |category|
-      %section.main-top__category--box.clearfix
-        %h3 
-          = link_to "#{category.name}新着アイテム","#"  
-        %div.main-top__category--box__items.clearfix
-          - category.products.order("id desc").limit(4).each do |product|
+      %section.main-top__category--box.clearfix{id:"category" + category.id.to_s}
+        %section.main-top__category--box__top.clearfix
+          %h3 
+            = link_to "#{category.name}新着アイテム","#"  
+          %div.item-all
+            = link_to "もっと見る ＞","#"
+        %div.main-top__category--box__items
+          - category.products.order("id desc").limit(10).each do |product|
             %section.main-top__category--box__items__item.clearfix
               = link_to product_path(product) do
-                %div
-                  = image_tag "#{product.images[0].image[:medium].url}" ,size: "207x219"
-                %div
-                  %h3.item-title 
-                    = product.name 
-                  %div.item-price 
+                %div.main-image
+                  = image_tag "#{product.images[0].image[:medium].url}" ,size: "202x223"
+                  %div.item-price__cover
                     = '¥ ' + product.price.to_s
-                    - flag = false
-                    - product.favorites.each do |favorite|
-                      - if user_signed_in?
-                        - if favorite.user_id == current_user.id
-                          - flag = true
-                          - break  
-                    - if flag == true
-                      %div 
-                        = icon 'fas fa-heart iine-color-red',class:"item-price-iine"
-                        = product.favorites.length
-                    - else
-                      %div 
-                        = icon 'fas fa-heart ',class:"item-price-iine" 
-                        = product.favorites.length    
+                %div.item-title_box
+                  %h3.item-title 
+                    = product.name   
                      
-      %div.item-all
-        = link_to "全ての商品を見る","#"
 
+  = render "brand_anchors"
   %section.main-top__category
     - @pickup_brands.each do |brand|
-      %h2  ピックアップブランド
-      %section.main-top__category--box.clearfix
-        %h3 
-          = link_to "#{brand.name}新着アイテム","#"  
+      %section.main-top__category--box.clearfix{id:"brand" + brand.id.to_s}
+        %section.main-top__category--box__top.clearfix
+          %h3 
+            = link_to "#{brand.name}新着アイテム","#"  
+          %div.item-all
+            = link_to "もっと見る ＞","#"
         %div.main-top__category--box__items.clearfix
-          - brand.products.order("id desc").limit(4).each do |product|
+          - brand.products.order("id desc").limit(10).each do |product|
             %section.main-top__category--box__items__item.clearfix
               = link_to product_path(product) do
-                %div
-                  = image_tag "#{product.images[0].image[:medium].url}" ,size: "207x219"
-                %div
+                %div.main-image
+                  = image_tag "#{product.images[0].image[:medium].url}" ,size: "202x223"
+                  %div.item-price__cover
+                    = '¥ ' + product.price.to_s
+                %div.item-title_box
                   %h3.item-title 
                     = product.name 
-                  %div.item-price 
-                    = '¥ ' + product.price.to_s
-                    %div
-                      = icon 'fas fa-heart',class:"item-price-iine"
-                      = product.favorites.length
-        %div.item-all
-          = link_to "全ての商品を見る","#"
       
 = render partial: "footer"
 = render "exhibit_btn"
