@@ -36,7 +36,7 @@
                 %div
                   = image_tag "#{product.images[0].image[:medium].url}" ,size: "215x215"
                 %div
-                  %h3.item-title #{product.name}
+                  .item-title.show-item-title #{product.name}
                   %div.item-price 
                     ¥#{product.price.to_s(:delimited)}
                     = icon 'far fa-heart',class:"item-price-iine"
@@ -55,7 +55,7 @@
                 %div
                   = image_tag "#{product.images[0].image[:medium].url}" ,size: "215x215"
                 %div
-                  %h3.item-title #{product.name}
+                  .item-title.show-item-title #{product.name}
                   %div.item-price 
                     ¥#{product.price.to_s(:delimited)}
                     = icon 'far fa-heart',class:"item-price-iine"
