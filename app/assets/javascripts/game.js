@@ -43,12 +43,10 @@ $(document).ready(function(){
       
       .done(function(point){
         if(point > 1){
-          console.log("成功")
           $(".game-modal__overlay__content__point").text(point);
           setTimeout(log, 3000);
           setTimeout(autoOut, 10000);
         }else{
-          console.log("失敗")
           setTimeout(out, 3000);
           setTimeout(autoOut, 10000);
         } 
