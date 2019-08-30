@@ -64,10 +64,7 @@ class CardsController < ApplicationController
           currency: 'jpy',
           metadata: {buyer_id: current_user.id, buyer_name: current_user.nickname}
         )
-        
         product.update(buyer_id: current_user.id)
-
-        
         @points.each do |point|
           if use_point < point.number
             number = point.number - use_point
@@ -78,10 +75,9 @@ class CardsController < ApplicationController
           end
           point.update(number: number)  
         end
-        
+        redirect_to controller: 'products', action: 'game' 
       end
     end
-    redirect_to controller: 'products', action: 'game' 
   end
   def snow
   end
