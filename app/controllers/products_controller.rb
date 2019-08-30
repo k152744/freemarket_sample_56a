@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
     @favorited = Favorite.where("(user_id = ?)and(product_id = ?)",current_user.id,params[:id]) if user_signed_in?
     @comment = Comment.new
     @comments = Comment.includes(:user).where("(product_id = ?)",params[:id])
-    Announce.where(user_id: current_user.id,product_id: @product.id).destroy_all
+    Announce.where(user_id: current_user.id,product_id: @product.id).destroy_all if user_signed_in?
     @announces = Announce.where(user_id: @product.user_id,product_id: @product.id)
   end
 
